@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install on OpenShift | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Install Sentinel on an OpenShift cluster.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/operate/install-openshift.html">
+  <meta property="og:title" content="Install on OpenShift — Sentinel Docs">
+  <meta property="og:description" content="Install Sentinel on an OpenShift cluster.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/operate/install-openshift.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details open><summary><a href="index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="install-kubernetes.html">Install on Kubernetes</a></li><li><a href="install-openshift.html" class="active" aria-current="page">Install on OpenShift</a></li><li><a href="install-helm.html">Install with Helm</a></li><li><a href="observability.html">Observability</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Install and operate</p>
+        <h1>Install on OpenShift</h1>
+        <p class="docs-lede">Install Sentinel on an OpenShift cluster.</p>
+        <p>The recommended method is the OpenShift installation script. One command installs SPIRE, cert-manager,
+Keycloak, the operator, the MCP Gateway and the console.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oc</code></td>
+<td>4.16.0 or later</td>
+</tr>
+<tr>
+<td>An OpenShift cluster</td>
+<td>Administrator access. The project tested version 4.19. The test pipeline uses version 4.20.</td>
+</tr>
+<tr>
+<td>Helm</td>
+<td>3.18.0 or later, below 4</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition warning">
+<p class="admonition-title">Remove an existing cert-manager first</p>
+<p>Sentinel installs its own cert-manager. If your cluster already has cert-manager, for example from the
+Red Hat OpenShift cert-manager Operator, remove it before you run the script.</p>
+</div>
+<h2 id="install-the-platform">Install the platform<a class="headerlink" href="#install-the-platform" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">git clone https://github.com/StyxLabs-Inc/sentinel.git
+cd sentinel
+
+oc login https://api.your-cluster.example.com:6443 -u kubeadmin -p &lt;password&gt;
+
+./scripts/ocp/setup-sentinel.sh
+</code></pre>
+<p>Run the script from the root directory of the repository, and after you sign in.</p>
+<h3 id="the-options">The options<a class="headerlink" href="#the-options" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--sentinel-repo PATH\|URL</code></td>
+<td>A local directory or a GitHub address. The default action is a clone of <code>main</code> into <code>~/.cache/sentinel</code>.</td>
+</tr>
+<tr>
+<td><code>--realm REALM</code></td>
+<td>The Keycloak realm. The default is <code>sentinel</code>.</td>
+</tr>
+<tr>
+<td><code>--skip-ovn-patch</code></td>
+<td>Omits the OVN routing change. The operator gives a warning at start-up if the change is absent.</td>
+</tr>
+<tr>
+<td><code>--skip-mcp-gateway</code></td>
+<td>Omits the MCP Gateway.</td>
+</tr>
+<tr>
+<td><code>--skip-ui</code></td>
+<td>Omits the console and the backend.</td>
+</tr>
+<tr>
+<td><code>--skip-mlflow</code></td>
+<td>Omits MLflow.</td>
+</tr>
+<tr>
+<td><code>--operator-image IMG:TAG</code></td>
+<td>Uses a different operator image.</td>
+</tr>
+<tr>
+<td><code>--dry-run</code></td>
+<td>Prints each command. It makes no change.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="open-the-console">Open the console<a class="headerlink" href="#open-the-console" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">echo &quot;https://$(kubectl get route sentinel-ui -n sentinel-system \
+  -o jsonpath='{.status.ingress[0].host}')&quot;
+</code></pre>
+<p>If the cluster uses a self-signed certificate, accept the certificate in your browser. The MCP Inspector
+and its proxy use one host name, so one action covers both.</p>
+<p>To get the Keycloak administrator credentials:</p>
+<pre><code class="language-bash">kubectl get secret keycloak-initial-admin -n keycloak \
+  -o go-template='Username: {{.data.username | base64decode}}  Password: {{.data.password | base64decode}}{{&quot;\n&quot;}}'
+</code></pre>
+<h2 id="confirm-the-installation">Confirm the installation<a class="headerlink" href="#confirm-the-installation" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">kubectl get daemonsets -n zero-trust-workload-identity-manager
+kubectl get deployments -n sentinel-system
+</code></pre>
+<p>If SPIRE reports <code>0</code> in the <code>Current</code> column or the <code>Ready</code> column, see
+<a href="troubleshooting.html">Troubleshooting</a>.</p>
+<h2 id="models">Models<a class="headerlink" href="#models" title="Permanent link">#</a></h2>
+<p>Ollama cannot run on your computer for an OpenShift cluster. The agent is in a remote cluster and cannot
+reach your computer. Select one of these three methods.</p>
+<h3 id="method-1-run-ollama-in-the-cluster">Method 1: run Ollama in the cluster<a class="headerlink" href="#method-1-run-ollama-in-the-cluster" title="Permanent link">#</a></h3>
+<p>Create a Deployment and a Service in the <code>sentinel-system</code> namespace:</p>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  labels:
+    app: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama
+  template:
+    metadata:
+      labels:
+        app: ollama
+    spec:
+      containers:
+        - name: ollama
+          image: ollama/ollama:latest
+          ports:
+            - containerPort: 11434
+          resources:
+            requests:
+              cpu: &quot;2&quot;
+              memory: &quot;8Gi&quot;
+            limits:
+              cpu: &quot;4&quot;
+              memory: &quot;16Gi&quot;
+          volumeMounts:
+            - name: ollama-data
+              mountPath: /root/.ollama
+      volumes:
+        - name: ollama-data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama
+spec:
+  selector:
+    app: ollama
+  ports:
+    - port: 11434
+      targetPort: 11434
+</code></pre>
+<p>Apply the file with <code>kubectl apply -n sentinel-system -f ollama.yaml</code>. Then get a model:</p>
+<pre><code class="language-bash">kubectl exec -n sentinel-system deploy/ollama -- ollama pull qwen2.5:3b
+</code></pre>
+<p>Set the <code>LLM_API_BASE</code> variable of each agent to this address:</p>
+<pre><code>http://ollama.sentinel-system.svc.cluster.local:11434/v1
+</code></pre>
+<p>Use this table to select the resources:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Memory</th>
+<th>CPUs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3B, for example <code>qwen2.5:3b</code></td>
+<td>8 Gi</td>
+<td>2</td>
+</tr>
+<tr>
+<td>8B, for example <code>granite3.3:8b</code></td>
+<td>16 Gi</td>
+<td>4</td>
+</tr>
+<tr>
+<td>70B or larger</td>
+<td>64 Gi or more</td>
+<td>8 or more, and a GPU</td>
+</tr>
+</tbody>
+</table></div>
+<p>For more than a test, do these three actions. Request <code>nvidia.com/gpu</code> on a node that has a GPU. Replace
+<code>emptyDir</code> with a PersistentVolumeClaim, so the model remains after a restart. Use node affinity to place
+the pod on a node that has sufficient memory.</p>
+<h3 id="method-2-use-an-external-ollama-server">Method 2: use an external Ollama server<a class="headerlink" href="#method-2-use-an-external-ollama-server" title="Permanent link">#</a></h3>
+<p>Run <code>OLLAMA_HOST=0.0.0.0 ollama serve</code> on a computer that the cluster can reach. Then set <code>LLM_API_BASE</code>
+to <code>http://&lt;that-address&gt;:11434/v1</code>.</p>
+<h3 id="method-3-use-a-cloud-provider">Method 3: use a cloud provider<a class="headerlink" href="#method-3-use-a-cloud-provider" title="Permanent link">#</a></h3>
+<p>This method is the simplest. See
+<a href="../get-started/configure-a-model.html#option-b-a-cloud-provider">Configure a model</a>.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="install-helm.html">Install with Helm</a> describes the installation of each chart.</li>
+<li><a href="../security/authentication-modes.html">Authentication modes</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="install-kubernetes.html"><span>Previous</span>Install on Kubernetes</a><a class="next" href="install-helm.html"><span>Next</span>Install with Helm</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/operate/install-openshift.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

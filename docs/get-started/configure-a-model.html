@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configure a model | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Give an agent a local model or a model from a cloud provider.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/get-started/configure-a-model.html">
+  <meta property="og:title" content="Configure a model — Sentinel Docs">
+  <meta property="og:description" content="Give an agent a local model or a model from a cloud provider.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/get-started/configure-a-model.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details open><summary><a href="index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="laptop.html">Quickstart — laptop</a></li><li><a href="reading-the-numbers.html">Read the numbers</a></li><li><a href="kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="configure-a-model.html" class="active" aria-current="page">Configure a model</a></li><li><a href="first-agent.html">Deploy your first agent</a></li><li><a href="first-tool.html">Connect your first tool</a></li><li><a href="cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Get started</p>
+        <h1>Configure a model</h1>
+        <p class="docs-lede">Give an agent a local model or a model from a cloud provider.</p>
+        <p>A Sentinel agent operates with any model endpoint that is compatible with the OpenAI interface. You do
+not change the code of the agent to change the model. You set three environment variables when you
+deploy the agent.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Function</th>
+<th>Value for Ollama</th>
+<th>Value for OpenAI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LLM_API_BASE</code></td>
+<td>The address of the endpoint</td>
+<td><code>http://host.docker.internal:11434/v1</code></td>
+<td><code>https://api.openai.com/v1</code></td>
+</tr>
+<tr>
+<td><code>LLM_API_KEY</code></td>
+<td>The API key</td>
+<td><code>dummy</code>. Ollama does not read it.</td>
+<td>Your OpenAI key</td>
+</tr>
+<tr>
+<td><code>LLM_MODEL</code></td>
+<td>The name of the model</td>
+<td><code>qwen2.5:3b</code></td>
+<td><code>gpt-4o-mini-2024-07-18</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>When you deploy an agent from the console, you select the <code>ollama</code> preset or the <code>openai</code> preset. The
+console then sets these three variables for you.</p>
+<h2 id="option-a-ollama-on-your-computer">Option A: Ollama on your computer<a class="headerlink" href="#option-a-ollama-on-your-computer" title="Permanent link">#</a></h2>
+<p>This option has no cost and needs no account. It is the default for local development.</p>
+<p>Install Ollama from <a href="https://ollama.com/download">https://ollama.com/download</a>. Then run these commands:</p>
+<pre><code class="language-bash">ollama pull qwen2.5:3b
+OLLAMA_HOST=0.0.0.0 ollama serve
+</code></pre>
+<p>Leave the <code>ollama serve</code> command active.</p>
+<p>The <code>OLLAMA_HOST=0.0.0.0</code> value is necessary. An agent in the cluster is in a different network
+namespace. It cannot reach the default loopback address.</p>
+<p>On Kind, the <code>ollama</code> preset uses the address <code>http://host.docker.internal:11434/v1</code>. That name
+resolves to your computer from inside the container. There is no other configuration. Select the
+<strong>ollama</strong> preset when you deploy the agent.</p>
+<h3 id="on-linux-without-docker-desktop">On Linux without Docker Desktop<a class="headerlink" href="#on-linux-without-docker-desktop" title="Permanent link">#</a></h3>
+<p>The name <code>host.docker.internal</code> can fail to resolve. Find the address of the gateway:</p>
+<pre><code class="language-bash">docker network inspect kind | grep Gateway
+</code></pre>
+<p>Then set <code>LLM_API_BASE</code> to <code>http://&lt;that-address&gt;:11434/v1</code>.</p>
+<h3 id="models-that-the-project-tested">Models that the project tested<a class="headerlink" href="#models-that-the-project-tested" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Size</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>qwen2.5:3b</code></td>
+<td>3B</td>
+<td>The default in the test pipeline. It is sufficient for a demonstration.</td>
+</tr>
+<tr>
+<td><code>llama3.2:3b-instruct-fp16</code></td>
+<td>3B</td>
+<td>The default in the <code>ollama</code> preset.</td>
+</tr>
+<tr>
+<td><code>granite3.3:8b</code></td>
+<td>8B</td>
+<td>Better quality. Tested on an Apple M3 with 64 GB of memory.</td>
+</tr>
+<tr>
+<td><code>gpt-oss:latest</code></td>
+<td>20B</td>
+<td>Tested on an Apple M3 with 64 GB of memory.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A smaller model is faster. If the answers are slow, or Kubernetes stops the pod for a memory limit, use
+a 3B model.</p>
+<h2 id="option-b-a-cloud-provider">Option B: a cloud provider<a class="headerlink" href="#option-b-a-cloud-provider" title="Permanent link">#</a></h2>
+<p>Put the key in a Kubernetes Secret. Do not put the key in a deployment. Create one Secret in each
+namespace that runs an agent:</p>
+<pre><code class="language-bash">kubectl create secret generic openai-secret -n team1 \
+  --from-literal=apikey=&quot;&lt;YOUR_OPENAI_API_KEY&gt;&quot;
+</code></pre>
+<p>Then reference the Secret from the environment of the agent. In the console you can import a <code>.env</code> file
+that names the Secret instead of the value:</p>
+<pre><code class="language-ini">OPENAI_API_KEY='{&quot;valueFrom&quot;: {&quot;secretKeyRef&quot;: {&quot;name&quot;: &quot;openai-secret&quot;, &quot;key&quot;: &quot;apikey&quot;}}}'
+</code></pre>
+<p>For the complete syntax, see
+<a href="../workloads/deploy-an-agent.html#environment-variables">Deploy an agent</a>.</p>
+<p>For a provider that is not OpenAI, set <code>LLM_API_BASE</code> to the <code>/v1</code> address of that provider, and set
+<code>LLM_MODEL</code> to a model that the provider serves. vLLM, the llama.cpp server and LocalAI all operate.</p>
+<h2 id="on-openshift">On OpenShift<a class="headerlink" href="#on-openshift" title="Permanent link">#</a></h2>
+<p>Ollama cannot run on your computer for an OpenShift cluster, because the agent is in a remote cluster
+and cannot reach your computer. Use one of these methods:</p>
+<ul>
+<li>Run Ollama as a Deployment in the cluster, and set <code>LLM_API_BASE</code> to
+  <code>http://ollama.sentinel-system.svc.cluster.local:11434/v1</code>.</li>
+<li>Use a cloud provider.</li>
+</ul>
+<p>See <a href="../operate/install-openshift.html#models">Install on OpenShift</a>.</p>
+<h2 id="if-an-agent-cannot-reach-its-model">If an agent cannot reach its model<a class="headerlink" href="#if-an-agent-cannot-reach-its-model" title="Permanent link">#</a></h2>
+<p>The log of the agent shows a reset connection or an incomplete read. The console shows the status 503.</p>
+<p>In almost all cases, the <code>ollama serve</code> command is not active. Confirm which values the pod received:</p>
+<pre><code class="language-bash">kubectl exec -n team1 &lt;agent-pod&gt; -- env | grep LLM_
+</code></pre>
+<p>For more information, see <a href="../operate/troubleshooting.html">Troubleshooting</a>.</p>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="kubernetes.html"><span>Previous</span>Quickstart on Kubernetes</a><a class="next" href="first-agent.html"><span>Next</span>Deploy your first agent</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/get-started/configure-a-model.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

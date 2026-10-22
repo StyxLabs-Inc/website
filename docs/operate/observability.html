@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Observability | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Traces, the network diagram, and the metrics for each agent.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/operate/observability.html">
+  <meta property="og:title" content="Observability — Sentinel Docs">
+  <meta property="og:description" content="Traces, the network diagram, and the metrics for each agent.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/operate/observability.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details open><summary><a href="index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="install-kubernetes.html">Install on Kubernetes</a></li><li><a href="install-openshift.html">Install on OpenShift</a></li><li><a href="install-helm.html">Install with Helm</a></li><li><a href="observability.html" class="active" aria-current="page">Observability</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Install and operate</p>
+        <h1>Observability</h1>
+        <p class="docs-lede">Traces, the network diagram, and the metrics for each agent.</p>
+        <p>A log is not sufficient to diagnose an agent. One request from a user produces many model calls, tool
+calls and messages to other agents. Sentinel therefore gives you three views. A trace shows what happened
+in one request. A network diagram shows which workloads communicate. The metrics show the volume and the
+cost.</p>
+<h2 id="what-to-install">What to install<a class="headerlink" href="#what-to-install" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What it adds</th>
+<th>What you get</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--with-otel</code></td>
+<td>The OpenTelemetry collector</td>
+<td>Trace collection</td>
+</tr>
+<tr>
+<td><code>--with-mlflow</code></td>
+<td>MLflow. It enables the collector and the ambient mesh also.</td>
+<td>A trace store, and an experiment for each agent</td>
+</tr>
+<tr>
+<td><code>--with-kiali</code></td>
+<td>Kiali and Prometheus. It enables the ambient mesh also.</td>
+<td>The network diagram and the metrics</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <code>--with-all</code> option installs each one. MLflow and Kiali both need the Istio ambient mesh, which uses
+more memory and CPU. See <a href="index.html#machine-size">Machine size</a>.</p>
+<h2 id="traces">Traces<a class="headerlink" href="#traces" title="Permanent link">#</a></h2>
+<p>A trace shows one request from the start to the end. It gives the tools that the agent called, the order
+of the calls, the duration of each call, and the request that went to the model.</p>
+<h3 id="where-the-traces-go">Where the traces go<a class="headerlink" href="#where-the-traces-go" title="Permanent link">#</a></h3>
+<p>The operator configures this path for you. It finds an MLflow instance in the cluster, creates an
+experiment for each agent, and configures the workload to send the traces there. You do not add code to
+your agent.</p>
+<p>To read the traces, use the <strong>Observability</strong> page of the console, or open MLflow directly. To get the
+address, run <code>./.github/scripts/local-setup/show-services.sh</code>.</p>
+<h3 id="to-add-your-own-spans">To add your own spans<a class="headerlink" href="#to-add-your-own-spans" title="Permanent link">#</a></h3>
+<p>The transport is present, but only your agent knows its internal steps. Use the OpenTelemetry library for
+your language. Your spans then join the same trace.</p>
+<h3 id="traces-without-a-cluster">Traces without a cluster<a class="headerlink" href="#traces-without-a-cluster" title="Permanent link">#</a></h3>
+<p>The CLI runs a local collector that sends the traces to MLflow. This method is useful when you develop an
+agent on your computer:</p>
+<pre><code class="language-bash">sentinel otel collect
+</code></pre>
+<p>The command writes a configuration file to <code>~/.config/sentinel/otel</code> and starts the OpenTelemetry
+collector with that file. The collector receives OTLP on port 4317 for gRPC and on port 4318 for HTTP. The
+command needs <code>docker</code> or <code>podman</code> on your path.</p>
+<p>MLflow must listen before a trace can arrive:</p>
+<pre><code class="language-bash">mlflow server --host 0.0.0.0 --port 5001 --allowed-hosts '*'
+</code></pre>
+<p>Both options are necessary. Without <code>--host</code>, MLflow listens on the loopback address, which a container
+cannot reach. Without <code>--allowed-hosts</code>, MLflow rejects a request that has the container host name.</p>
+<p>If nothing listens on the port, <code>sentinel otel collect</code> reports the condition and starts the collector.
+The collector repeats the transmission, so you can start MLflow after the collector.</p>
+<p>To test the path from your computer to MLflow, and without an agent:</p>
+<pre><code class="language-bash">sentinel otel send-mock-trace --serviceName my-agent
+</code></pre>
+<p>The <code>--serviceName</code> option sets the <code>service.name</code> attribute. MLflow groups the traces by that attribute,
+so it is the name that your test span has in the interface. Each command uses new identifiers, so each
+command produces a separate trace.</p>
+<p>The container runs in the background. To stop it, use <code>podman stop</code> or <code>docker stop</code> with the name that
+the command printed at the start.</p>
+<p>To collect the traces of Claude Code:</p>
+<pre><code class="language-bash">sentinel otel collect
+sentinel authbridge exec --with-claude-otel --config ./authbridge.yaml -- claude
+</code></pre>
+<h2 id="the-network-diagram">The network diagram<a class="headerlink" href="#the-network-diagram" title="Permanent link">#</a></h2>
+<p>Kiali shows which workloads communicate, with the request rate and the error rate for each connection. It
+is the fastest way to answer this question: does my agent reach that tool?</p>
+<p>Open Kiali from the <strong>Observability</strong> page of the console. Kiali needs the Istio ambient mesh. The
+<code>--with-kiali</code> option enables the mesh.</p>
+<p>The diagram also shows a connection that must not exist. An example is an agent that reaches a service
+that no person expected.</p>
+<h2 id="the-metrics-and-the-cost">The metrics and the cost<a class="headerlink" href="#the-metrics-and-the-cost" title="Permanent link">#</a></h2>
+<p>The <code>--with-kiali</code> option installs Prometheus, which collects the standard metrics of each workload.</p>
+<p>For the token cost, Cortex is the source, because each model call passes through it. On your
+computer, <code>agentop observe</code> shows the cost as it happens; to read those numbers, see
+<a href="../get-started/reading-the-numbers.html">Read the numbers</a>. In a cluster, the budget plugins record and
+limit the cost. See <a href="../concepts/experiments/cost-control.html">Cost control</a>.</p>
+<h2 id="confirm-that-the-traces-operate">Confirm that the traces operate<a class="headerlink" href="#confirm-that-the-traces-operate" title="Permanent link">#</a></h2>
+<ol>
+<li>Confirm that the collector runs: <code>kubectl get pods -n sentinel-system | grep otel</code>.</li>
+<li>Confirm that MLflow runs and is reachable.</li>
+<li>Send a message to an agent from the <strong>Chat</strong> page of the console.</li>
+<li>Look for a new record in the experiment of that agent, in MLflow.</li>
+</ol>
+<p>If no trace arrives, examine these three causes. The collector does not run. MLflow listens on the
+loopback address. The agent has no destination address. For the third cause, examine the environment of
+the pod:</p>
+<pre><code class="language-bash">kubectl exec -n &lt;namespace&gt; &lt;pod&gt; -- env | grep OTEL_
+</code></pre>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+<li><a href="../concepts/experiments/cost-control.html">Cost control</a></li>
+<li><a href="../reference/cli.html">CLI reference</a> lists each <code>sentinel otel</code> option.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="install-helm.html"><span>Previous</span>Install with Helm</a><a class="next" href="troubleshooting.html"><span>Next</span>Troubleshooting</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/operate/observability.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

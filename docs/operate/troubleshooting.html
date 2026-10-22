@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Troubleshooting | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="The failures that occur most often, and the recovery for each one.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/operate/troubleshooting.html">
+  <meta property="og:title" content="Troubleshooting — Sentinel Docs">
+  <meta property="og:description" content="The failures that occur most often, and the recovery for each one.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/operate/troubleshooting.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details open><summary><a href="index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="install-kubernetes.html">Install on Kubernetes</a></li><li><a href="install-openshift.html">Install on OpenShift</a></li><li><a href="install-helm.html">Install with Helm</a></li><li><a href="observability.html">Observability</a></li><li><a href="troubleshooting.html" class="active" aria-current="page">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Install and operate</p>
+        <h1>Troubleshooting</h1>
+        <p class="docs-lede">The failures that occur most often, and the recovery for each one.</p>
+        <p>This page has two parts. The first part is the laptop install of Cortex. The second part is the
+Kubernetes platform. If your condition is not here, ask in
+<a href="https://ibm.biz/sentinel-slack">Slack</a>, or open an issue on
+<a href="https://github.com/StyxLabs-Inc/sentinel/issues">sentinel/sentinel</a>.</p>
+<h2 id="on-a-laptop">On a laptop<a class="headerlink" href="#on-a-laptop" title="Permanent link">#</a></h2>
+<p>These conditions occur with the laptop install from
+<a href="../get-started/laptop.html">Quickstart on a laptop</a>. You do not need a Kubernetes cluster for this
+part.</p>
+<!-- VERIFY: verified against v0.8.1 — the CA path (~/.cortex/ca/ca.crt), the port (47600), the
+     launchd label (io.sentinel.cortex) and the systemd unit (cortex.service) all match
+     cmd/agentop. The install itself is still a release target; see cortex#944 and cortex#945. -->
+
+<h3 id="the-certificate-authority-is-not-trusted">The certificate authority is not trusted<a class="headerlink" href="#the-certificate-authority-is-not-trusted" title="Permanent link">#</a></h3>
+<p>Your agent reports a TLS error, or a certificate error, when it calls the model. The cause is that
+the agent does not trust the certificate of Cortex.</p>
+<p>Cortex writes its certificate authority to <code>~/.cortex/ca/ca.crt</code>. The <code>--claude-code</code> install
+configures Claude Code for you. For another agent, <code>agentop exec</code> sets the certificate variables.
+IBM Bob is different: it trusts the CA through the System keychain, and <code>agentop configure bob
+enable</code> prints the <code>sudo</code> command that adds it, which you run yourself. See
+<a href="../get-started/laptop.html#other-agents">Other agents</a>.</p>
+<p>To confirm the certificate, read it:</p>
+<pre><code class="language-bash">openssl x509 -in ~/.cortex/ca/ca.crt -noout -subject -dates
+</code></pre>
+<p>If the file is absent, the proxy has not started since the CA files were removed. The proxy writes
+the CA when it starts:</p>
+<pre><code class="language-bash">agentop service restart
+</code></pre>
+<!-- VERIFY: verified against v0.8.1 and main — the proxy calls tlsbridge.EnsureFileSource on boot
+     (cmd/cortex/main.go), which mints a new CA if any of tls.crt, tls.key or ca.crt is missing
+     (core/tlsbridge/ca.go:221-231). No setup or install step writes the CA; install.sh and
+     `agentop service status` do read it. -->
+<!-- VERIFY v0.9.0: agentop setup (cortex#1245) is not in v0.8.1; it does not touch the CA either,
+     so a restart remains what regenerates it. -->
+
+<p>This makes a new CA, so restart your agent afterwards. If you trusted the old CA in a keychain, for
+Bob or for a Go program, run that command again for the new one. If <code>agentop service status</code>
+reports no service, run <code>agentop service install</code>.</p>
+<p>If the file is present and your agent still rejects it, check whether a <em>second</em> Cortex install is
+answering on the port. Every install generates a CA with the same subject, so the certificate you
+read here can look correct while your agent is being served by a different one. See
+<a href="#two-installs-on-one-machine-fight-over-the-ports">Two installs on one machine fight over the ports</a>.</p>
+<h3 id="the-port-47600-is-already-in-use">The port 47600 is already in use<a class="headerlink" href="#the-port-47600-is-already-in-use" title="Permanent link">#</a></h3>
+<p>The install or the service reports that the port is in use. Cortex binds five loopback ports,
+all on <code>127.0.0.1</code>: 47600 for the proxy, 47601 for the session interface, 47602 for the statistics,
+47603 for the transparent listener and 47604 for the health endpoint.</p>
+<p>Find the program that holds the port:</p>
+<pre><code class="language-bash">lsof -nP -iTCP@127.0.0.1:47600 -sTCP:LISTEN
+</code></pre>
+<p>If the program is a previous Cortex service, stop it with <code>agentop service stop</code>. If it is another
+program, stop that program, or change the ports of Cortex.</p>
+<p>If the program is <em>another Cortex install</em>, read
+<a href="#two-installs-on-one-machine-fight-over-the-ports">Two installs on one machine fight over the ports</a>
+instead: the port is the symptom, and stopping the wrong one of the two costs you the rest of the
+day.</p>
+<p>The installer reports another program even when the program is the Cortex service:</p>
+<pre><code class="language-text">error: port 47600 is already in use by something else. Free it, or change the ports in /Users/you/.cortex/config.yaml, then re-run.
+</code></pre>
+<p>The installer reports this message only when it finds no file at <code>~/.cortex/config.yaml</code>. With
+that file present, the installer continues past the port check. The installer reads that path from
+the <code>HOME</code> variable of your shell, so a shell with a different <code>HOME</code> reads a different directory.
+The installer then does not recognize its own service.</p>
+<p>An install that you re-run from its own <code>HOME</code> adopts the Cortex that holds the ports. It reads the
+process identifier from <code>~/.cortex/proxy.pid</code>, stops that process, and starts it again under the
+supervisor. An install under a different <code>HOME</code> reads a different <code>proxy.pid</code>, so it adopts
+nothing. It installs, and then it repeats a bind failure and a restart. Read
+<a href="#two-installs-on-one-machine-fight-over-the-ports">Two installs on one machine fight over the ports</a>.</p>
+<p>Run <code>agentop service status</code> from the shell that installed the service to confirm that the service
+is installed. That command reads <code>$HOME</code> too, so another shell reports <code>not installed</code>. It does not
+tell you which install holds the port, because it asks the port rather than the supervisor. To stop
+the service, read
+<a href="#you-must-stop-the-service-to-run-cortex-yourself">You must stop the service to run Cortex yourself</a>.</p>
+<h3 id="two-installs-on-one-machine-fight-over-the-ports">Two installs on one machine fight over the ports<a class="headerlink" href="#two-installs-on-one-machine-fight-over-the-ports" title="Permanent link">#</a></h3>
+<!-- VERIFY: verified against v0.8.1 and main. All five ports come from the --local preset in
+     cmd/cortex/local.go (47600 forward proxy, 47601 session API, 47602 statistics, 47603
+     transparent listener, 47604 health); both that path and superviseMaxDelay moved in the
+     authbridge-proxy → cortex rename. Confirmed against v0.8.1: a second install repeated the
+     bind failure with restart_in growing 2s, 4s, 8s, 16s and then holding at 30s. `cortex
+     --local` binds four of the five ports and skips the transparent listener; `cortex --config
+     <file>`, which is how the service runs, binds all five and logs "transparent proxy listening
+     addr=127.0.0.1:47603". The 30-second ceiling is the macOS supervisor's (superviseMaxDelay in
+     cmd/cortex/supervise.go); the systemd unit runs without --supervise and instead retries every
+     10s, giving up after 5 starts in 300s (cmd_service_platform.go:92-93,142-149). -->
+
+<p><strong>The ports are fixed, so two installs cannot coexist.</strong> The <code>--local</code> preset pins every listener to
+a literal port, not to a free one, so the second install to start never binds. This is the condition
+to suspect whenever a <em>certificate</em> error and a <em>restart loop</em> appear together.</p>
+<p>You have two installs if you have ever run the install script with a different <code>$HOME</code> — a sandbox, a
+second checkout, a container that mounts your home directory — as well as the ordinary one.</p>
+<p><strong>How it reads.</strong> Two symptoms that look unrelated, from one cause:</p>
+<ul>
+<li>The service log, <code>~/.cortex/proxy.log</code>, repeats a bind failure and a restart. On macOS this
+  repeats every 30 seconds and does not stop:</li>
+</ul>
+<p><code>level=ERROR msg="forward-proxy listen: listen tcp 127.0.0.1:47600: bind: address already in use"
+  WARN supervisor: proxy exited; restarting ran=37ms err="exit status 1" restart_in=30s</code></p>
+<p><code>restart_in</code> stays at <code>30s</code> rather than growing, because that is the backoff ceiling. The
+  supervisor does not give up and does not say why it cannot win the port, so the loop looks like a
+  crash rather than a conflict. On Linux the systemd unit runs without the supervisor. Its
+  <code>proxy.log</code> holds only the bind failure. <code>journalctl --user -u cortex</code> shows the restarts: every
+  10 seconds, giving up after 5 starts in 300 seconds, then the unit enters a failed state.</p>
+<ul>
+<li>Your agent reports a self-signed certificate, naming a corporate proxy or a private CA:</li>
+</ul>
+<p><code>API Error: Unable to connect to API: Self-signed certificate detected (SELF_SIGNED_CERT_IN_CHAIN).</code></p>
+<p>This one is the misleading half. The request reached the install that <em>won</em> the port, and that
+  install signs with its own CA. Your agent was told to trust the <em>other</em> install's CA. Both
+  certificates carry the same subject, <code>CN=authbridge-tls-bridge-ca</code>, so nothing in the error, and
+  nothing in <code>openssl x509 -subject</code>, tells the two apart. Nothing is wrong with either certificate.</p>
+<p><strong>Confirm it.</strong> List every proxy process:</p>
+<pre><code class="language-bash">ps auxww | grep -E '/(cortex|authbridge-proxy) --' | grep -v grep
+</code></pre>
+<p>The proxy binary is <code>cortex</code>. In v0.7.0 and earlier it is <code>authbridge-proxy</code>. This section is about
+a machine with both generations, so match either name.</p>
+<p>Read the <code>--config</code> path, or the binary path, on each line: those are your installs. On macOS, one
+supervisor plus one child on the same path is healthy, and a supervisor whose child keeps changing
+PID is the starved one. On Linux, <code>ps</code> shows one <code>cortex</code> for each running install. The install
+that lost has stopped, and <code>systemctl --user status cortex</code> shows its unit as failed.</p>
+<div class="admonition caution">
+<p class="admonition-title">Do not read the PIDs as a timeline</p>
+<p>macOS recycles process IDs, so a five-digit PID is often <em>older</em> than a four-digit one. A supervisor
+that has been looping since login shows a high PID, and the healthy install that started after a
+reboot shows a low one. Use the <code>ps</code> start time, not the number.</p>
+</div>
+<p>Then compare the certificate authorities by fingerprint. The subject is identical on both, so it
+cannot tell them apart; the fingerprint is unambiguous:</p>
+<pre><code class="language-bash">openssl x509 -noout -fingerprint -sha256 -in ~/.cortex/ca/ca.crt
+openssl x509 -noout -fingerprint -sha256 -in ~/sandbox/&lt;name&gt;/.cortex/ca/ca.crt
+</code></pre>
+<p>The CA your agent trusts must be the one belonging to the install that holds port 47600.</p>
+<p><strong>Fix it by choosing one install.</strong> Keep the one that is already serving, and point your agent at
+its CA:</p>
+<pre><code class="language-bash">HTTPS_PROXY=http://localhost:47600 \
+  NODE_EXTRA_CA_CERTS=$HOME/.cortex/ca/ca.crt claude -p &quot;say hi&quot;
+</code></pre>
+<p>Or keep the other one. Stop the service, stop any stray proxy by PID, and start the install you
+want:</p>
+<pre><code class="language-bash">agentop service stop        # HOME set to the install that holds the port; abctl service stop on v0.7.0
+kill &lt;pid&gt; &lt;pid&gt;            # each stray proxy from the ps output; on macOS, its supervisor
+agentop service install     # from the install you are keeping
+</code></pre>
+<p>There is one service label per user, so <code>agentop service stop</code> stops whichever install holds it —
+which need not be the one that holds the port. The <code>kill</code> and the <code>install</code> that follow still
+converge on one install.</p>
+<p>Re-run the two <code>openssl</code> commands afterwards: one install, one CA, one fingerprint your agent
+trusts.</p>
+<div class="admonition note">
+<p class="admonition-title">Go programs on macOS ignore `SSL_CERT_FILE`</p>
+<p>On macOS, a Go program such as <code>gh</code> or <code>go</code> reads only the keychain, so setting <code>SSL_CERT_FILE</code>
+changes nothing for it. On Linux and in CI the variable works when it names the bundle,
+<code>~/.cortex/ca/bundle.crt</code>. Usually you do not need to do anything: Cortex does not decrypt GitHub,
+the Go module proxy or the package registries. If a Go program reports <code>x509: certificate signed by
+unknown authority</code>, trust the CA in your login keychain:</p>
+<pre><code class="language-bash">security add-trusted-cert -k ~/Library/Keychains/login.keychain-db -p ssl ~/.cortex/ca/ca.crt
+</code></pre>
+<p>git, curl and Python read their variables on macOS too.</p>
+</div>
+<h3 id="you-must-stop-the-service-to-run-cortex-yourself">You must stop the service to run Cortex yourself<a class="headerlink" href="#you-must-stop-the-service-to-run-cortex-yourself" title="Permanent link">#</a></h3>
+<!-- VERIFY: confirmed against a v0.8.1 install on macOS, with the output copied from a
+     terminal. The stop output; the plist path; the print-disabled format below; that a stop
+     disables the label and boots it out of the domain; that an uninstall removes the plist and
+     LEAVES that disable in place; that a later install clears it (the label read "disabled"
+     before an install and "enabled" after it); the port message from the preflight loop in
+     scripts/install.sh, and that it depends on $HOME/.cortex/config.yaml; and that a second
+     install under a different HOME adopts nothing and repeats a bind failure instead. The
+     tables also agree with controlService, loadService and unloadService in
+     cmd/agentop/cmd_service_platform.go. -->
+<!-- VERIFY v0.9.0: one claim is still unconfirmed by observation — that a stop survives a
+     LOGIN. Testing it needs a logout. It is read from the launchctl disable that `stop` writes,
+     which persists in the per-user disabled database. -->
+
+<p><code>agentop service</code> controls the supervisor of your operating system. On macOS it controls
+<code>launchd</code>. On Linux it controls <code>systemd</code>. To run your own Cortex process, stop the service first.
+The service holds port 47600, and two programs cannot hold one port.</p>
+<pre><code class="language-bash">agentop service stop
+</code></pre>
+<p>The command states the result, and the command that undoes it:</p>
+<pre><code class="language-text">Stopped, and it will stay stopped across logins.
+  agentop service start
+</code></pre>
+<p>A stop persists. Cortex does not run again at your next login, and it does not run again after you
+restart the computer.</p>
+<p>If you installed with <code>--claude-code</code>, Claude Code fails while the proxy is not running. That
+install fixes the proxy address in the environment of Claude Code, and Claude Code cannot use a
+direct connection instead. To remove that dependency, run <code>agentop configure claude-code disable</code>.
+An install without <code>--claude-code</code> configures no agent, so a stop affects only the agents that you
+pointed at the proxy yourself.</p>
+<h4 id="what-each-command-does-to-the-supervisor">What each command does to the supervisor<a class="headerlink" href="#what-each-command-does-to-the-supervisor" title="Permanent link">#</a></h4>
+<p>On macOS, the service is the <code>launchd</code> label <code>io.sentinel.cortex</code>, in the <code>gui/&lt;uid&gt;</code> domain.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does on macOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agentop service stop</code></td>
+<td>Runs <code>launchctl bootout</code>, and then <code>launchctl disable</code>.</td>
+</tr>
+<tr>
+<td><code>agentop service start</code></td>
+<td>Runs <code>launchctl enable</code>, which clears the disable, and then loads the label and starts it.</td>
+</tr>
+<tr>
+<td><code>agentop service restart</code></td>
+<td>Boots out the label, and then loads it and starts it again. This also runs <code>launchctl enable</code>, so it clears the disable.</td>
+</tr>
+<tr>
+<td><code>agentop service uninstall</code></td>
+<td>Runs <code>launchctl bootout</code>, and removes the <code>plist</code> file from <code>~/Library/LaunchAgents</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>A stop needs both steps. <code>launchctl bootout</code> removes the job from the running domain, and the <code>plist</code>
+file stays in <code>~/Library/LaunchAgents</code>. Launchd reads that file again at your next login, and Cortex
+starts again. <code>launchctl disable</code> writes to the disabled database of your user account, and that
+database persists.</p>
+<p><code>agentop service install</code> also runs <code>launchctl enable</code>. A disable from an earlier stop therefore
+blocks no later install, and no later start.</p>
+<p>On Linux, the service is the <code>systemd</code> user unit <code>cortex.service</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does on Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agentop service stop</code></td>
+<td>Runs <code>systemctl --user disable --now cortex.service</code>.</td>
+</tr>
+<tr>
+<td><code>agentop service start</code></td>
+<td>Runs <code>systemctl --user enable --now cortex.service</code>.</td>
+</tr>
+<tr>
+<td><code>agentop service uninstall</code></td>
+<td>Disables the unit, removes the unit file, and undoes the lingering that <code>agentop</code> enabled.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both platforms give one meaning to a stop: the service stays stopped until you start it.</p>
+<h4 id="confirm-that-the-service-is-stopped">Confirm that the service is stopped<a class="headerlink" href="#confirm-that-the-service-is-stopped" title="Permanent link">#</a></h4>
+<p>Ask the supervisor, and not the port. On macOS, read the disabled database:</p>
+<pre><code class="language-bash">launchctl print-disabled gui/$(id -u) | grep io.sentinel.cortex
+</code></pre>
+<p>A service that you stopped reports the disable:</p>
+<pre><code class="language-text">&quot;io.sentinel.cortex&quot; =&gt; disabled
+</code></pre>
+<p>The command prints nothing when the label has no entry in that database, which means that you did
+not stop the service.</p>
+<p>On Linux, ask <code>systemd</code>. A service that you stopped reports <code>disabled</code>:</p>
+<pre><code class="language-bash">systemctl --user is-enabled cortex.service
+</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">`agentop service status` can report `healthy` after a stop</p>
+<p>The <code>healthy</code> line of that command is a request to the health port. It is not a question to the
+supervisor, so any program that holds the port answers it. With a second Cortex install on the
+machine, the command reports <code>healthy</code> immediately after you stop your service, because the other
+install replies. Read
+<a href="#two-installs-on-one-machine-fight-over-the-ports">Two installs on one machine fight over the ports</a>.</p>
+<p>The rest of that output stays reliable. <code>agentop service status</code> reads the unit file, so the
+<code>installed</code> line and the <code>not installed</code> line both state the truth.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>agentop service uninstall</code> removes the service, and it keeps your data. Your configuration and your
+certificate authority stay in <code>~/.cortex</code>.</p>
+</div>
+<h3 id="the-service-does-not-start-or-starts-and-stops">The service does not start, or starts and stops<a class="headerlink" href="#the-service-does-not-start-or-starts-and-stops" title="Permanent link">#</a></h3>
+<p>Read the status first:</p>
+<pre><code class="language-bash">agentop service status
+</code></pre>
+<p>On macOS, the service runs under <code>launchd</code>. On Linux, it runs under <code>systemd</code>. The service writes
+its own output to <code>~/.cortex/proxy.log</code>:</p>
+<pre><code class="language-bash">tail -n 50 ~/.cortex/proxy.log
+</code></pre>
+<p>On Linux, systemd's own lines about the service — the restarts, and a unit that gave up — are in
+<code>journalctl --user -u cortex</code>. A service that starts and then stops usually has a port conflict,
+or a certificate that it cannot write. The log gives the cause.</p>
+<h3 id="another-program-stopped-working">Another program stopped working<a class="headerlink" href="#another-program-stopped-working" title="Permanent link">#</a></h3>
+<p>If <code>git</code>, <code>gh</code> or <code>curl</code> stops working after you install Cortex, the cause is a proxy or a
+certificate variable in your environment. The most likely one <strong>replaces</strong> a trust store —
+<code>SSL_CERT_FILE</code>, <code>REQUESTS_CA_BUNDLE</code>, <code>CURL_CA_BUNDLE</code> or <code>GIT_SSL_CAINFO</code> — and points at
+<code>~/.cortex/ca/ca.crt</code>. That file holds only the Cortex CA, so every other host fails to verify.
+Those variables need <code>~/.cortex/ca/bundle.crt</code>, which holds the Cortex CA and the platform roots.</p>
+<p>Cortex configures only your agent. It does not set a global proxy. Examine your shell profile and
+your environment for a proxy or certificate variable that you did not intend:</p>
+<pre><code class="language-bash">env | grep -iE &quot;PROXY|CA_CERT|CA_BUNDLE|SSL_CERT|SSL_CAINFO&quot;
+</code></pre>
+<p>Remove the value that is not correct, and open a new terminal. See the tool-compatibility work in
+cortex#946 and cortex#947.</p>
+<h3 id="no-events-appear-though-the-agent-runs">No events appear, though the agent runs<a class="headerlink" href="#no-events-appear-though-the-agent-runs" title="Permanent link">#</a></h3>
+<p>The agent runs, but <code>agentop observe</code> shows no events. Check each cause in order:</p>
+<ol>
+<li><strong>The service does not run.</strong> Run <code>agentop service status</code>. Read the caution in
+   <a href="#confirm-that-the-service-is-stopped">Confirm that the service is stopped</a> first: the <code>healthy</code>
+   line probes the port, so another install answers it.</li>
+<li><strong>The agent does not use the proxy.</strong> For an agent that is not Claude Code, confirm that you set
+   the proxy variable and the certificate variables. <code>agentop exec</code> sets both. For IBM Bob,
+   <code>agentop configure bob enable</code> sets the proxy, and the CA needs the <code>sudo</code> command that it
+   prints. See <a href="../get-started/laptop.html#other-agents">Other agents</a>.</li>
+<li><strong>A second install holds the ports.</strong> Your agent then reaches the install that won the port,
+   while you watch the other one. Read
+   <a href="#two-installs-on-one-machine-fight-over-the-ports">Two installs on one machine fight over the ports</a>.</li>
+<li><strong>The agent sends no traffic yet.</strong> Send a message to the agent, and watch for the events.</li>
+</ol>
+<h3 id="the-numbers-are-wrong-or-absent">The numbers are wrong or absent<a class="headerlink" href="#the-numbers-are-wrong-or-absent" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>The token count is zero.</strong> Cortex reads the token counts from the reply of the model. A
+  reply that Cortex cannot parse gives no counts. Confirm that the model is an OpenAI-compatible or an
+  Anthropic endpoint.</li>
+<li><strong>The cost is blank, but the tokens are correct.</strong> Cortex has no rate for that model, so it shows
+  no cost rather than a misleading zero. See
+  <a href="../get-started/reading-the-numbers.html#read-the-cost">Read the cost</a>.</li>
+<li><strong>The pruning figure is zero.</strong> The agent has no tool definitions to remove, or you did not enable
+  pruning. See <a href="../get-started/reading-the-numbers.html#read-the-pruning-savings">Read the pruning savings</a>.</li>
+</ul>
+<h3 id="a-figure-looks-wrong-but-it-is-correct">A figure looks wrong, but it is correct<a class="headerlink" href="#a-figure-looks-wrong-but-it-is-correct" title="Permanent link">#</a></h3>
+<!-- VERIFY: verified against v0.8.1 (cmd/agentop/tui) — the em-dash rule, the narrow-terminal drop
+     of the money columns, the SAVED~ marker and the precision rule all hold. The `$0.00` answer
+     describes current behaviour; cortex#1046 would change it, and is open. -->
+
+<p>These conditions are the display that Cortex intends. Each one reads as a defect, and each one is
+not.</p>
+<p><strong>A cell shows an em dash (<code>—</code>) instead of a number.</strong> An em dash means that Cortex holds no figure.
+It does not mean zero. In the <code>COST</code> column, the model has no entry in the rate table, so Cortex shows
+no cost rather than a wrong zero. In the <code>CONTEXT</code> column, Cortex has not read a turn for that
+session yet.</p>
+<p><strong>The <code>COST</code> and <code>SAVED~</code> columns are absent.</strong> Your terminal is narrower than 97 columns. Cortex
+removes both money columns rather than round a charge below one cent to <code>$0.00</code>. Make the terminal
+wider, and both columns return.</p>
+<p><strong>The sessions table adds up to less than <code>TODAY</code>.</strong> The session store is in memory, so the table
+reaches back only to the start of the current service process. <code>TODAY</code> reads from the cost ledger on
+disk, and it survives a restart. A table that adds up to less than the band is therefore correct
+after you restart the service.</p>
+<p><strong>Three of the four spend cells show <code>—</code>.</strong> <code>TODAY</code>, <code>7 DAYS</code> and <code>MONTH</code> read from the cost ledger.
+A local install holds that ledger. Kubernetes does not hold it by default, so those three periods have
+no figure. <code>LAST 1H</code> reads from memory, and it always has one.</p>
+<p><strong>A spend cell carries a time, such as <code>TODAY 7m</code>.</strong> The figure is seven minutes old, because the
+data for that cell stopped arriving. Each cell polls on its own schedule, so the age belongs to the
+cell.</p>
+<p><strong>A figure carries <code>~</code>, <code>+</code> or <code>!</code>.</strong> Each marker states what Cortex cannot state exactly: <code>~</code> is an
+estimate, <code>+</code> is a floor, and <code>!</code> is short by an amount that Cortex cannot measure. See
+<a href="../get-started/reading-the-numbers.html#what-a-marker-on-a-figure-means">What a marker on a figure means</a>.</p>
+<p><strong>One request costs <code>$0.000038</code>, and the session shows <code>&lt;$0.01</code>.</strong> The two surfaces use two
+precisions. The events table gives four decimals for one request. Every other surface gives cents,
+because you read those figures down a column. See
+<a href="../get-started/reading-the-numbers.html#how-precise-a-money-figure-is">How precise a money figure is</a>.</p>
+<p><strong>The context gauge is almost empty, and the agent is busy.</strong> The gauge follows your conversation
+only. Claude Code sends the subagents that it starts, and its own short internal calls, under the same
+session identifier. Cortex excludes both from the gauge.</p>
+<h3 id="where-the-logs-are-and-what-to-attach-to-a-bug-report">Where the logs are, and what to attach to a bug report<a class="headerlink" href="#where-the-logs-are-and-what-to-attach-to-a-bug-report" title="Permanent link">#</a></h3>
+<p>The service log is <code>~/.cortex/proxy.log</code>. To attach a useful report to an issue, include:</p>
+<ul>
+<li>The output of <code>agentop --version</code>.</li>
+<li>The output of <code>agentop service status</code>.</li>
+<li>Your operating system and your architecture (<code>uname -sm</code>).</li>
+<li>The name of your agent, and the model.</li>
+<li>The last part of the service log, with any secret removed.</li>
+</ul>
+<p>Open the issue with the <strong>Laptop feedback</strong> form on
+<a href="https://github.com/sentinel/cortex/issues/new/choose">sentinel/cortex</a>. The form asks for each item
+in the list above.</p>
+<h2 id="on-kubernetes">On Kubernetes<a class="headerlink" href="#on-kubernetes" title="Permanent link">#</a></h2>
+<p>The rest of this page is the Kubernetes platform.</p>
+<h3 id="during-the-installation">During the installation<a class="headerlink" href="#during-the-installation" title="Permanent link">#</a></h3>
+<h4 id="the-installation-reports-exceeded-its-progress-deadline">The installation reports "exceeded its progress deadline"<a class="headerlink" href="#the-installation-reports-exceeded-its-progress-deadline" title="Permanent link">#</a></h4>
+<p>The usual cause is a slow image download, and not a defect. Find the deployment that did not start, and
+run the installer again:</p>
+<pre><code class="language-bash">kubectl get deployments --all-namespaces
+</code></pre>
+<p>Add the <code>--preload-images</code> option to the next installation. The script then downloads the images first,
+which avoids the rate limits of Docker Hub.</p>
+<h4 id="you-use-podman-and-not-docker">You use Podman and not Docker<a class="headerlink" href="#you-use-podman-and-not-docker" title="Permanent link">#</a></h4>
+<p>The installer needs a <code>docker</code> command on your path.</p>
+<pre><code class="language-bash">sudo ln -s /opt/podman/bin/podman /usr/local/bin/docker
+brew install docker-credential-helper
+</code></pre>
+<p>If Keycloak reports insufficient memory, give the machine more memory:</p>
+<pre><code class="language-bash">podman machine stop
+podman machine set --memory=12288 --cpus=8
+podman machine start
+</code></pre>
+<p>To start again with a new machine:</p>
+<pre><code class="language-bash">podman machine rm -f
+podman machine init --rootful --memory 18432 --cpus 6
+podman machine start
+</code></pre>
+<p>To delete the cluster and keep the Podman machine:</p>
+<pre><code class="language-bash">kind delete cluster --name sentinel
+</code></pre>
+<h4 id="a-build-pod-stays-in-pending-with-insufficient-cpu">A build pod stays in <code>Pending</code> with <code>Insufficient cpu</code><a class="headerlink" href="#a-build-pod-stays-in-pending-with-insufficient-cpu" title="Permanent link">#</a></h4>
+<p>The node has insufficient CPU. The platform pods alone can request almost 4 CPUs.</p>
+<p>Give the runtime 6 CPUs and create the cluster again, or deploy each agent from an image and not from
+source. See <a href="index.html#machine-size">Machine size</a>.</p>
+<h4 id="the-console-shows-an-empty-page-on-macos">The console shows an empty page on macOS<a class="headerlink" href="#the-console-shows-an-empty-page-on-macos" title="Permanent link">#</a></h4>
+<p>If <strong>Content &amp; Privacy Restrictions</strong> are active, the console can show an empty page. The setting is in
+System Settings, then Screen Time, then Content &amp; Privacy Restrictions.</p>
+<p>Disable the restrictions, and then restart the console:</p>
+<pre><code class="language-bash">kubectl rollout restart -n sentinel-system deployment sentinel-ui
+</code></pre>
+<h4 id="the-spire-daemonsets-report-0-ready">The SPIRE DaemonSets report 0 ready<a class="headerlink" href="#the-spire-daemonsets-report-0-ready" title="Permanent link">#</a></h4>
+<pre><code class="language-bash">kubectl get daemonsets -n zero-trust-workload-identity-manager
+</code></pre>
+<p>No feature that needs a workload identity operates until these DaemonSets are ready. Examine the pods for
+a scheduling failure or an image download failure, and confirm that the node has capacity.</p>
+<h3 id="when-you-deploy-an-agent-or-a-tool">When you deploy an agent or a tool<a class="headerlink" href="#when-you-deploy-an-agent-or-a-tool" title="Permanent link">#</a></h3>
+<h4 id="initerrimagepull-or-initimagepullbackoff"><code>Init:ErrImagePull</code> or <code>Init:ImagePullBackOff</code><a class="headerlink" href="#initerrimagepull-or-initimagepullbackoff" title="Permanent link">#</a></h4>
+<p>In almost all cases, your GitHub token is expired:</p>
+<pre><code>failed to authorize: failed to fetch oauth token: unexpected status from GET request to
+https://ghcr.io/token?scope=repository%3Asentinel%2F...: 403 Forbidden
+</code></pre>
+<p>Examine your <a href="https://github.com/settings/personal-access-tokens/">personal access token</a>. It needs the
+<code>repo</code>, <code>write:packages</code> and <code>read:packages</code> permissions.</p>
+<p>A 403 status from <code>ghcr.io</code> during the installation of a chart is usually a stored credential that is no
+longer valid:</p>
+<pre><code class="language-bash">docker logout ghcr.io
+docker login ghcr.io -u &lt;your-github-username&gt;
+</code></pre>
+<h4 id="you-must-change-a-value-in-secretsyaml">You must change a value in <code>.secrets.yaml</code><a class="headerlink" href="#you-must-change-a-value-in-secretsyaml" title="Permanent link">#</a></h4>
+<p>The installer copies each secret into the namespaces. A change to the file is therefore not sufficient.
+Delete the Secret in each namespace that received it, and then run the installer again:</p>
+<pre><code class="language-bash">kubectl get secret --all-namespaces
+kubectl -n team1 delete secret github-token-secret
+scripts/kind/setup-sentinel.sh
+</code></pre>
+<h3 id="during-operation">During operation<a class="headerlink" href="#during-operation" title="Permanent link">#</a></h3>
+<h4 id="the-chat-page-reports-the-status-503">The chat page reports the status 503<a class="headerlink" href="#the-chat-page-reports-the-status-503" title="Permanent link">#</a></h4>
+<p>The console shows this message:</p>
+<pre><code>An unexpected error occurred during A2A chat streaming: HTTP Error 503:
+Network communication error: peer closed connection without sending complete message body
+</code></pre>
+<p>The log of the agent shows a <code>ConnectionResetError</code> message or a <code>ProtocolError</code> message.</p>
+<p>The agent cannot reach its model. If the agent uses Ollama, the <code>ollama serve</code> command is almost certainly
+not active:</p>
+<pre><code class="language-bash">OLLAMA_HOST=0.0.0.0 ollama serve
+</code></pre>
+<p>If the agent does not use Ollama, examine the model configuration of the agent:</p>
+<pre><code class="language-bash">kubectl exec -n team1 &lt;agent-pod&gt; -- env | grep LLM_
+</code></pre>
+<h4 id="a-service-stops-responding">A service stops responding<a class="headerlink" href="#a-service-stops-responding" title="Permanent link">#</a></h4>
+<p>This condition occurs with Keycloak and with the console. Restart the data plane:</p>
+<pre><code class="language-bash">kubectl rollout restart daemonset -n istio-system ztunnel
+kubectl rollout restart -n sentinel-system deployment http-istio
+</code></pre>
+<h4 id="a-cluster-returns-503-after-you-suspend-the-computer">A cluster returns 503 after you suspend the computer<a class="headerlink" href="#a-cluster-returns-503-after-you-suspend-the-computer" title="Permanent link">#</a></h4>
+<p><strong>The condition.</strong> Each address on <code>*.localtest.me:8080</code> returns the status 503 with the message
+<code>upstream connect error ... connection termination</code>. Each pod is in the <code>Running</code> state, the gateway
+reports <code>1/1</code>, and the <code>HTTPRoute</code> and <code>Gateway</code> resources report <code>Accepted</code>.</p>
+<p><strong>The cause.</strong> You suspended the computer for longer than the lifetime of a SPIRE identity document. The
+Istio ambient data plane, which is ztunnel and the waypoints, continues to present expired certificates.
+It does not read new certificates.</p>
+<p><strong>To confirm the cause:</strong></p>
+<pre><code class="language-bash">kubectl logs -n istio-system -l app=ztunnel --tail=100 \
+  | grep -iE &quot;certificate expired|CertificateExpired&quot;
+
+kubectl logs -n spire-system -l app.kubernetes.io/name=agent --tail=100 \
+  | grep -iE &quot;reattest|service account token has expired&quot;
+</code></pre>
+<p><strong>To recover:</strong></p>
+<pre><code class="language-bash">scripts/k8s/mesh-recover.sh --fix
+</code></pre>
+<p>Without the <code>--fix</code> option, the script reports the condition and prints the commands. It makes no change.</p>
+<p><strong>To detect the condition before an outage,</strong> run the script without the <code>--fix</code> option at a regular
+interval. It exits with the code 4 when the first identity document expires in less than
+<code>CERT_WARN_SECONDS</code>, which is 6 hours by default. The script needs <code>kubectl</code> access and <code>jq</code>. On Kind you
+can also enable the <code>meshSelfHeal</code> feature flag, which adds a CronJob that does the restart.</p>
+<p><strong>Expect this condition on a development cluster.</strong> After a long suspension, you must restart the
+data plane or create a new cluster. The cause is an upstream defect:
+<a href="https://github.com/istio/ztunnel/issues/1679">istio/ztunnel#1679</a>.</p>
+<h4 id="keycloak-reports-a-connection-error-to-its-database">Keycloak reports a connection error to its database<a class="headerlink" href="#keycloak-reports-a-connection-error-to-its-database" title="Permanent link">#</a></h4>
+<p>This condition occurs after the cluster runs for one day or longer. The cause is not completely
+understood. For the investigation, see
+<a href="https://github.com/StyxLabs-Inc/sentinel/issues/115">sentinel#115</a>.</p>
+<p>There is no reliable method to restart the database and Keycloak. The only reliable method is a new
+installation of Keycloak:</p>
+<pre><code class="language-bash">helm uninstall keycloak -n keycloak
+scripts/kind/setup-sentinel.sh
+
+kubectl rollout restart daemonset -n istio-system ztunnel
+kubectl rollout restart -n sentinel-system deployment http-istio
+kubectl rollout restart -n sentinel-system deployment sentinel-ui
+</code></pre>
+<p>You must then restart each agent, so that each agent gets its Keycloak client again.</p>
+<h4 id="the-operator-cannot-authenticate-to-keycloak">The operator cannot authenticate to Keycloak<a class="headerlink" href="#the-operator-cannot-authenticate-to-keycloak" title="Permanent link">#</a></h4>
+<p>This condition occurs after you change the administrator credentials. The operator holds the credentials
+in memory. Restart it:</p>
+<pre><code class="language-bash">kubectl rollout restart deployment/sentinel-controller-manager -n sentinel-system
+</code></pre>
+<p>To confirm the result:</p>
+<pre><code class="language-bash">POD=$(kubectl get pod -n sentinel-system -l control-plane=controller-manager \
+  -o jsonpath='{.items[0].metadata.name}')
+kubectl logs -n sentinel-system &quot;$POD&quot; -c manager | grep -i &quot;keycloak\|auth&quot; | tail -5
+</code></pre>
+<h4 id="spiffe-authentication-reports-an-audience-error-or-an-issuer-error">SPIFFE authentication reports an audience error or an issuer error<a class="headerlink" href="#spiffe-authentication-reports-an-audience-error-or-an-issuer-error" title="Permanent link">#</a></h4>
+<p>The <code>aud</code> claim of the identity document must be exactly <code>keycloak.publicUrl/realms/&lt;realm&gt;</code>. It must be
+the <strong>external</strong> address. Keycloak has the public address in its issuer configuration, and the check is a
+comparison of two strings. The internal address of the service reaches the same server and still fails.</p>
+<p>Examine the <code>keycloak.publicUrl</code> value in your Helm values. See
+<a href="../security/authentication-modes.html#the-audience-must-be-the-public-address">Authentication modes</a>.</p>
+<h4 id="the-skills-entry-does-not-appear-in-the-console">The Skills entry does not appear in the console<a class="headerlink" href="#the-skills-entry-does-not-appear-in-the-console" title="Permanent link">#</a></h4>
+<p>The feature flag is not set. Enable it without a new installation:</p>
+<pre><code class="language-bash">helm upgrade sentinel charts/sentinel -n sentinel-system \
+  --reuse-values --set featureFlags.skills=true
+</code></pre>
+<p>Then confirm that the backend registered the routes:</p>
+<pre><code class="language-bash">kubectl logs -n sentinel-system -l app.kubernetes.io/name=sentinel-backend \
+  | grep &quot;skills routes registered&quot;
+</code></pre>
+<h3 id="commands-for-diagnosis">Commands for diagnosis<a class="headerlink" href="#commands-for-diagnosis" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Each pod that is not correct, in each namespace
+kubectl get pods --all-namespaces | grep -vE &quot;Running|Completed&quot;
+
+# Each address and each credential
+./.github/scripts/local-setup/show-services.sh
+
+# The Cortex configuration of one agent
+sentinel agents authbridge get &lt;agent&gt;
+
+# The environment of one pod
+kubectl exec -n &lt;namespace&gt; &lt;pod&gt; -- env | sort
+
+# The log of the Cortex sidecar
+kubectl logs -n &lt;namespace&gt; &lt;pod&gt; -c authbridge-proxy
+
+# The log of the operator
+kubectl logs -n sentinel-system -l control-plane=controller-manager -c manager --tail=100
+</code></pre>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="observability.html"><span>Previous</span>Observability</a><a class="next" href="hypershift/AWS.html"><span>Next</span>AWS HyperShift Setup &amp; Operation</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/operate/troubleshooting.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

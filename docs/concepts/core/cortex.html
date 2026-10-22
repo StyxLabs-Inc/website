@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cortex | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="See and understand what your AI agent sends — every model, tool and API call, on your own machine.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/core/cortex.html">
+  <meta property="og:title" content="Cortex — Sentinel Docs">
+  <meta property="og:description" content="See and understand what your AI agent sends — every model, tool and API call, on your own machine.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/core/cortex.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details open><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="architecture.html">Architecture</a></li><li><a href="agents-and-tools.html">Agents and tools</a></li><li><a href="cortex.html" class="active" aria-current="page">Cortex</a></li><li><a href="identity.html">Identity and trust</a></li><li><a href="control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../experiments/skills.html">Skills</a></li><li><a href="../experiments/sandboxes.html">Sandboxes</a></li><li><a href="../experiments/agent-context.html">Agent context</a></li><li><a href="../experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../experiments/tool-validation.html">Tool call validation</a></li><li><a href="../experiments/context-compaction.html">Context compaction</a></li><li><a href="../experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Cortex</h1>
+        <p class="docs-lede">See and understand what your AI agent sends — every model, tool and API call, on your own machine.</p>
+        <p>Cortex shows you what your AI agent actually does. It sits on the request path of the agent and
+reads every model call, every tool call and every external API request that the agent makes. It shows
+the full content of each request and reply, and for a model call it adds the token count and the cost
+— live, on your own machine.</p>
+<p>It needs no change to your agent. An agent that you did not write, or that you cannot change,
+therefore gets the same view as one that you wrote. Two experimental plugins can also reduce the
+traffic: they remove tool definitions that the agent never uses and compact large tool output, which
+lowers your token usage and your cost.</p>
+<h2 id="what-you-get">What you get<a class="headerlink" href="#what-you-get" title="Permanent link">#</a></h2>
+<p>Think of the viewer as <code>top</code> for your coding agent. Where <code>top</code> shows which processes are eating
+your CPU, <code>agentop observe</code> shows which agent sessions are eating your tokens, your context window
+and your money — live, as they run.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th><code>top</code> shows you</th>
+<th><code>agentop observe</code> shows you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processes</td>
+<td>Agent sessions</td>
+</tr>
+<tr>
+<td>CPU and memory</td>
+<td>Tokens, cost and remaining context</td>
+</tr>
+<tr>
+<td>Per-process detail</td>
+<td>Per-session, then per-request detail</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>See every call the agent makes.</strong> Model calls, tool calls (MCP) and agent-to-agent messages,
+  parsed as they happen.</li>
+<li><strong>Token and cost numbers for each session.</strong> For each model call, the input, cache-read, cache-write
+  and output tokens; and the cost of the session, computed from published rates. See
+  <a href="../../get-started/reading-the-numbers.html">Read the numbers</a>.</li>
+<li><strong>Drill into any request.</strong> The exact call the agent sent — the method, the host, the model or tool,
+  the status, the duration and the full request and reply — as content you can read.</li>
+<li><strong>Reduce your token usage (experimental).</strong> Remove tool definitions that the agent does not use, and
+  compact large tool output before the model reads it. Both are experimental and off by default. See
+  <a href="../experiments/cost-control.html">Cost control</a> and <a href="../experiments/context-compaction.html">Context compaction</a>.</li>
+<li><strong>No code change.</strong> Cortex intercepts the traffic for you. Your agent runs the same way, and
+  the data never leaves your machine.</li>
+</ul>
+<h2 id="privacy-and-data-handling">Privacy and data handling<a class="headerlink" href="#privacy-and-data-handling" title="Permanent link">#</a></h2>
+<p>Cortex intercepts your agent's traffic through a local proxy on your own machine. It parses each
+call so that it can show you the content, and it keeps the traffic on that machine.</p>
+<p>Cortex does not collect the traffic, and it does not send it to Sentinel or to any other service.
+There is no telemetry. The data is for you to read and to inspect. When you stop the service, the data
+goes with it.</p>
+<p>That holds for how we count installs, too. We read the download counts that GitHub already publishes
+for each release, and we subtract the ones our own release tests account for. Nothing is collected
+from your machine, and the program never calls home to be counted. The figures, and what they do and
+do not support, are at
+<a href="https://sentinel.github.io/cortex/install-stats/">Install stats</a>.</p>
+<h2 id="install-it">Install it<a class="headerlink" href="#install-it" title="Permanent link">#</a></h2>
+<p>You can run Cortex on macOS or Linux and watch your agent's traffic in about 5 minutes. You do
+not need a Kubernetes cluster. See <a href="../../get-started/laptop.html">Quickstart on a laptop</a> for the
+step-by-step instructions, or the
+<a href="https://github.com/sentinel/cortex/blob/main/README.md">repository README</a> for the short version.</p>
+<h2 id="give-feedback">Give feedback<a class="headerlink" href="#give-feedback" title="Permanent link">#</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Tell us when it breaks</p>
+<p>Cortex on a laptop is new. Report an install that failed, a figure that looked wrong, or a step
+that was not clear. For a condition that already has an answer, read
+<a href="../../operate/troubleshooting.html#on-a-laptop">Troubleshooting</a> first.</p>
+<ul>
+<li>Open the <strong>Laptop feedback</strong> form on
+  <a href="https://github.com/sentinel/cortex/issues/new/choose">sentinel/cortex</a></li>
+<li>Or write a message in <a href="https://ibm.biz/sentinel-slack">Slack</a></li>
+</ul>
+</div>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<p>Cortex is the data plane of Sentinel. It is a proxy between an agent and each external service
+that the agent uses. The external services are models, tools, users and other agents. It intercepts
+the traffic, which is how it gives you the view above without a change to the agent.</p>
+<p><img alt="How agents reach Cortex, and the plugins that it runs" src="../../images/cortex-overview.svg" /></p>
+<h3 id="where-cortex-runs">Where Cortex runs<a class="headerlink" href="#where-cortex-runs" title="Permanent link">#</a></h3>
+<p>Cortex is one program with three deployment forms.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Location</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sidecar</strong></td>
+<td>Next to each workload, in the same pod</td>
+<td>The standard form on Kubernetes. The operator injects it.</td>
+</tr>
+<tr>
+<td><strong>Local proxy</strong></td>
+<td>On your computer</td>
+<td>The <a href="../../get-started/laptop.html">laptop quickstart</a> uses this form.</td>
+</tr>
+<tr>
+<td><strong>Gateway</strong></td>
+<td>In front of a group of workloads</td>
+<td>For traffic that has no sidecar.</td>
+</tr>
+</tbody>
+</table></div>
+<p>On Kubernetes, the sidecar is an Envoy proxy and a Go processor. Envoy moves the data. The processor
+applies the rules.</p>
+<h3 id="the-four-control-points">The four control points<a class="headerlink" href="#the-four-control-points" title="Permanent link">#</a></h3>
+<p>Cortex separates requests from responses, in both directions. This gives four control points
+around each workload.</p>
+<pre><code> ┌────────┐  1. inbound request   ┌──────────────────────────┐  2. outbound request  ┌──────────────┐
+ │        │ ────────────────────► │ CORTEX ┌───────┐ CORTEX  │ ────────────────────► │              │
+ │ CALLER │                       │ inbound│ AGENT │ outbound│                       │ TARGET AGENT │
+ │        │ ◄──────────────────── │        └───────┘         │ ◄──────────────────── │   OR TOOL    │
+ └────────┘  4. inbound response  └──────────────────────────┘  3. outbound response └──────────────┘
+</code></pre>
+<ol>
+<li><strong>Inbound request.</strong> Traffic that arrives at the agent. Cortex validates the identity of the
+   caller. It confirms that a user with the correct role sent the request.</li>
+<li><strong>Outbound request.</strong> Traffic that the agent starts. Cortex confirms that the agent can reach
+   the target for this user. It also examines the content for sensitive data.</li>
+<li><strong>Outbound response.</strong> The reply to a request from the agent. Cortex examines the reply for an
+   attempt to control the agent.</li>
+<li><strong>Inbound response.</strong> The reply from the agent to its caller. Cortex examines the reply for
+   data that the user must not receive.</li>
+</ol>
+<p>Most platforms control point 1 only. Points 2 and 3 are necessary for agents. An agent that reads a
+document with a hidden instruction can send a correctly authenticated request that no user asked for.</p>
+<h3 id="the-plugin-chain">The plugin chain<a class="headerlink" href="#the-plugin-chain" title="Permanent link">#</a></h3>
+<p>Each control point runs an ordered chain of plugins. A plugin can read the traffic, add data to a
+shared record, change the content, or stop the request.</p>
+<p>The default chain controls identity and delegation.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Control point</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jwt-validation</code></td>
+<td>Inbound request</td>
+<td>Validates the signature, the issuer and the audience of the token. Returns 401 if the token is not valid.</td>
+</tr>
+<tr>
+<td><code>token-exchange</code></td>
+<td>Outbound request</td>
+<td>Exchanges the token, so the agent presents a token that is valid only for the target.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Every other plugin is optional. Parser plugins read the traffic and record its structure, so that a
+later plugin can examine it. The parsers are <code>a2a-parser</code>, <code>mcp-parser</code> and <code>inference-parser</code>.</p>
+<p>The optional control plugins use those records. See the
+<a href="../index.html#experimental-features">Experiments</a> group for each one, and the
+<a href="https://github.com/sentinel/cortex/blob/main/authbridge/docs/plugin-catalog.md">plugin catalogue</a>
+for the configuration of each one.</p>
+<h3 id="authentication-and-authorization-are-separate-decisions">Authentication and authorization are separate decisions<a class="headerlink" href="#authentication-and-authorization-are-separate-decisions" title="Permanent link">#</a></h3>
+<p>The chain treats the two decisions differently.</p>
+<p><strong>Authentication answers one question: is this identity real?</strong> A token that is absent or invalid is
+rejected at once. There is nothing to evaluate, and an early rejection protects the platform.</p>
+<p><strong>Authorization answers a second question: can this identity do this action?</strong> Here a plugin
+records its result. One decision point then evaluates each record together.</p>
+<p>The reason is operational. One request from a user can produce many requests inside a group of agents.
+Each plugin at each control point can stop traffic. A cluster then has thousands of independent
+decisions, and no single place to examine after a task fails. One record and one decision point keep
+both the decision and the audit data in one place.</p>
+<p>Cortex is moving to <a href="https://github.com/contextforge-org/cpex">CPEX</a> for that decision layer.
+CPEX combines the results of policy engines such as Cedar and OPA. The controls above do not change
+when the decision layer changes.</p>
+<h3 id="what-cortex-does-not-do">What Cortex does not do<a class="headerlink" href="#what-cortex-does-not-do" title="Permanent link">#</a></h3>
+<ul>
+<li>It does not change how your agent reasons.</li>
+<li>It does not replace your agent framework. It is below your agent, not in place of it.</li>
+<li>It does not control traffic that avoids it. An agent that opens a connection outside its proxy is
+  outside the security model.</li>
+</ul>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../../get-started/laptop.html">Quickstart on a laptop</a> runs Cortex as one program on your computer.</li>
+<li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a> explains the token counts, the cost and
+  the latency that Cortex captures.</li>
+<li><a href="identity.html">Identity and trust</a> explains where the identities come from.</li>
+<li><a href="../../security/authbridge.html">AuthBridge</a> describes the two default plugins.</li>
+<li><a href="../../security/flows.html">Authentication flows</a> contains the diagrams.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="agents-and-tools.html"><span>Previous</span>Agents and tools</a><a class="next" href="identity.html"><span>Next</span>Identity and trust</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/core/cortex.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

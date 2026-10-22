@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCP Gateway | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Register each tool one time, and give every agent one address.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/experiments/mcp-gateway.html">
+  <meta property="og:title" content="MCP Gateway — Sentinel Docs">
+  <meta property="og:description" content="Register each tool one time, and give every agent one address.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/experiments/mcp-gateway.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../core/architecture.html">Architecture</a></li><li><a href="../core/agents-and-tools.html">Agents and tools</a></li><li><a href="../core/cortex.html">Cortex</a></li><li><a href="../core/identity.html">Identity and trust</a></li><li><a href="../core/control-plane.html">Control plane</a></li></ul></details></li><li><details open><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="mcp-gateway.html" class="active" aria-current="page">MCP Gateway</a></li><li><a href="skills.html">Skills</a></li><li><a href="sandboxes.html">Sandboxes</a></li><li><a href="agent-context.html">Agent context</a></li><li><a href="intent-based-access.html">Intent-based access</a></li><li><a href="tool-validation.html">Tool call validation</a></li><li><a href="context-compaction.html">Context compaction</a></li><li><a href="cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>MCP Gateway</h1>
+        <p class="docs-lede">Register each tool one time, and give every agent one address.</p>
+        <div class="admonition info">
+<p class="admonition-title">Beta</p>
+<p>The <a href="https://github.com/sentinel">Sentinel organization</a> marks the MCP Gateway as experimental. It is
+<a href="https://github.com/Kuadrant/mcp-gateway">Kuadrant/mcp-gateway</a>, which is a separate project.</p>
+<p>Routing operates correctly. <strong>Most authentication in the gateway is not implemented.</strong> The gateway
+does not replace the checks that the Cortex sidecar makes. Do not use the gateway as your access
+control boundary.</p>
+</div>
+<p>If each agent holds the address of each tool, you must change every agent when you add a tool. The MCP
+Gateway gives you one address for all tools. It also adds a prefix to each tool name, so two tools with
+the same function name do not conflict.</p>
+<p>Install the gateway with the <code>--with-mcp-gateway</code> option, or with <code>--with-all</code>.</p>
+<h2 id="confirm-that-the-gateway-runs">Confirm that the gateway runs<a class="headerlink" href="#confirm-that-the-gateway-runs" title="Permanent link">#</a></h2>
+<p>Envoy runs in the <code>gateway-system</code> namespace:</p>
+<pre><code class="language-bash">kubectl -n gateway-system get pods
+# mcp-gateway-istio-...   1/1   Running
+</code></pre>
+<p>The controller, the broker and the router run in the <code>mcp-system</code> namespace:</p>
+<pre><code class="language-bash">kubectl -n mcp-system get pods
+# mcp-broker-router-...   1/1   Running
+# mcp-controller-...      1/1   Running
+</code></pre>
+<h2 id="register-a-tool">Register a tool<a class="headerlink" href="#register-a-tool" title="Permanent link">#</a></h2>
+<p>Create two resources. The first is an <code>HTTPRoute</code> that tells Envoy how to reach the tool:</p>
+<pre><code class="language-yaml">apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: weather-tool-route
+  namespace: default
+  labels:
+    mcp-server: &quot;true&quot;        # required: the controller uses this label to find the route
+spec:
+  parentRefs:
+    - name: mcp-gateway
+      namespace: gateway-system
+  hostnames:
+    - &quot;weather-tool.mcp.local&quot;
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: weather-tool-mcp
+          port: 9090
+</code></pre>
+<p>The host name must match the listener of the gateway. Envoy uses it for internal routing only. It is
+not a name that a client can resolve.</p>
+<p>The second resource is an <code>MCPServerRegistration</code> that tells the broker to include the tool:</p>
+<pre><code class="language-yaml">apiVersion: mcp.kuadrant.io/v1alpha1
+kind: MCPServerRegistration
+metadata:
+  name: weather-tool-servers
+  namespace: default
+spec:
+  prefix: weather_            # each tool from this server becomes weather_&lt;name&gt;
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: weather-tool-route
+    namespace: default
+</code></pre>
+<p>The prefix keeps two tools separate when both have a function with the same name.</p>
+<p>Both examples assume that the tool is in the <code>default</code> namespace. Change the namespaces to match your
+deployment.</p>
+<h2 id="point-the-agents-at-the-gateway">Point the agents at the gateway<a class="headerlink" href="#point-the-agents-at-the-gateway" title="Permanent link">#</a></h2>
+<p>Set one address on each agent:</p>
+<pre><code>MCP_URL=http://mcp-gateway-istio.gateway-system.svc.cluster.local:8080/mcp
+</code></pre>
+<p>For a Deployment that already runs:</p>
+<pre><code class="language-bash">kubectl set env deployment/weather-service -n team1 \
+  MCP_URL=&quot;http://mcp-gateway-istio.gateway-system.svc.cluster.local:8080/mcp&quot;
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This address will become the default value of <code>MCP_URL</code> after the gateway is stable. You will then not
+set the variable for each agent.</p>
+</div>
+<h3 id="for-an-agent-that-runs-in-a-sandbox">For an agent that runs in a sandbox<a class="headerlink" href="#for-an-agent-that-runs-in-a-sandbox" title="Permanent link">#</a></h3>
+<p>The <code>kubectl set env</code> command does not operate on a <code>Sandbox</code> resource. You must change the
+specification. The variable must already exist in the <code>env</code> array of the container. If the variable is
+absent, add it first with <code>kubectl edit sandbox weather-service -n team1</code>.</p>
+<pre><code class="language-bash">kubectl get sandbox weather-service -n team1 -o json \
+  | jq '(.spec.podTemplate.spec.containers[]
+         | select(.name == &quot;agent&quot;).env[]
+         | select(.name == &quot;MCP_URL&quot;)).value =
+        &quot;http://mcp-gateway-istio.gateway-system.svc.cluster.local:8080/mcp&quot;' \
+  | kubectl apply -f -
+</code></pre>
+<p>A change to the specification does not restart a pod that runs. This is an
+<a href="https://github.com/kubernetes-sigs/agent-sandbox/issues/581">upstream limitation</a>. Delete the pod:</p>
+<pre><code class="language-bash">kubectl delete pod -n team1 -l app.kubernetes.io/name=weather-service
+</code></pre>
+<h2 id="for-a-tool-that-needs-a-credential">For a tool that needs a credential<a class="headerlink" href="#for-a-tool-that-needs-a-credential" title="Permanent link">#</a></h2>
+<p>Some MCP servers need a token before they give their list of tools. Put the token in a Secret and add
+a label to the Secret:</p>
+<pre><code class="language-bash">kubectl create secret generic slack-server-access-token \
+  --from-literal=token=&quot;Bearer $ACCESS_TOKEN&quot; \
+  --namespace default
+
+kubectl label secret slack-server-access-token mcp.kuadrant.io/credential=true
+</code></pre>
+<p>Then name the Secret in the registration:</p>
+<pre><code class="language-yaml">spec:
+  prefix: slack_
+  credentialRef:
+    name: slack-server-access-token
+    key: token
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: slack-tool-route
+    namespace: default
+</code></pre>
+<h2 id="confirm-the-registration">Confirm the registration<a class="headerlink" href="#confirm-the-registration" title="Permanent link">#</a></h2>
+<p>Discovery can need as much as 60 seconds.</p>
+<pre><code class="language-bash">kubectl get mcpserverregistrations weather-tool-servers -o yaml
+</code></pre>
+<p>Look for a <code>Ready</code> condition:</p>
+<pre><code class="language-yaml">status:
+  conditions:
+    - type: Ready
+      status: &quot;True&quot;
+      reason: Ready
+      message: MCPServerRegistration successfully reconciled and validated 1 servers with 2 tools
+</code></pre>
+<p>The message gives the number of servers and the number of tools that the broker found. If the message
+gives zero tools, the backend or the port in the <code>HTTPRoute</code> is wrong, or the tool needs a credential.</p>
+<h2 id="test-the-result">Test the result<a class="headerlink" href="#test-the-result" title="Permanent link">#</a></h2>
+<p>Open the chat page of an agent and ask for information that needs a registered tool. You can also
+forward the port of the gateway and connect the MCP Inspector to it. The <strong>MCP Gateway</strong> page of the
+console can start the Inspector for you.</p>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="../core/control-plane.html"><span>Previous</span>Control plane</a><a class="next" href="skills.html"><span>Next</span>Skills</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/experiments/mcp-gateway.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

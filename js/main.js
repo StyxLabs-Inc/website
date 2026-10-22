@@ -43,5 +43,9 @@
     });
   }
 
+  // Docs sidebar starts collapsed on small screens
+  var docsMenu = document.querySelector('.docs-sidebar-toggle');
+  if (docsMenu && window.matchMedia('(max-width: 960px)').matches) docsMenu.open = false;
+
   document.getElementById('year').textContent = new Date().getFullYear();
 })();

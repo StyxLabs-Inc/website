@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install with Helm | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Install from OCI charts or from the repository, without the scripts.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/operate/install-helm.html">
+  <meta property="og:title" content="Install with Helm — Sentinel Docs">
+  <meta property="og:description" content="Install from OCI charts or from the repository, without the scripts.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/operate/install-helm.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details open><summary><a href="index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="install-kubernetes.html">Install on Kubernetes</a></li><li><a href="install-openshift.html">Install on OpenShift</a></li><li><a href="install-helm.html" class="active" aria-current="page">Install with Helm</a></li><li><a href="observability.html">Observability</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Install and operate</p>
+        <h1>Install with Helm</h1>
+        <p class="docs-lede">Install from OCI charts or from the repository, without the scripts.</p>
+        <p>Use this method for a cluster that the scripts do not support, or when you must control each chart.</p>
+<div class="admonition info">
+<p class="admonition-title">Beta</p>
+<p>An installation from the charts operates. The project tests it less than it tests the Kind script and the
+OpenShift script. Expect more manual steps.</p>
+</div>
+<p>Sentinel has three charts. Install them in this order.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chart</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sentinel-deps</code></td>
+<td>SPIRE, cert-manager, Keycloak and the other dependencies</td>
+</tr>
+<tr>
+<td><code>mcp-gateway</code></td>
+<td>The MCP Gateway</td>
+</tr>
+<tr>
+<td><code>sentinel</code></td>
+<td>The operator, the webhook, the backend and the console</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="method-a-from-the-oci-charts">Method A: from the OCI charts<a class="headerlink" href="#method-a-from-the-oci-charts" title="Permanent link">#</a></h2>
+<p>Get the most recent release tag:</p>
+<pre><code class="language-bash">LATEST_TAG=$(git ls-remote --tags --sort=&quot;v:refname&quot; \
+  https://github.com/StyxLabs-Inc/sentinel.git \
+  | tail -n1 | sed 's|.*refs/tags/v||; s/\^{}//')
+</code></pre>
+<p>Prepare the secrets. Get
+<a href="https://github.com/StyxLabs-Inc/sentinel/blob/main/charts/sentinel/.secrets_template.yaml"><code>.secrets_template.yaml</code></a>,
+save it as <code>.secrets.yaml</code>, and add your values.</p>
+<p>Install the dependencies:</p>
+<pre><code class="language-bash">helm install sentinel-deps \
+  oci://ghcr.io/sentinel/sentinel/sentinel-deps \
+  --create-namespace -n sentinel-system \
+  --version &quot;$LATEST_TAG&quot; \
+  --set spire.trustDomain=&quot;${DOMAIN}&quot;
+</code></pre>
+<p>Install the MCP Gateway:</p>
+<pre><code class="language-bash">LATEST_GATEWAY_TAG=$(skopeo list-tags docker://ghcr.io/sentinel/charts/mcp-gateway | jq -r '.Tags[-1]')
+
+helm install mcp-gateway oci://ghcr.io/sentinel/charts/mcp-gateway \
+  --create-namespace -n mcp-system \
+  --version &quot;$LATEST_GATEWAY_TAG&quot;
+</code></pre>
+<p>Install Sentinel:</p>
+<pre><code class="language-bash">helm upgrade --install sentinel \
+  oci://ghcr.io/sentinel/sentinel/sentinel \
+  --create-namespace -n sentinel-system \
+  --version &quot;$LATEST_TAG&quot; \
+  -f .secrets.yaml \
+  --set agentOAuthSecret.spiffePrefix=&quot;spiffe://${DOMAIN}/sa&quot; \
+  --set uiOAuthSecret.useServiceAccountCA=false \
+  --set agentOAuthSecret.useServiceAccountCA=false
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">The last three settings are for OpenShift</p>
+<p>The <code>useServiceAccountCA=false</code> settings and the explicit <code>spiffePrefix</code> value correct the certificate
+authority behaviour of OpenShift. Keep them on OpenShift. On a different cluster, try the command without
+them first.</p>
+</div>
+<h2 id="method-b-from-the-repository">Method B: from the repository<a class="headerlink" href="#method-b-from-the-repository" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">git clone https://github.com/StyxLabs-Inc/sentinel.git
+cd sentinel
+
+cp charts/sentinel/.secrets_template.yaml charts/sentinel/.secrets.yaml
+# Add your values to .secrets.yaml
+
+helm dependency update ./charts/sentinel-deps/
+helm dependency update ./charts/sentinel/
+</code></pre>
+<pre><code class="language-bash">helm install sentinel-deps ./charts/sentinel-deps/ \
+  -n sentinel-system --create-namespace \
+  --set spire.trustDomain=&quot;${DOMAIN}&quot; --wait
+
+helm install mcp-gateway oci://ghcr.io/sentinel/charts/mcp-gateway \
+  --create-namespace -n mcp-system --version 0.4.0
+
+LATEST_TAG=$(git ls-remote --tags --sort=&quot;v:refname&quot; \
+  https://github.com/StyxLabs-Inc/sentinel.git | tail -n1 | sed 's|.*refs/tags/||; s/\^{}//')
+
+helm upgrade --install sentinel ./charts/sentinel/ \
+  -n sentinel-system --create-namespace \
+  -f ./charts/sentinel/.secrets.yaml \
+  --set ui.tag=&quot;${LATEST_TAG}&quot; \
+  --set agentOAuthSecret.spiffePrefix=&quot;spiffe://${DOMAIN}/sa&quot; \
+  --set uiOAuthSecret.useServiceAccountCA=false \
+  --set agentOAuthSecret.useServiceAccountCA=false
+</code></pre>
+<h2 id="the-feature-flags">The feature flags<a class="headerlink" href="#the-feature-flags" title="Permanent link">#</a></h2>
+<p>Set a flag during the installation, or later with the <code>--reuse-values</code> option:</p>
+<pre><code class="language-bash">helm upgrade sentinel ./charts/sentinel/ \
+  -n sentinel-system --reuse-values \
+  --set featureFlags.skills=true \
+  --set featureFlags.externalSkills=true
+</code></pre>
+<p>For the function of each flag, see <a href="../concepts/experiments/skills.html">Skills</a> and
+<a href="../concepts/experiments/agent-context.html">Agent context</a>.</p>
+<h2 id="confirm-the-installation">Confirm the installation<a class="headerlink" href="#confirm-the-installation" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">kubectl get deployments -n sentinel-system
+kubectl get daemonsets -n zero-trust-workload-identity-manager
+</code></pre>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../reference/install-options.html">Install options</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="install-openshift.html"><span>Previous</span>Install on OpenShift</a><a class="next" href="observability.html"><span>Next</span>Observability</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/operate/install-helm.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

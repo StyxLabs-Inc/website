@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skills | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Store reusable instructions in the cluster and give them to an agent.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/experiments/skills.html">
+  <meta property="og:title" content="Skills — Sentinel Docs">
+  <meta property="og:description" content="Store reusable instructions in the cluster and give them to an agent.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/experiments/skills.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../core/architecture.html">Architecture</a></li><li><a href="../core/agents-and-tools.html">Agents and tools</a></li><li><a href="../core/cortex.html">Cortex</a></li><li><a href="../core/identity.html">Identity and trust</a></li><li><a href="../core/control-plane.html">Control plane</a></li></ul></details></li><li><details open><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="mcp-gateway.html">MCP Gateway</a></li><li><a href="skills.html" class="active" aria-current="page">Skills</a></li><li><a href="sandboxes.html">Sandboxes</a></li><li><a href="agent-context.html">Agent context</a></li><li><a href="intent-based-access.html">Intent-based access</a></li><li><a href="tool-validation.html">Tool call validation</a></li><li><a href="context-compaction.html">Context compaction</a></li><li><a href="cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Skills</h1>
+        <p class="docs-lede">Store reusable instructions in the cluster and give them to an agent.</p>
+        <p>A skill is a reusable capability that an agent can use. It contains instructions, scripts and
+configuration. The cluster holds the skill, so you control and version it. You do not copy the
+instructions into a prompt.</p>
+<p>Sentinel stores each skill as a Kubernetes ConfigMap with the label <code>sentinel.io/type=skill</code>. A skill
+can contain several files. The file <code>SKILL.md</code> is mandatory.</p>
+<div class="admonition info">
+<p class="admonition-title">Beta, and off by default</p>
+<p>You must enable a feature flag before you can use skills. The skill registry, skillberry-store, is an
+external project.</p>
+</div>
+<h2 id="enable-skills">Enable skills<a class="headerlink" href="#enable-skills" title="Permanent link">#</a></h2>
+<p>Two flags control the feature.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>featureFlags.skills</code></td>
+<td>Import, list and delete skills, and give a skill to an agent.</td>
+</tr>
+<tr>
+<td><code>featureFlags.externalSkills</code></td>
+<td>References to an external skill registry. Needs <code>skills</code> also.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="during-the-installation">During the installation<a class="headerlink" href="#during-the-installation" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">scripts/kind/setup-sentinel.sh --with-skills
+</code></pre>
+<p>The <code>--with-skills</code> option sets both flags. It also enables the backend and the console, installs a
+skillberry-store in the cluster, and enables synchronization with that store. Skills therefore operate
+without an external registry and without extra configuration. The interface of the store is at
+<code>http://skillberry-store.&lt;domain&gt;:8080</code>.</p>
+<p>You can combine the option with any other option:</p>
+<pre><code class="language-bash">scripts/kind/setup-sentinel.sh --with-skills --with-builds --skip-cluster
+</code></pre>
+<h3 id="on-a-cluster-that-already-runs">On a cluster that already runs<a class="headerlink" href="#on-a-cluster-that-already-runs" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">helm upgrade sentinel ./charts/sentinel/ \
+  -n sentinel-system \
+  --reuse-values \
+  --set featureFlags.skills=true \
+  --set featureFlags.externalSkills=true
+</code></pre>
+<p>This command restarts the backend and the console. Confirm that the backend registered the routes:</p>
+<pre><code class="language-bash">kubectl logs -n sentinel-system -l app.kubernetes.io/name=sentinel-backend \
+  | grep &quot;skills routes registered&quot;
+</code></pre>
+<p>To install the store in the cluster also, add
+<code>--set components.skillberryStore.enabled=true</code>. Omit that option if you use an external registry
+only.</p>
+<h3 id="confirm-the-result">Confirm the result<a class="headerlink" href="#confirm-the-result" title="Permanent link">#</a></h3>
+<p>Open the console. A <strong>Skills</strong> entry appears in the navigation. It lists each skill with its category,
+its description and its number of uses.</p>
+<h2 id="manage-skills">Manage skills<a class="headerlink" href="#manage-skills" title="Permanent link">#</a></h2>
+<p>The console is sufficient for common tasks. For other tasks, use the REST interface. Each request
+needs a bearer token. Get a token with <code>sentinel auth token</code>.</p>
+<h3 id="list-the-skills">List the skills<a class="headerlink" href="#list-the-skills" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">curl -H &quot;Authorization: Bearer $TOKEN&quot; \
+  &quot;http://sentinel-backend/api/skills?namespace=sentinel-system&quot;
+</code></pre>
+<p>To search, add a <code>q</code> parameter:</p>
+<pre><code class="language-bash">curl -H &quot;Authorization: Bearer $TOKEN&quot; \
+  &quot;http://sentinel-backend/api/skills?namespace=sentinel-system&amp;q=code-review&quot;
+</code></pre>
+<h3 id="read-one-skill-and-its-files">Read one skill and its files<a class="headerlink" href="#read-one-skill-and-its-files" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">curl -H &quot;Authorization: Bearer $TOKEN&quot; \
+  &quot;http://sentinel-backend/api/skills/sentinel-system/code-review&quot;
+</code></pre>
+<h3 id="create-a-skill">Create a skill<a class="headerlink" href="#create-a-skill" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">curl -X POST &quot;http://sentinel-backend/api/skills&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{
+    &quot;name&quot;: &quot;code-review&quot;,
+    &quot;namespace&quot;: &quot;sentinel-system&quot;,
+    &quot;description&quot;: &quot;Automated code review skill&quot;,
+    &quot;category&quot;: &quot;development&quot;,
+    &quot;files&quot;: {
+      &quot;SKILL.md&quot;: &quot;# Code review\n\nHow to review a change...&quot;,
+      &quot;scripts/review.py&quot;: &quot;...&quot;
+    }
+  }'
+</code></pre>
+<p>The <code>files</code> object must contain <code>SKILL.md</code>.</p>
+<h3 id="delete-a-skill">Delete a skill<a class="headerlink" href="#delete-a-skill" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">curl -X DELETE &quot;http://sentinel-backend/api/skills/sentinel-system/code-review&quot; \
+  -H &quot;Authorization: Bearer $TOKEN&quot;
+</code></pre>
+<h2 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Permitted actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ROLE_VIEWER</code></td>
+<td>Read a skill.</td>
+</tr>
+<tr>
+<td><code>ROLE_OPERATOR</code></td>
+<td>Create and delete a skill.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="give-a-skill-to-an-agent">Give a skill to an agent<a class="headerlink" href="#give-a-skill-to-an-agent" title="Permanent link">#</a></h2>
+<p>Add the <code>sentinel.io/skills</code> annotation to the workload. The value is a JSON array of skill names:</p>
+<pre><code class="language-yaml">metadata:
+  annotations:
+    sentinel.io/skills: '[&quot;code-review&quot;,&quot;order-lookup&quot;]'
+</code></pre>
+<p>The console sets this annotation for you. When the <code>skillDiscovery</code> feature gate is on, the operator
+resolves the names and writes them to the status of the <code>AgentRuntime</code> resource.</p>
+<h2 id="the-skillberry-store">The skillberry store<a class="headerlink" href="#the-skillberry-store" title="Permanent link">#</a></h2>
+<p>The store in the cluster manages its own set of skills. It has plugins that create, evaluate, improve,
+deduplicate, scan and document a skill. A plugin runs when you add or change a skill. These plugins
+belong to the store. An agent does not call them.</p>
+<p>Most of the plugins call a model. Each plugin reads the model configuration from an environment
+variable <strong>on the store process at start-up</strong>. The Helm chart sets only its own <code>SBS_*</code> variables.
+Therefore the plugins that need a model stay inactive until you supply the configuration through
+<code>skillberryStore.extraEnv</code>.</p>
+<p>Put each API key in a Secret. Do not put a key in a values file:</p>
+<pre><code class="language-bash">kubectl create secret generic skillberry-store-secrets -n sentinel-system \
+  --from-literal=openai-api-key=&quot;&lt;your-key&gt;&quot;
+</code></pre>
+<p>Then name the Secret in a values file:</p>
+<pre><code class="language-yaml"># skillberry-env.yaml
+skillberryStore:
+  extraEnv:
+    - name: LLM_PROVIDER
+      value: &quot;openai&quot;
+    - name: LLM_MODEL
+      value: &quot;gpt-4o-mini&quot;
+    - name: OPENAI_API_KEY
+      valueFrom:
+        secretKeyRef:
+          name: skillberry-store-secrets
+          key: openai-api-key
+</code></pre>
+<p>Apply the file:</p>
+<pre><code class="language-bash">scripts/kind/setup-sentinel.sh --with-skills --sentinel-values ./skillberry-env.yaml
+</code></pre>
+<p>The names of the variables depend on the provider that you select. See the
+<a href="https://github.com/skillberry-ai/skillberry-store/blob/main/docs/plugins-installation.md">plugin documentation of skillberry-store</a>.</p>
+<p>Confirm which variables the container received:</p>
+<pre><code class="language-bash">kubectl set env deploy/skillberry-store -n sentinel-system --list
+</code></pre>
+<h2 id="if-the-skills-entry-does-not-appear">If the Skills entry does not appear<a class="headerlink" href="#if-the-skills-entry-does-not-appear" title="Permanent link">#</a></h2>
+<p>The feature flag is not set. Enable it without a new installation:</p>
+<pre><code class="language-bash">helm upgrade sentinel charts/sentinel -n sentinel-system \
+  --reuse-values --set featureFlags.skills=true
+</code></pre>
+<p>Then examine the log of the backend again for <code>skills routes registered</code>.</p>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="mcp-gateway.html"><span>Previous</span>MCP Gateway</a><a class="next" href="sandboxes.html"><span>Next</span>Sandboxes</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/experiments/skills.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

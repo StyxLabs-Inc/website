@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Identity and trust | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="How a workload proves its identity, and how that identity becomes access.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/core/identity.html">
+  <meta property="og:title" content="Identity and trust — Sentinel Docs">
+  <meta property="og:description" content="How a workload proves its identity, and how that identity becomes access.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/core/identity.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details open><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="architecture.html">Architecture</a></li><li><a href="agents-and-tools.html">Agents and tools</a></li><li><a href="cortex.html">Cortex</a></li><li><a href="identity.html" class="active" aria-current="page">Identity and trust</a></li><li><a href="control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../experiments/skills.html">Skills</a></li><li><a href="../experiments/sandboxes.html">Sandboxes</a></li><li><a href="../experiments/agent-context.html">Agent context</a></li><li><a href="../experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../experiments/tool-validation.html">Tool call validation</a></li><li><a href="../experiments/context-compaction.html">Context compaction</a></li><li><a href="../experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Identity and trust</h1>
+        <p class="docs-lede">How a workload proves its identity, and how that identity becomes access.</p>
+        <p>The security model of Sentinel has one basis: each workload has an identity that it can prove with
+cryptography. Each access decision starts from that identity. Agents do not share secrets, and
+Sentinel does not trust a workload because the workload is in the same cluster.</p>
+<p>Three rules follow from this basis:</p>
+<ul>
+<li><strong>No implicit trust.</strong> Sentinel authenticates and authorizes each request.</li>
+<li><strong>Least privilege.</strong> A workload and a user receive the minimum permissions that they need.</li>
+<li><strong>Continuous verification.</strong> Sentinel checks the identity and the permissions at each step, not only
+  at the edge of the cluster.</li>
+</ul>
+<h2 id="two-identity-systems">Two identity systems<a class="headerlink" href="#two-identity-systems" title="Permanent link">#</a></h2>
+<p>Sentinel uses SPIFFE for the identity of a workload, and Keycloak for the identity of a user. Token
+exchange joins the two.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>SPIFFE and SPIRE</th>
+<th>Keycloak</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Answers</td>
+<td>Which workload is this?</td>
+<td>Which user is this, and what can the user do?</td>
+</tr>
+<tr>
+<td>Issues</td>
+<td>Short-lived identity documents, automatically</td>
+<td>OAuth2 and OIDC access tokens</td>
+</tr>
+<tr>
+<td>Basis of trust</td>
+<td>The node attests the pod</td>
+<td>A sign-in, or a proven workload identity</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="workload-identity">Workload identity<a class="headerlink" href="#workload-identity" title="Permanent link">#</a></h3>
+<p><a href="https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/">SPIFFE</a> is a standard for the identity
+of a workload. SPIRE is the program that issues and renews the identity.</p>
+<p>Each workload receives an identity in this form:</p>
+<pre><code>spiffe://{trust-domain}/ns/{namespace}/sa/{service-account}
+</code></pre>
+<p>For example: <code>spiffe://localtest.me/ns/team/sa/weather-tool</code>.</p>
+<p>SPIRE issues the identity in two formats. An X.509 certificate is for mTLS. A JWT is for HTTP
+interfaces. Both are short-lived. A helper program next to the workload renews both automatically. You
+do not create a credential, and no credential waits in a Secret.</p>
+<p>The identity comes from what the workload <strong>is</strong>: its namespace and its service account, which the
+node attests. The identity does not come from a credential that someone gave to the workload. A
+workload therefore cannot present the identity of a different workload.</p>
+<h3 id="user-identity">User identity<a class="headerlink" href="#user-identity" title="Permanent link">#</a></h3>
+<p>Keycloak is the identity provider. It authenticates users, issues tokens, holds the roles that define
+the permissions of each user, and performs the token exchange.</p>
+<p>Each agent and each tool is also a Keycloak client. Registration is automatic. The operator finds a
+new workload, reads the administrator credentials from a Secret in its own namespace, and registers
+the workload. The identifier of the client is the SPIFFE identity of the workload. You do not create
+clients, and the namespace of an agent never holds administrator credentials.</p>
+<h2 id="delegation">Delegation<a class="headerlink" href="#delegation" title="Permanent link">#</a></h2>
+<p>This part is the most important part of the model.</p>
+<p>When you ask an agent to do work, the agent must call tools as you, with your permissions and no more.
+Sentinel does this with <a href="https://tools.ietf.org/html/rfc8693">token exchange, RFC 8693</a>.</p>
+<ol>
+<li>You sign in. Keycloak issues an access token that contains your roles.</li>
+<li>You send a message to the agent. The message contains the token.</li>
+<li>The sidecar of the agent validates the token against the public keys of Keycloak. It checks the
+   signature, the issuer, the expiry time and, if you configured it, the audience. An invalid token
+   receives the status 401 and does not reach the agent.</li>
+<li>The agent decides to call a tool.</li>
+<li>The sidecar of the agent asks Keycloak to exchange your token for a new token. The audience of the
+   new token is that one tool. The sidecar authenticates this request with the SPIFFE identity of the
+   agent.</li>
+<li>Keycloak returns the new token. The subject of the token is you. The actor is the agent. The
+   audience is the target tool.</li>
+<li>The sidecar of the tool validates the new token and confirms that the audience names the tool.</li>
+</ol>
+<p>The new token has this form:</p>
+<pre><code class="language-json">{
+  &quot;sub&quot;: &quot;user-123&quot;,
+  &quot;act&quot;: { &quot;sub&quot;: &quot;spiffe://localtest.me/ns/team/sa/slack-researcher&quot; },
+  &quot;aud&quot;: &quot;slack-tool&quot;,
+  &quot;scope&quot;: &quot;slack-full-access&quot;,
+  &quot;exp&quot;: 1735686900
+}
+</code></pre>
+<p>Three properties come from this form:</p>
+<ul>
+<li><strong>The tool identifies the user.</strong> The <code>sub</code> field names you, not the agent.</li>
+<li><strong>The agent cannot exceed you.</strong> The <code>scope</code> field comes from your roles.</li>
+<li><strong>The token has no value elsewhere.</strong> The <code>aud</code> field names one tool. A different tool rejects the
+  token.</li>
+</ul>
+<p>The <code>act</code> field gives you an audit record. Each request records the person and the workload that acted
+for the person.</p>
+<h2 id="what-the-model-prevents">What the model prevents<a class="headerlink" href="#what-the-model-prevents" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Attack</th>
+<th>Why it fails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>An attacker replays a token from an agent at a different tool</td>
+<td>The audience does not match. The second tool rejects the token.</td>
+</tr>
+<tr>
+<td>A compromised agent tries to reach a tool that the user cannot use</td>
+<td>Keycloak does not issue a scope that the user does not have.</td>
+</tr>
+<tr>
+<td>A workload presents the identity of a different workload to get credentials</td>
+<td>The node attests the SPIFFE identity. A workload cannot assert it.</td>
+</tr>
+<tr>
+<td>An attacker uses a long-lived credential that leaked</td>
+<td>In SPIFFE mode there is no long-lived credential.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The model does not prevent a correctly authenticated request that the user did not ask for. An agent
+that reads a document with a hidden instruction passes every check above. To reduce that risk, see
+<a href="../experiments/intent-based-access.html">Intent-based access</a>.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../../security/workload-identity.html">Workload identity</a> explains how to install and check SPIRE.</li>
+<li><a href="../../security/authbridge.html">AuthBridge</a> describes the plugins that do this work.</li>
+<li><a href="../../security/authentication-modes.html">Authentication modes</a> compares client secrets and SPIFFE.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="cortex.html"><span>Previous</span>Cortex</a><a class="next" href="control-plane.html"><span>Next</span>Control plane</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/core/identity.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

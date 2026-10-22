@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deploy an agent | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Each option for a deployment: images, source builds, variables and secrets.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/workloads/deploy-an-agent.html">
+  <meta property="og:title" content="Deploy an agent — Sentinel Docs">
+  <meta property="og:description" content="Each option for a deployment: images, source builds, variables and secrets.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/workloads/deploy-an-agent.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details open><summary><a href="index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="bring-your-own-agent.html">Bring your own agent</a></li><li><a href="deploy-an-agent.html" class="active" aria-current="page">Deploy an agent</a></li><li><a href="deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Agents and tools</p>
+        <h1>Deploy an agent</h1>
+        <p class="docs-lede">Each option for a deployment: images, source builds, variables and secrets.</p>
+        <p>There are three ways to deploy an agent: the console, the CLI, and a custom resource. All three produce
+the same result, which is a Deployment and an <code>AgentRuntime</code> resource that points to it.</p>
+<p>For a first deployment, use <a href="../get-started/first-agent.html">Deploy your first agent</a>.</p>
+<h2 id="deploy-from-a-container-image">Deploy from a container image<a class="headerlink" href="#deploy-from-a-container-image" title="Permanent link">#</a></h2>
+<p>This method is the fastest. It is also the only method that operates without the <code>--with-builds</code>
+option.</p>
+<h3 id="with-the-console">With the console<a class="headerlink" href="#with-the-console" title="Permanent link">#</a></h3>
+<p>Select <strong>Agents</strong>, then <strong>Import new agent</strong>, then <strong>Deploy from existing image</strong>. Enter the image
+address, set the environment variables, and select <strong>Deploy</strong>.</p>
+<h3 id="with-the-cli">With the CLI<a class="headerlink" href="#with-the-cli" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">sentinel agents import from-image \
+  --name orders \
+  --containerImage ghcr.io/acme/orders:v1.2.0 \
+  --envVar LOG_LEVEL=debug
+
+sentinel agents wait orders --timeout 5m
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--imagePullSecret NAME</code></td>
+<td>Names a Secret for a private registry.</td>
+</tr>
+<tr>
+<td><code>--envVar KEY=VALUE</code></td>
+<td>Sets one variable. You can repeat the option. The value is literal, and can contain a comma.</td>
+</tr>
+<tr>
+<td><code>--envVarsURL URL</code></td>
+<td>Reads <code>key=value</code> lines from an address.</td>
+</tr>
+<tr>
+<td><code>--deployment-type</code></td>
+<td>Selects <code>deployment</code>, which is the default, or <code>statefulset</code>, or <code>sandbox</code>.</td>
+</tr>
+<tr>
+<td><code>--context NAME:PATH</code></td>
+<td>Attaches an <a href="../concepts/experiments/agent-context.html">agent context</a>.</td>
+</tr>
+<tr>
+<td><code>--additionalParameterJSON</code></td>
+<td>Sends a field that has no option.</td>
+</tr>
+</tbody>
+</table></div>
+<p>If <code>--envVar</code> and <code>--envVarsURL</code> set the same variable, <code>--envVar</code> wins. The order of the options does
+not change this result.</p>
+<h2 id="build-from-source">Build from source<a class="headerlink" href="#build-from-source" title="Permanent link">#</a></h2>
+<p>Sentinel builds your image with <a href="https://shipwright.io">Shipwright</a> and then deploys the result.</p>
+<p>Requirements:</p>
+<ul>
+<li>The <code>--with-builds</code> option at installation time, and 6 available CPUs.</li>
+<li>The code on GitHub. The repository must be public, or reachable with the token that you gave to the
+  installer.</li>
+<li>The agent in a <strong>subdirectory</strong> that contains a <code>Dockerfile</code>. The agent must not be in the root
+  directory.</li>
+</ul>
+<p>In the console, select <strong>Build from source</strong> and complete these fields:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git repository URL</td>
+<td>The root of the repository, not the subdirectory.</td>
+</tr>
+<tr>
+<td>Git branch or tag</td>
+<td>The default branch, or the branch that you name.</td>
+</tr>
+<tr>
+<td>Source subfolder</td>
+<td>The directory that contains your <code>Dockerfile</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The console then shows a build progress page. That page gives the phase, which is <code>Pending</code>, then
+<code>Running</code>, then <code>Succeeded</code> or <code>Failed</code>. It also gives the duration and the configuration. After a
+successful build, Sentinel creates the Deployment and the Service, adds an <code>HTTPRoute</code> if you enabled
+external access, and opens the page of the agent.</p>
+<h3 id="the-build-strategy">The build strategy<a class="headerlink" href="#the-build-strategy" title="Permanent link">#</a></h3>
+<p>Sentinel selects the strategy from the target registry.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Registry</th>
+<th>Strategy</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In the cluster, on Kind</td>
+<td><code>buildah-insecure-push</code></td>
+<td>The internal registry has no TLS.</td>
+</tr>
+<tr>
+<td>External: quay.io, ghcr.io, docker.io</td>
+<td><code>buildah</code></td>
+<td>TLS is available.</td>
+</tr>
+</tbody>
+</table></div>
+<p>To select a different strategy, use the <strong>Build Configuration</strong> section.</p>
+<h3 id="other-build-options">Other build options<a class="headerlink" href="#other-build-options" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dockerfile path</td>
+<td><code>Dockerfile</code>, in the source subfolder</td>
+</tr>
+<tr>
+<td>Build timeout</td>
+<td>15 minutes</td>
+</tr>
+<tr>
+<td>Build arguments</td>
+<td>None. The format is <code>KEY=value</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">#</a></h2>
+<p>You can add each variable in the form, or import a <code>.env</code> file from GitHub. A simple value has this
+form:</p>
+<pre><code class="language-ini">MCP_URL=http://weather-tool:8080/mcp
+</code></pre>
+<h3 id="to-reference-a-secret-or-a-configmap">To reference a Secret or a ConfigMap<a class="headerlink" href="#to-reference-a-secret-or-a-configmap" title="Permanent link">#</a></h3>
+<p>Do not put a secret in a <code>.env</code> file. Give a JSON value instead. Sentinel converts the JSON value into a
+Kubernetes <code>valueFrom</code> reference.</p>
+<p>This example is the complete form:</p>
+<pre><code class="language-ini">OPENAI_API_KEY='{&quot;valueFrom&quot;: {&quot;secretKeyRef&quot;: {&quot;name&quot;: &quot;openai-secret&quot;, &quot;key&quot;: &quot;apikey&quot;}}}'
+</code></pre>
+<p>This example is a short form. Sentinel adds the <code>valueFrom</code> level for you:</p>
+<pre><code class="language-ini">OPENAI_API_KEY='{&quot;secretKeyRef&quot;: {&quot;name&quot;: &quot;openai-secret&quot;, &quot;key&quot;: &quot;apikey&quot;}}'
+</code></pre>
+<p>A ConfigMap uses the same form:</p>
+<pre><code class="language-ini">WEATHER_CONFIG='{&quot;configMapKeyRef&quot;: {&quot;name&quot;: &quot;weather-config&quot;, &quot;key&quot;: &quot;settings&quot;}}'
+</code></pre>
+<p>Keep the single quotation marks. Without them, the parser divides the JSON value.</p>
+<p>Create the Secret first, in the namespace that will run the agent:</p>
+<pre><code class="language-bash">kubectl create secret generic openai-secret \
+  --from-literal=apikey='&lt;YOUR_API_KEY&gt;' \
+  -n team1
+</code></pre>
+<h2 id="the-deployment-types">The deployment types<a class="headerlink" href="#the-deployment-types" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deployment</code></td>
+<td>An agent that keeps no state. This type is the default.</td>
+</tr>
+<tr>
+<td><code>statefulset</code></td>
+<td>An agent that has durable storage.</td>
+</tr>
+<tr>
+<td><code>sandbox</code></td>
+<td>An agent that needs stronger isolation. See <a href="../concepts/experiments/sandboxes.html">Sandboxes</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="with-a-custom-resource">With a custom resource<a class="headerlink" href="#with-a-custom-resource" title="Permanent link">#</a></h2>
+<p>If you deploy with GitOps, write the Deployment, and then add this resource:</p>
+<pre><code class="language-yaml">apiVersion: agent.sentinel.dev/v1alpha1
+kind: AgentRuntime
+metadata:
+  name: orders
+  namespace: team1
+spec:
+  type: agent
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: orders
+</code></pre>
+<p>The operator does the remaining work. See
+<a href="../reference/custom-resources.html">Custom resources</a>.</p>
+<h2 id="change-the-cortex-configuration-of-one-agent">Change the Cortex configuration of one agent<a class="headerlink" href="#change-the-cortex-configuration-of-one-agent" title="Permanent link">#</a></h2>
+<p>To read the current inbound and outbound plugin chains, in execution order:</p>
+<pre><code class="language-bash">sentinel agents authbridge get orders
+</code></pre>
+<p>To replace them:</p>
+<pre><code class="language-bash">sentinel agents authbridge set orders --policy-file ./authbridge.yaml
+</code></pre>
+<p>The command sends the file without a change, so your comments and your key order remain. The server
+validates the file. Add <code>--wait</code> to wait until the change is active.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>--wait</code> option compares the new configuration with the configuration that was active before the
+command. It therefore cannot confirm a configuration that is already active. In that case the command
+reaches its time limit and exits with an error.</p>
+</div>
+<h2 id="send-a-message-to-the-agent">Send a message to the agent<a class="headerlink" href="#send-a-message-to-the-agent" title="Permanent link">#</a></h2>
+<p>Select the agent, select <strong>Details</strong>, then select <strong>Chat</strong>.</p>
+<h2 id="delete-the-agent">Delete the agent<a class="headerlink" href="#delete-the-agent" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">sentinel agents delete orders
+</code></pre>
+<p>This command does not delete an
+<a href="../concepts/experiments/agent-context.html">agent context</a>. Delete the context separately.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="bring-your-own-agent.html">Bring your own agent</a> gives the requirements for your code.</li>
+<li><a href="deploy-a-tool.html">Deploy a tool</a></li>
+<li><a href="../operate/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="bring-your-own-agent.html"><span>Previous</span>Bring your own agent</a><a class="next" href="deploy-a-tool.html"><span>Next</span>Deploy a tool</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/workloads/deploy-an-agent.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

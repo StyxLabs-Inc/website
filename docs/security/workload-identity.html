@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workload identity | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="How SPIRE issues an identity, and how to confirm that it operates.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/security/workload-identity.html">
+  <meta property="og:title" content="Workload identity — Sentinel Docs">
+  <meta property="og:description" content="How SPIRE issues an identity, and how to confirm that it operates.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/security/workload-identity.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details open><summary><a href="index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="workload-identity.html" class="active" aria-current="page">Workload identity</a></li><li><a href="authbridge.html">AuthBridge</a></li><li><a href="authentication-modes.html">Authentication modes</a></li><li><a href="flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Security</p>
+        <h1>Workload identity</h1>
+        <p class="docs-lede">How SPIRE issues an identity, and how to confirm that it operates.</p>
+        <p>Each Sentinel workload receives an identity from <a href="https://spiffe.io/docs/latest/spire-about/">SPIRE</a>.
+The workload can prove that identity with cryptography. This identity is the basis of the security
+model. Each access decision starts from a proven identity, and not from a credential that someone gave
+to the workload.</p>
+<p>Install SPIRE with the <code>--with-spire</code> option, or with <code>--with-all</code>.</p>
+<h2 id="the-form-of-an-identity">The form of an identity<a class="headerlink" href="#the-form-of-an-identity" title="Permanent link">#</a></h2>
+<pre><code>spiffe://{trust-domain}/ns/{namespace}/sa/{service-account}
+</code></pre>
+<p>These are examples:</p>
+<pre><code>spiffe://localtest.me/ns/team/sa/weather-tool
+spiffe://localtest.me/ns/team/sa/slack-researcher
+spiffe://apps.cluster.example.com/ns/gateway-system/sa/mcp-gateway
+</code></pre>
+<p>You set the trust domain at installation time with the <code>--domain</code> option. On Kind the default value is
+<code>localtest.me</code>. The namespace and the service account come from the pod.</p>
+<p>The identity comes from <strong>what the workload is</strong>, and the node attests it. It does not come from a value
+that the workload asserts. A pod therefore cannot present the identity of a different pod. There is also
+no credential to steal, because SPIRE issues the identity again continuously.</p>
+<h2 id="the-identity-documents">The identity documents<a class="headerlink" href="#the-identity-documents" title="Permanent link">#</a></h2>
+<p>SPIRE issues an identity document in two formats. It renews both formats automatically.</p>
+<p>An <strong>X.509 document</strong> is a certificate. Workloads use it for mTLS.</p>
+<p>A <strong>JWT document</strong> is a signed token. A workload uses it to authenticate to an HTTP interface such as
+Keycloak:</p>
+<pre><code class="language-json">{
+  &quot;sub&quot;: &quot;spiffe://localtest.me/ns/team/sa/slack-researcher&quot;,
+  &quot;aud&quot;: &quot;sentinel&quot;,
+  &quot;iss&quot;: &quot;https://spire-server.spire.svc.cluster.local:8443&quot;,
+  &quot;iat&quot;: 1735686000,
+  &quot;exp&quot;: 1735689600
+}
+</code></pre>
+<p>A helper program next to your workload reads both documents from SPIRE and writes them to a file. It
+replaces each document before the document expires. Your agent does not manage them.</p>
+<h2 id="confirm-that-spire-operates">Confirm that SPIRE operates<a class="headerlink" href="#confirm-that-spire-operates" title="Permanent link">#</a></h2>
+<p>The DaemonSets must be present and ready:</p>
+<pre><code class="language-bash">kubectl get daemonsets -n zero-trust-workload-identity-manager
+</code></pre>
+<p>If the <code>Current</code> column or the <code>Ready</code> column shows <code>0</code>, no other feature in this section operates. See
+<a href="../operate/troubleshooting.html">Troubleshooting</a>.</p>
+<p>The discovery endpoint must return the signing keys:</p>
+<pre><code class="language-bash">curl http://spire-oidc.localtest.me:8080/keys
+</code></pre>
+<p>Keycloak uses this endpoint to validate the JWT document of a workload. If the endpoint is empty or does
+not respond, SPIFFE authentication cannot operate.</p>
+<p>A workload must have received its documents:</p>
+<pre><code class="language-bash">kubectl exec -n team deployment/slack-researcher \
+  --container authbridge-proxy -- ls -la /opt/
+</code></pre>
+<p>You must see the files <code>svid.pem</code>, <code>svid_key.pem</code>, <code>svid_bundle.pem</code> and <code>jwt_svid.token</code>.</p>
+<p>Tornjak gives a browser interface for the registered workloads:</p>
+<pre><code class="language-bash">open http://spire-tornjak-ui.localtest.me:8080/
+</code></pre>
+<h2 id="how-an-identity-becomes-access">How an identity becomes access<a class="headerlink" href="#how-an-identity-becomes-access" title="Permanent link">#</a></h2>
+<p>A SPIFFE identity says which workload sent a request. It does not say what the workload can do. The
+permissions come from Keycloak.</p>
+<p>The operator registers each workload as a Keycloak client, and uses the SPIFFE identity of the workload
+as the identifier of the client. The operator does this automatically when it finds a new workload. The
+workload can then present its JWT document to Keycloak and receive an access token. It never holds a
+client secret.</p>
+<p>See <a href="authentication-modes.html">Authentication modes</a> for the configuration of this exchange, and
+<a href="../concepts/core/identity.html">Identity and trust</a> for the complete chain of delegation.</p>
+<h2 id="certificates-and-a-suspended-computer">Certificates and a suspended computer<a class="headerlink" href="#certificates-and-a-suspended-computer" title="Permanent link">#</a></h2>
+<p>The identity documents are short-lived by design. A document can expire while a computer is suspended. The Istio ambient data plane then continues
+to present the expired certificate. It does not read a new one. Each address then returns the status 503, and each pod appears
+correct.</p>
+<p>To recover:</p>
+<pre><code class="language-bash">scripts/k8s/mesh-recover.sh --fix
+</code></pre>
+<p>To examine the state without a change, run the script without the <code>--fix</code> option. For the details and
+the upstream defect, see
+<a href="../operate/troubleshooting.html#a-cluster-returns-503-after-you-suspend-the-computer">Troubleshooting</a>.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="authentication-modes.html">Authentication modes</a></li>
+<li><a href="authbridge.html">AuthBridge</a></li>
+<li><a href="https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/">SPIFFE concepts</a></li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="index.html"><span>Previous</span>Security</a><a class="next" href="authbridge.html"><span>Next</span>AuthBridge</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/security/workload-identity.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install options | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Each installer option, the supported versions and the namespaces.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/reference/install-options.html">
+  <meta property="og:title" content="Install options — Sentinel Docs">
+  <meta property="og:description" content="Each installer option, the supported versions and the namespaces.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/reference/install-options.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details open><summary><a href="index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="cli.html">CLI</a></li><li><a href="custom-resources.html">Custom resources</a></li><li><a href="install-options.html" class="active" aria-current="page">Install options</a></li><li><a href="glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Reference</p>
+        <h1>Install options</h1>
+        <p class="docs-lede">Each installer option, the supported versions and the namespaces.</p>
+        <h2 id="the-kind-installer">The Kind installer<a class="headerlink" href="#the-kind-installer" title="Permanent link">#</a></h2>
+<p>The script is <code>scripts/kind/setup-sentinel.sh</code>. It always installs the core components. Each other
+component has an option.</p>
+<h3 id="the-core-components">The core components<a class="headerlink" href="#the-core-components" title="Permanent link">#</a></h3>
+<p>cert-manager, the Gateway API resources, the Istio gateway controller, Keycloak, the operator and the
+webhook.</p>
+<h3 id="the-component-options">The component options<a class="headerlink" href="#the-component-options" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What it adds</th>
+<th>What it also enables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--with-istio</code></td>
+<td>The Istio ambient mesh: mTLS and waypoints</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--with-spire</code></td>
+<td>SPIRE and the SPIFFE identity provider</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--with-backend</code></td>
+<td>The Sentinel backend</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--with-ui</code></td>
+<td>The console</td>
+<td><code>--with-backend</code></td>
+</tr>
+<tr>
+<td><code>--with-mcp-gateway</code></td>
+<td>The MCP Gateway</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--with-kuadrant</code></td>
+<td>The Kuadrant operator</td>
+<td><code>--with-mcp-gateway</code></td>
+</tr>
+<tr>
+<td><code>--with-otel</code></td>
+<td>The OpenTelemetry collector</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--with-mlflow</code></td>
+<td>MLflow</td>
+<td><code>--with-otel</code>, <code>--with-istio</code></td>
+</tr>
+<tr>
+<td><code>--with-builds</code></td>
+<td>Tekton and Shipwright</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--with-kiali</code></td>
+<td>Kiali and Prometheus</td>
+<td><code>--with-istio</code></td>
+</tr>
+<tr>
+<td><code>--with-skills</code></td>
+<td>The skills flags and a skill store in the cluster</td>
+<td><code>--with-backend</code>, <code>--with-ui</code></td>
+</tr>
+<tr>
+<td><code>--with-examples</code></td>
+<td>The weather agent and the weather tool</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>--with-all</code></td>
+<td>Each option above</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="the-other-options">The other options<a class="headerlink" href="#the-other-options" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--skip-cluster</code></td>
+<td>Uses a Kind cluster that exists.</td>
+</tr>
+<tr>
+<td><code>--build-images</code></td>
+<td>Builds the platform images from source and copies them into Kind.</td>
+</tr>
+<tr>
+<td><code>--preload-images</code></td>
+<td>Downloads the third-party images first, then copies them into the node. This option avoids the rate limits of Docker Hub.</td>
+</tr>
+<tr>
+<td><code>--secrets-file FILE</code></td>
+<td>Names a file of secrets. The default is <code>charts/sentinel/.secrets.yaml</code>, when that file exists.</td>
+</tr>
+<tr>
+<td><code>--cluster-name NAME</code></td>
+<td>Names the Kind cluster. The default is <code>sentinel</code>.</td>
+</tr>
+<tr>
+<td><code>--domain DOMAIN</code></td>
+<td>Sets the domain for each address. The default is <code>localtest.me</code>.</td>
+</tr>
+<tr>
+<td><code>--sentinel-values FILE</code></td>
+<td>A Helm values file for the <code>sentinel</code> chart.</td>
+</tr>
+<tr>
+<td><code>--sentinel-deps-values FILE</code></td>
+<td>A Helm values file for the <code>sentinel-deps</code> chart.</td>
+</tr>
+<tr>
+<td><code>--dry-run</code></td>
+<td>Prints each command. It makes no change.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The script gives the <code>--sentinel-values</code> file to Helm as <code>--values</code>. Each valid Helm value is therefore
+accepted.</p>
+<p>For the current list, run <code>scripts/kind/setup-sentinel.sh --help</code>.</p>
+<h2 id="the-openshift-installer">The OpenShift installer<a class="headerlink" href="#the-openshift-installer" title="Permanent link">#</a></h2>
+<p>The script is <code>scripts/ocp/setup-sentinel.sh</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--sentinel-repo PATH\|URL</code></td>
+<td>A local directory or a GitHub address. The default action is a clone of <code>main</code> into <code>~/.cache/sentinel</code>.</td>
+</tr>
+<tr>
+<td><code>--realm REALM</code></td>
+<td>The Keycloak realm. The default is <code>sentinel</code>.</td>
+</tr>
+<tr>
+<td><code>--skip-ovn-patch</code></td>
+<td>Omits the OVN routing change.</td>
+</tr>
+<tr>
+<td><code>--skip-mcp-gateway</code></td>
+<td>Omits the MCP Gateway.</td>
+</tr>
+<tr>
+<td><code>--skip-ui</code></td>
+<td>Omits the console and the backend.</td>
+</tr>
+<tr>
+<td><code>--skip-mlflow</code></td>
+<td>Omits MLflow.</td>
+</tr>
+<tr>
+<td><code>--operator-image IMG:TAG</code></td>
+<td>Uses a different operator image.</td>
+</tr>
+<tr>
+<td><code>--dry-run</code></td>
+<td>Prints each command. It makes no change.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="remove-an-installation">Remove an installation<a class="headerlink" href="#remove-an-installation" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">scripts/kind/cleanup-sentinel.sh                    # Remove Sentinel. Keep the cluster.
+scripts/kind/cleanup-sentinel.sh --destroy-cluster  # Remove both.
+</code></pre>
+<h2 id="the-feature-flags">The feature flags<a class="headerlink" href="#the-feature-flags" title="Permanent link">#</a></h2>
+<p>Set each flag in the Helm values, during the installation or with the <code>--reuse-values</code> option.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>featureFlags.skills</code></td>
+<td>Import, list and delete a skill, and give a skill to an agent.</td>
+</tr>
+<tr>
+<td><code>featureFlags.externalSkills</code></td>
+<td>References to an external skill registry. It needs <code>skills</code> also.</td>
+</tr>
+<tr>
+<td><code>components.skillberryStore.enabled</code></td>
+<td>Installs the skill store in the cluster.</td>
+</tr>
+<tr>
+<td><code>ui.backend.contextServiceUrl</code></td>
+<td>Enables <a href="../concepts/experiments/agent-context.html">agent context</a>. An empty value disables it.</td>
+</tr>
+<tr>
+<td><code>meshSelfHeal.enabled</code></td>
+<td>For Kind only. Adds a CronJob that restarts the data plane after a certificate expires.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <code>sentinel-feature-gates</code> ConfigMap is separate. It applies to the whole cluster. It controls which
+Cortex components run, and whether skill discovery is active. A namespace cannot replace it, and a
+workload cannot replace it. See
+<a href="custom-resources.html#configuration-layers">Custom resources</a>.</p>
+<h2 id="the-supported-versions">The supported versions<a class="headerlink" href="#the-supported-versions" title="Permanent link">#</a></h2>
+<h3 id="the-tools">The tools<a class="headerlink" href="#the-tools" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kubectl</td>
+<td>1.32.1 or later</td>
+</tr>
+<tr>
+<td>Helm</td>
+<td>3.18.0 or later, below 4</td>
+</tr>
+<tr>
+<td>git</td>
+<td>2.48.0 or later</td>
+</tr>
+<tr>
+<td>Ollama</td>
+<td>0.11.0 or later, when you use it</td>
+</tr>
+<tr>
+<td><code>oc</code></td>
+<td>4.16.0 or later, for OpenShift</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="the-platforms">The platforms<a class="headerlink" href="#the-platforms" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes on Kind</td>
+<td>The primary target for development. The test pipeline uses version 1.35.0.</td>
+</tr>
+<tr>
+<td>OpenShift</td>
+<td>The project tested version 4.19. The test pipeline uses version 4.20 with HyperShift.</td>
+</tr>
+<tr>
+<td>Another Kubernetes distribution</td>
+<td>It must operate with <a href="../operate/install-helm.html">Helm</a>. The test pipeline does not cover it.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the state of each test pipeline, see the
+<a href="https://github.com/StyxLabs-Inc/sentinel">repository README</a>.</p>
+<h3 id="the-machine-size">The machine size<a class="headerlink" href="#the-machine-size" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Memory</th>
+<th>CPUs</th>
+<th>What operates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recommended</td>
+<td>18 GiB</td>
+<td>6</td>
+<td>The ambient mesh, SPIRE, the console, the backend and a build from source.</td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td>16 GiB</td>
+<td>4</td>
+<td>The core platform and the console. Images only.</td>
+</tr>
+<tr>
+<td>Below the minimum</td>
+<td>—</td>
+<td>4 or fewer</td>
+<td>The installation usually completes. A build stays in <code>Pending</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The installer gives a warning below the recommended values. It does not stop.</p>
+<h2 id="the-namespaces">The namespaces<a class="headerlink" href="#the-namespaces" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sentinel-system</code></td>
+<td>The operator, the webhook, the backend, the console and MLflow</td>
+</tr>
+<tr>
+<td><code>keycloak</code></td>
+<td>Keycloak and its database</td>
+</tr>
+<tr>
+<td><code>istio-system</code></td>
+<td>The Istio control plane, ztunnel and the gateways</td>
+</tr>
+<tr>
+<td><code>spire-system</code></td>
+<td>The SPIRE agent</td>
+</tr>
+<tr>
+<td><code>zero-trust-workload-identity-manager</code></td>
+<td>The SPIRE DaemonSets</td>
+</tr>
+<tr>
+<td><code>gateway-system</code></td>
+<td>The Envoy proxy of the MCP Gateway</td>
+</tr>
+<tr>
+<td><code>mcp-system</code></td>
+<td>The controller, the broker and the router of the MCP Gateway</td>
+</tr>
+<tr>
+<td><code>cr-system</code></td>
+<td>The container registry in the cluster</td>
+</tr>
+<tr>
+<td>Your own namespaces</td>
+<td>Your agents and tools</td>
+</tr>
+</tbody>
+</table></div>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="custom-resources.html"><span>Previous</span>Custom resources</a><a class="next" href="glossary.html"><span>Next</span>Glossary</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/reference/install-options.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

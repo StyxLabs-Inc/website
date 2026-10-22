@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Context compaction | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Make tool output smaller before the model reads it.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/experiments/context-compaction.html">
+  <meta property="og:title" content="Context compaction — Sentinel Docs">
+  <meta property="og:description" content="Make tool output smaller before the model reads it.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/experiments/context-compaction.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../core/architecture.html">Architecture</a></li><li><a href="../core/agents-and-tools.html">Agents and tools</a></li><li><a href="../core/cortex.html">Cortex</a></li><li><a href="../core/identity.html">Identity and trust</a></li><li><a href="../core/control-plane.html">Control plane</a></li></ul></details></li><li><details open><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="mcp-gateway.html">MCP Gateway</a></li><li><a href="skills.html">Skills</a></li><li><a href="sandboxes.html">Sandboxes</a></li><li><a href="agent-context.html">Agent context</a></li><li><a href="intent-based-access.html">Intent-based access</a></li><li><a href="tool-validation.html">Tool call validation</a></li><li><a href="context-compaction.html" class="active" aria-current="page">Context compaction</a></li><li><a href="cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Context compaction</h1>
+        <p class="docs-lede">Make tool output smaller before the model reads it.</p>
+        <p>Context compaction changes the request that an agent sends to a model. It makes the tool output in that
+request smaller. A task with more output than the context window of the model then completes correctly.
+The name of the plugin is <code>context-guru</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Alpha</p>
+<p>This feature is an experiment. The behaviour and the configuration will change. Use the observe mode
+before you use the enforce mode.</p>
+</div>
+<h2 id="the-problem-that-it-solves">The problem that it solves<a class="headerlink" href="#the-problem-that-it-solves" title="Permanent link">#</a></h2>
+<p>An agent collects tool output. A small number of calls that return audit records or file lists can
+produce more text than the model accepts.</p>
+<p>The failure is silent. The request is truncated, the model does not receive the important part, and the
+model gives a confident and incorrect answer.</p>
+<p>This table shows one measured example. There is one agent, one model and a context window of 12,000
+tokens. The plugin is the only variable.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>What the model receives</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>off</strong></td>
+<td>18,000 tokens, truncated to 12,000</td>
+<td>The model does not find the problem. It gives an incorrect answer.</td>
+</tr>
+<tr>
+<td><strong>observe</strong></td>
+<td>18,000 tokens, truncated. The plugin measures only.</td>
+<td>The same incorrect answer. The log records that the plugin can reduce 52 KB to 30 KB.</td>
+</tr>
+<tr>
+<td><strong>enforce</strong></td>
+<td>10,000 tokens, compacted. The request fits.</td>
+<td>The model finds the duplicate transaction and clears the others.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The observe mode is the reason to have an observe mode. It gives you the measurement without a change
+to the behaviour. You can therefore calculate the benefit before you accept the risk.</p>
+<h2 id="how-it-operates">How it operates<a class="headerlink" href="#how-it-operates" title="Permanent link">#</a></h2>
+<p>The plugin runs inside the Cortex process, on the outbound chain. It is not a separate service.
+The model calls of the agent pass through the proxy, and the plugin changes the body of the request
+before the request leaves the pod.</p>
+<p><img alt="The plugin compacts the tool output before the request reaches the model" src="../../images/contextguru-architecture.svg" /></p>
+<p>The plugin uses three methods on the tool output:</p>
+<ul>
+<li><strong>Remove duplicates.</strong> It combines repeated content.</li>
+<li><strong>Extract.</strong> It selects the important part. For example, it selects the code from a large file list.</li>
+<li><strong>Summarize.</strong> It shortens the remainder.</li>
+</ul>
+<p>The response path is a pass-through today. Expansion and restoration will arrive in a later release.</p>
+<h2 id="enable-the-plugin">Enable the plugin<a class="headerlink" href="#enable-the-plugin" title="Permanent link">#</a></h2>
+<p>You must enable this plugin when you <strong>build</strong> Cortex, not only when you configure it. Its engine
+needs a large set of libraries. The build option is <code>-tags include_plugin_contextguru</code>. Confirm that
+your Cortex program contains the plugin before you configure it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>paths</code></td>
+<td>The request paths to compact. The defaults are <code>/v1/chat/completions</code>, <code>/v1/completions</code> and <code>/v1/messages</code>.</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>An optional address of a small model, for the summarize and extract methods. If you omit it, those methods use fixed rules.</td>
+</tr>
+<tr>
+<td><code>engine</code></td>
+<td>The configuration of the engine. The default is <code>preset: balanced</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <code>model</code> object accepts <code>base_url</code>, <code>model</code>, <code>api_key</code>, <code>max_tokens</code> with a default of 4096, and
+<code>timeout_ms</code> with a default of 150000.</p>
+<p>For each setting, see the
+<a href="https://github.com/sentinel/cortex/blob/main/authbridge/docs/plugin-catalog.md#context-guru">plugin catalogue</a>.</p>
+<h2 id="how-to-introduce-the-plugin">How to introduce the plugin<a class="headerlink" href="#how-to-introduce-the-plugin" title="Permanent link">#</a></h2>
+<ol>
+<li>Get a Cortex program that contains the plugin.</li>
+<li>Enable the plugin in the <strong>observe</strong> mode, on one agent that produces large tool output.</li>
+<li>Read the log. It records the reduction that the plugin can make.</li>
+<li>If the reduction is sufficient, change to the <strong>enforce</strong> mode. Then confirm that the answers of the
+   agent are still correct.</li>
+</ol>
+<p>Step 4 is necessary. Compaction changes what the model receives. Confirm the result with your own
+tasks.</p>
+<h2 id="use-the-plugin-on-your-computer">Use the plugin on your computer<a class="headerlink" href="#use-the-plugin-on-your-computer" title="Permanent link">#</a></h2>
+<p>You do not need a cluster:</p>
+<pre><code class="language-bash">sentinel authbridge exec \
+  --config https://raw.githubusercontent.com/sentinel/sentinel-cli/refs/heads/main/examples/context-guru-tls-bridge.yaml \
+  -- claude &quot;explain this repo&quot;
+</code></pre>
+<p>See <a href="../../get-started/laptop.html">Quickstart on a laptop</a>.</p>
+<h2 id="what-you-see-for-it">What you see for it<a class="headerlink" href="#what-you-see-for-it" title="Permanent link">#</a></h2>
+<p>The observe mode records the reduction that the plugin can make, so you can measure the benefit
+before you accept the risk. On a laptop, <code>agentop observe</code> shows the tokens and the cost that the
+plugin removed for each session. See
+<a href="../../get-started/reading-the-numbers.html#read-the-pruning-savings">Read the pruning savings</a>.</p>
+<h2 id="try-it">Try it<a class="headerlink" href="#try-it" title="Permanent link">#</a></h2>
+<p>The <a href="https://github.com/sentinel/cortex/tree/main/authbridge/demos/context-guru">context compaction demonstration</a>
+contains the finance example from the table above.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a> shows the saving that the plugin made.</li>
+<li><a href="cost-control.html">Cost control</a> gives a smaller reduction with less risk.</li>
+<li><a href="https://github.com/sentinel/context-guru">context-guru</a> is the engine.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="tool-validation.html"><span>Previous</span>Tool call validation</a><a class="next" href="cost-control.html"><span>Next</span>Cost control</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/experiments/context-compaction.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

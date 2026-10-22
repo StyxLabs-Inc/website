@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS HyperShift Setup &amp; Operation | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="AWS HyperShift Setup &amp; Operation — Sentinel documentation.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/operate/hypershift/AWS.html">
+  <meta property="og:title" content="AWS HyperShift Setup &amp; Operation — Sentinel Docs">
+  <meta property="og:description" content="AWS HyperShift Setup &amp; Operation — Sentinel documentation.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/operate/hypershift/AWS.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../../concepts/core/architecture.html">Architecture</a></li><li><a href="../../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../../concepts/core/cortex.html">Cortex</a></li><li><a href="../../concepts/core/identity.html">Identity and trust</a></li><li><a href="../../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../../concepts/experiments/skills.html">Skills</a></li><li><a href="../../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details open><summary><a href="../index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../install-openshift.html">Install on OpenShift</a></li><li><a href="../install-helm.html">Install with Helm</a></li><li><a href="../observability.html">Observability</a></li><li><a href="../troubleshooting.html">Troubleshooting</a></li><li><details open><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="AWS.html" class="active" aria-current="page">AWS HyperShift Setup &amp; Operation</a></li><li><a href="GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Install and operate</p>
+        <h1>AWS HyperShift Setup &amp; Operation</h1>
+        
+        <p>Complete guide for setting up and managing Sentinel HyperShift clusters on AWS.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<h3 id="tools-required">Tools Required<a class="headerlink" href="#tools-required" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWS CLI</td>
+<td>2.x</td>
+<td>AWS resource management</td>
+</tr>
+<tr>
+<td>kubectl</td>
+<td>1.28+</td>
+<td>Kubernetes cluster interaction</td>
+</tr>
+<tr>
+<td>jq</td>
+<td>Latest</td>
+<td>JSON processing</td>
+</tr>
+<tr>
+<td>Bash</td>
+<td>3.2+</td>
+<td>Script execution</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.11+</td>
+<td>E2E tests</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="macos-installation">macOS Installation<a class="headerlink" href="#macos-installation" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">brew install awscli kubectl jq python@3.11
+</code></pre>
+<h3 id="linux-ubuntudebian">Linux (Ubuntu/Debian)<a class="headerlink" href="#linux-ubuntudebian" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install -y awscli kubectl jq python3.11
+
+# Or use Snap for AWS CLI
+sudo snap install aws-cli --classic
+</code></pre>
+<h3 id="aws-account-requirements">AWS Account Requirements<a class="headerlink" href="#aws-account-requirements" title="Permanent link">#</a></h3>
+<ol>
+<li><strong>Admin access</strong> (for one-time setup only)</li>
+<li><strong>EC2 quota</strong>: 10+ instances</li>
+<li><strong>VPC quota</strong>: 5+ VPCs</li>
+<li><strong>Elastic IP quota</strong>: 10+ addresses</li>
+<li><strong>Load Balancer quota</strong>: 10+ load balancers</li>
+</ol>
+<p>Check your quotas:</p>
+<pre><code class="language-bash">aws service-quotas list-service-quotas --service-code ec2 \
+  --query 'ServiceQuotas[?QuotaName==`Running On-Demand EC2 instances`]'
+</code></pre>
+<hr />
+<h2 id="one-time-setup-aws-admin">One-Time Setup (AWS Admin)<a class="headerlink" href="#one-time-setup-aws-admin" title="Permanent link">#</a></h2>
+<p>These steps run <strong>once</strong> to prepare your AWS account. You need <strong>admin access</strong> only for this phase.</p>
+<h3 id="step-1-set-admin-credentials">Step 1: Set Admin Credentials<a class="headerlink" href="#step-1-set-admin-credentials" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Get your AWS root or admin credentials from AWS console
+export AWS_ACCESS_KEY_ID=&quot;&lt;your-admin-access-key&gt;&quot;
+export AWS_SECRET_ACCESS_KEY=&quot;&lt;your-admin-secret-key&gt;&quot;
+export AWS_REGION=&quot;us-east-1&quot;  # Or your preferred region
+</code></pre>
+<p><strong>Verify</strong>:</p>
+<pre><code class="language-bash">aws sts get-caller-identity
+# Output shows your account info if credentials work
+</code></pre>
+<h3 id="step-2-login-to-management-cluster">Step 2: Login to Management Cluster<a class="headerlink" href="#step-2-login-to-management-cluster" title="Permanent link">#</a></h3>
+<p>You need cluster-admin access to the existing HyperShift management cluster:</p>
+<pre><code class="language-bash"># Get management cluster kubeconfig (from whoever set it up)
+export KUBECONFIG=~/.kube/hypershift_mgmt
+
+# Or download from AWS Console → EKS → your-cluster
+
+# Verify access
+kubectl cluster-info
+kubectl get ns | grep hypershift
+</code></pre>
+<h3 id="step-3-create-scoped-credentials">Step 3: Create Scoped Credentials<a class="headerlink" href="#step-3-create-scoped-credentials" title="Permanent link">#</a></h3>
+<p>This creates an IAM user with limited permissions (good practice):</p>
+<pre><code class="language-bash"># Run the credential setup script
+./.github/scripts/hypershift/cloud/aws/setup-credentials.sh
+
+# This:
+# 1. Creates IAM user (sentinel-hypershift-ci-user)
+# 2. Creates IAM roles for hosted control planes
+# 3. Creates OpenShift service account
+# 4. Generates access keys
+# 5. Outputs: .env.sentinel-hypershift-custom
+</code></pre>
+<p><strong>Output</strong>: <code>.env.sentinel-hypershift-custom</code> (git-ignored)</p>
+<pre><code class="language-bash"># Contents:
+export CLOUD_PLATFORM=aws
+export AWS_ACCESS_KEY_ID=AKIA...
+export AWS_SECRET_ACCESS_KEY=...
+export AWS_REGION=us-east-1
+export HYPERSHIFT_MGMT_KUBECONFIG=~/.kube/hypershift_mgmt
+export PULL_SECRET=$(cat ~/.docker/config.json)
+export BASE_DOMAIN=sentinel-dev.example.com
+export MANAGED_BY_TAG=sentinel-hypershift-custom
+export HCP_ROLE_NAME=sentinel-hypershift-custom-hcp-role
+</code></pre>
+<h3 id="step-4-verify-setup">Step 4: Verify Setup<a class="headerlink" href="#step-4-verify-setup" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Load the new scoped credentials
+source .env.sentinel-hypershift-custom
+
+# Run preflight check
+./.github/scripts/hypershift/cloud/aws/preflight-check.sh
+
+# Output should show:
+# ✓ AWS credentials valid
+# ✓ Management cluster accessible
+# ✓ Quotas sufficient
+# ✓ Pull secret present
+# ✓ Base domain configured
+</code></pre>
+<p>✅ <strong>One-time setup complete!</strong> You now have scoped credentials for daily development.</p>
+<hr />
+<h2 id="daily-usage-scoped-credentials">Daily Usage (Scoped Credentials)<a class="headerlink" href="#daily-usage-scoped-credentials" title="Permanent link">#</a></h2>
+<p>After one-time setup, use these scoped credentials for all cluster operations.</p>
+<h3 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># 1. Load your credentials
+source .env.sentinel-hypershift-custom
+
+# 2. Create a cluster
+./.github/scripts/hypershift/create-cluster.sh
+
+# Wait 15-20 minutes...
+# ✓ Cluster created
+# ✓ Kubeconfig saved to ~/.clusters/hcp/&lt;cluster-name&gt;/
+
+# 3. Use the cluster
+export KUBECONFIG=~/.clusters/hcp/sentinel-hypershift-custom-aws-&lt;suffix&gt;/auth/kubeconfig
+kubectl get nodes
+
+# 4. Run tests
+uv run pytest sentinel/tests/e2e/ -v
+
+# 5. Cleanup
+./.github/scripts/hypershift/destroy-cluster.sh &lt;suffix&gt;
+</code></pre>
+<h3 id="cluster-naming">Cluster Naming<a class="headerlink" href="#cluster-naming" title="Permanent link">#</a></h3>
+<p>Clusters are named: <code>sentinel-hypershift-custom-aws-${SUFFIX}</code></p>
+<p><strong>Suffix options</strong>:</p>
+<pre><code class="language-bash"># Default: Your username (automatically sanitized)
+./.github/scripts/hypershift/create-cluster.sh
+# → sentinel-hypershift-custom-aws-ladas
+
+# Custom suffix
+./.github/scripts/hypershift/create-cluster.sh pr529
+# → sentinel-hypershift-custom-aws-pr529
+
+# Random suffix
+CLUSTER_SUFFIX=&quot;&quot; ./.github/scripts/hypershift/create-cluster.sh
+# → sentinel-hypershift-custom-aws-abc123
+</code></pre>
+<h3 id="accessing-the-cluster">Accessing the Cluster<a class="headerlink" href="#accessing-the-cluster" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># List available kubeconfigs
+ls ~/.clusters/hcp/
+
+# Set kubeconfig for your cluster
+export KUBECONFIG=~/.clusters/hcp/sentinel-hypershift-custom-aws-pr529/auth/kubeconfig
+
+# Verify access
+kubectl cluster-info
+kubectl get nodes
+kubectl get pods -A
+</code></pre>
+<h3 id="destroying-clusters">Destroying Clusters<a class="headerlink" href="#destroying-clusters" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Destroy specific cluster
+./.github/scripts/hypershift/destroy-cluster.sh pr529
+
+# Or by full name
+./.github/scripts/hypershift/destroy-cluster.sh sentinel-hypershift-custom-aws-pr529
+</code></pre>
+<p><strong>Important</strong>: Always destroy test clusters to avoid AWS costs!</p>
+<hr />
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h2>
+<h3 id="cluster-parameters">Cluster Parameters<a class="headerlink" href="#cluster-parameters" title="Permanent link">#</a></h3>
+<p>Control cluster characteristics via environment variables:</p>
+<pre><code class="language-bash"># Number of worker nodes (default: 2)
+export REPLICAS=3
+./.github/scripts/hypershift/create-cluster.sh
+
+# Instance type (default: m5.xlarge)
+export INSTANCE_TYPE=m5.2xlarge
+./.github/scripts/hypershift/create-cluster.sh
+
+# OpenShift version (default: 4.20.11)
+export OCP_VERSION=4.19.12
+./.github/scripts/hypershift/create-cluster.sh
+
+# Autoscaling (default: min=2, max=5)
+export AUTOSCALE_MIN=1
+export AUTOSCALE_MAX=10
+./.github/scripts/hypershift/create-cluster.sh
+
+# Disable autoscaling
+export AUTOSCALE_MIN=&quot;&quot;
+export AUTOSCALE_MAX=&quot;&quot;
+./.github/scripts/hypershift/create-cluster.sh
+</code></pre>
+<h3 id="aws-region">AWS Region<a class="headerlink" href="#aws-region" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Create cluster in different region
+export AWS_REGION=us-west-2
+./.github/scripts/hypershift/create-cluster.sh
+</code></pre>
+<p>Supported regions: Any AWS region with sufficient quotas</p>
+<hr />
+<h2 id="cicd-integration">CI/CD Integration<a class="headerlink" href="#cicd-integration" title="Permanent link">#</a></h2>
+<h3 id="github-actions-matrix">GitHub Actions Matrix<a class="headerlink" href="#github-actions-matrix" title="Permanent link">#</a></h3>
+<p>Both AWS and GCP run simultaneously:</p>
+<pre><code class="language-yaml">strategy:
+  matrix:
+    cloud: [aws, gcp]
+  max-parallel: 2
+</code></pre>
+<p>Each cloud gets its own secrets and creates clusters independently.</p>
+<h3 id="secrets-configuration">Secrets Configuration<a class="headerlink" href="#secrets-configuration" title="Permanent link">#</a></h3>
+<ol>
+<li>Go to <strong>Repository Settings → Secrets and variables → Actions</strong></li>
+<li>
+<p>Add these secrets (same names as <code>.env</code> file):
+   - <code>AWS_ACCESS_KEY_ID</code>
+   - <code>AWS_SECRET_ACCESS_KEY</code>
+   - <code>AWS_REGION</code>
+   - <code>HYPERSHIFT_MGMT_KUBECONFIG</code> (base64)
+   - <code>PULL_SECRET</code> (JSON)
+   - <code>BASE_DOMAIN</code>
+   - <code>MANAGED_BY_TAG</code>
+   - <code>HCP_ROLE_NAME</code></p>
+</li>
+<li>
+<p>Create <strong>Environments</strong> for <code>e2e-aws</code> and <code>e2e-gcp</code> with separate secret sets</p>
+</li>
+</ol>
+<h3 id="trigger-e2e-tests">Trigger E2E Tests<a class="headerlink" href="#trigger-e2e-tests" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Automatic: Push to main or open PR
+# Manual: GitHub Actions → e2e-hypershift → Run workflow
+
+# Or via gh CLI
+gh workflow run e2e-hypershift.yaml -f cluster_name=pr529
+</code></pre>
+<hr />
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
+<h3 id="cluster-creation-fails">Cluster Creation Fails<a class="headerlink" href="#cluster-creation-fails" title="Permanent link">#</a></h3>
+<p><strong>Error</strong>: "ERROR: Quota exceeded"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Check your quotas
+aws service-quotas list-service-quotas --service-code ec2 \
+  --query 'ServiceQuotas[?QuotaName==`Running On-Demand EC2 instances`]'
+
+# Request quota increase in AWS Console
+# Services → Service Quotas → EC2 → desired quota → Request quota increase
+</code></pre>
+<p><strong>Error</strong>: "ERROR: Cannot connect to management cluster"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Verify kubeconfig is set
+echo $KUBECONFIG
+
+# Verify it points to valid file
+ls -la $KUBECONFIG
+
+# Verify you can connect
+kubectl cluster-info
+</code></pre>
+<h3 id="cluster-wont-delete">Cluster Won't Delete<a class="headerlink" href="#cluster-wont-delete" title="Permanent link">#</a></h3>
+<p><strong>Error</strong>: "ERROR: Timeout waiting for cluster deletion"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Check if control plane namespace is stuck
+oc get ns clusters-sentinel-hypershift-custom-aws-&lt;suffix&gt;
+
+# Force delete if stuck
+oc delete ns clusters-sentinel-hypershift-custom-aws-&lt;suffix&gt; --grace-period=0 --force
+
+# Check for orphaned resources
+./.github/scripts/hypershift/cloud/aws/find-orphaned-resources.sh
+
+# Manually delete via AWS Console if necessary
+aws ec2 describe-instances --filters &quot;Name=tag:kubernetes.io/cluster/sentinel-hypershift-custom-aws-*&quot;
+</code></pre>
+<h3 id="access-denied-errors">Access Denied Errors<a class="headerlink" href="#access-denied-errors" title="Permanent link">#</a></h3>
+<p><strong>Error</strong>: "AccessDenied: User is not authorized..."</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Verify credentials
+aws sts get-caller-identity
+# Should show IAM user, not root
+
+# Check IAM permissions
+aws iam get-user-policy --user-name sentinel-hypershift-ci-user --policy-name sentinel-policy
+
+# If missing, rerun setup-credentials.sh with admin access
+</code></pre>
+<h3 id="dns-issues">DNS Issues<a class="headerlink" href="#dns-issues" title="Permanent link">#</a></h3>
+<p><strong>Error</strong>: "Could not resolve <cluster>.sentinel-dev.example.com"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Verify BASE_DOMAIN is correct
+echo $BASE_DOMAIN
+
+# Verify domain is delegated to Route53
+aws route53 list-hosted-zones | grep sentinel-dev
+
+# Check created DNS records
+aws route53 list-resource-record-sets --hosted-zone-id &lt;zone-id&gt;
+</code></pre>
+<hr />
+<h2 id="cost-management">Cost Management<a class="headerlink" href="#cost-management" title="Permanent link">#</a></h2>
+<h3 id="monitoring-costs">Monitoring Costs<a class="headerlink" href="#monitoring-costs" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># AWS Console → Billing → Cost Explorer
+# Filter by tag: sentinel.io/managed-by = sentinel-hypershift-custom
+
+# Or via AWS CLI
+aws ce get-cost-and-usage \
+  --time-period Start=2026-10-01,End=2026-10-31 \
+  --filter file://cost-filter.json
+</code></pre>
+<h3 id="cost-breakdown">Cost Breakdown<a class="headerlink" href="#cost-breakdown" title="Permanent link">#</a></h3>
+<p>Per cluster (typical):
+- <strong>EC2 instances</strong>: $30-50/month
+- <strong>ELB</strong>: $15/month
+- <strong>VPC/ENI</strong>: $10/month
+- <strong>Route53</strong>: &lt;$1/month
+- <strong>Total</strong>: ~$55-75/month</p>
+<h3 id="cost-optimization">Cost Optimization<a class="headerlink" href="#cost-optimization" title="Permanent link">#</a></h3>
+<ol>
+<li><strong>Destroy unused clusters</strong> (biggest cost driver)</li>
+<li><strong>Use smaller instances</strong> for non-critical tests (t3.large instead of m5.xlarge)</li>
+<li><strong>Reduce node count</strong> (1 node instead of 2 if possible)</li>
+<li><strong>Schedule tests</strong> to run only during business hours</li>
+</ol>
+<hr />
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">#</a></h2>
+<h3 id="cluster-status">Cluster Status<a class="headerlink" href="#cluster-status" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Check if cluster is ready
+oc get hostedcluster -n clusters
+
+# Check control plane pod status
+oc get pods -n clusters-&lt;cluster-name&gt;
+
+# View cluster events
+oc describe hostedcluster -n clusters &lt;cluster-name&gt;
+</code></pre>
+<h3 id="logs">Logs<a class="headerlink" href="#logs" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># HyperShift operator logs
+oc logs -n hypershift-system deployment/hypershift-operator -f
+
+# Control plane pod logs
+oc logs -n clusters-&lt;cluster-name&gt; &lt;pod-name&gt;
+
+# SSH to worker node (via AWS Console)
+# EC2 → Instances → select instance → Connect → Session Manager
+</code></pre>
+<h3 id="aws-resources">AWS Resources<a class="headerlink" href="#aws-resources" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># View all EC2 instances with sentinel tags
+aws ec2 describe-instances \
+  --filters &quot;Name=tag-key,Values=kubernetes.io/cluster/sentinel-hypershift-custom-aws-*&quot;
+
+# View all Route53 records
+aws route53 list-resource-record-sets --hosted-zone-id &lt;zone-id&gt;
+
+# View all security groups
+aws ec2 describe-security-groups \
+  --filters &quot;Name=tag-key,Values=kubernetes.io/cluster/sentinel-hypershift-custom-aws-*&quot;
+</code></pre>
+<hr />
+<h2 id="advanced-custom-vpc-configuration">Advanced: Custom VPC Configuration<a class="headerlink" href="#advanced-custom-vpc-configuration" title="Permanent link">#</a></h2>
+<p>By default, HyperShift creates a new VPC for each cluster. To use existing VPC:</p>
+<pre><code class="language-bash"># Edit AWS Terraform to use existing VPC
+# File: .github/scripts/hypershift/cloud/aws/terraform/variables.tf
+
+# Set VPC ID and subnet IDs
+export VPC_ID=&quot;vpc-12345&quot;
+export SUBNET_IDS=&quot;subnet-11111,subnet-22222&quot;
+
+./.github/scripts/hypershift/create-cluster.sh
+</code></pre>
+<hr />
+<h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">#</a></h2>
+<p><strong>Q: How long does cluster creation take?</strong><br />
+A: 15-20 minutes typically. Monitor in CI logs or management cluster.</p>
+<p><strong>Q: Can I access the cluster while tests run?</strong><br />
+A: Yes, kubeconfig is created immediately. Tests run concurrently.</p>
+<p><strong>Q: What happens to cluster after E2E tests?</strong><br />
+A: It's automatically destroyed to save costs (unless you set skip_destroy=true).</p>
+<p><strong>Q: Can I use a different AWS region?</strong><br />
+A: Yes, set <code>AWS_REGION</code> before creation.</p>
+<p><strong>Q: How much does a test cluster cost?</strong><br />
+A: ~$2-3 per day (if running continuously). Always destroy when done.</p>
+<p><strong>Q: Can I modify a running cluster?</strong><br />
+A: Yes, you have full kubectl access. Changes persist during test run.</p>
+<p><strong>Q: What if credentials expire?</strong><br />
+A: Request new access keys from whoever manages the IAM user.</p>
+<hr />
+<h2 id="related-documentation">Related Documentation<a class="headerlink" href="#related-documentation" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="ARCHITECTURE.html">ARCHITECTURE.md</a> - Multi-cloud overview</li>
+<li><a href="GCP.html">GCP.md</a> - Google Cloud Platform setup (Phase 3+)</li>
+<li><a href="../troubleshooting.html">Troubleshooting</a> - Common issues for both clouds</li>
+<li><a href="https://github.com/StyxLabs-Inc/sentinel/blob/main/docs/_internal/maintainers/rotate-hypershift-ci-credentials.md">Rotating HyperShift CI credentials</a> - Secrets management details</li>
+</ul>
+<hr />
+<h2 id="support">Support<a class="headerlink" href="#support" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>HyperShift Docs</strong>: https://hypershift-docs.readthedocs.io/</li>
+<li><strong>AWS HyperShift</strong>: https://hypershift-docs.readthedocs.io/en/latest/how-to/aws/</li>
+<li><strong>OpenShift Docs</strong>: https://docs.openshift.com/</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="../troubleshooting.html"><span>Previous</span>Troubleshooting</a><a class="next" href="GCP.html"><span>Next</span>GCP HyperShift Setup &amp; Operation</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/operate/hypershift/AWS.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

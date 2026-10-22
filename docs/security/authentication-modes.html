@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authentication modes | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Select between client secrets and SPIFFE authentication.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/security/authentication-modes.html">
+  <meta property="og:title" content="Authentication modes — Sentinel Docs">
+  <meta property="og:description" content="Select between client secrets and SPIFFE authentication.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/security/authentication-modes.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details open><summary><a href="index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="workload-identity.html">Workload identity</a></li><li><a href="authbridge.html">AuthBridge</a></li><li><a href="authentication-modes.html" class="active" aria-current="page">Authentication modes</a></li><li><a href="flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Security</p>
+        <h1>Authentication modes</h1>
+        <p class="docs-lede">Select between client secrets and SPIFFE authentication.</p>
+        <p>Sentinel has two modes for the authentication of the operator and your workloads to Keycloak. The
+installer configures both modes automatically. This page explains which mode you have, and why you can
+change it.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Client secrets, the default</th>
+<th>SPIFFE authentication, recommended</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The operator authenticates with</td>
+<td>Administrator credentials for Keycloak</td>
+<td>Its own SPIFFE identity</td>
+</tr>
+<tr>
+<td>A workload authenticates with</td>
+<td>An OAuth2 client secret</td>
+<td>Its own SPIFFE identity</td>
+</tr>
+<tr>
+<td>Requirements</td>
+<td>None</td>
+<td>SPIRE, from the <code>--with-spire</code> option</td>
+</tr>
+<tr>
+<td>Credentials in the cluster</td>
+<td>One Secret for each workload</td>
+<td>None</td>
+</tr>
+</tbody>
+</table></div>
+<p>The two modes are independent. The operator can use SPIFFE authentication while the workloads use client
+secrets, or the reverse.</p>
+<h2 id="client-secrets">Client secrets<a class="headerlink" href="#client-secrets" title="Permanent link">#</a></h2>
+<p>This mode is the default, and it operates on any installation.</p>
+<p>The operator uses administrator credentials to register a Keycloak client for each agent and each tool.
+Each workload receives an OAuth2 client secret. Kubernetes holds that secret in a Secret in the
+namespace of the workload.</p>
+<h3 id="how-the-mode-operates">How the mode operates<a class="headerlink" href="#how-the-mode-operates" title="Permanent link">#</a></h3>
+<ol>
+<li>At installation time, a Helm job reads the administrator credentials from the
+   <code>keycloak-initial-admin</code> Secret. The job creates a <code>sentinel-keycloak-client-secret</code> Secret in each
+   agent namespace.</li>
+<li>When the operator finds a new workload, it reads <code>keycloak-initial-admin</code> and registers an OAuth2
+   client in Keycloak.</li>
+<li>The operator writes the new <code>client_id</code> and <code>client_secret</code> values to a
+   <code>sentinel-keycloak-client-credentials-*</code> Secret in the namespace of the workload.</li>
+<li>AuthBridge reads those files and uses them for the token exchange.</li>
+</ol>
+<p>You configure nothing. The operator creates a Secret for each workload when you deploy the workload.</p>
+<h3 id="to-use-a-different-administrator-secret">To use a different administrator Secret<a class="headerlink" href="#to-use-a-different-administrator-secret" title="Permanent link">#</a></h3>
+<pre><code class="language-yaml">keycloak:
+  adminSecretName: keycloak-initial-admin
+  adminUsernameKey: username
+  adminPasswordKey: password
+</code></pre>
+<h3 id="after-you-change-the-administrator-credentials">After you change the administrator credentials<a class="headerlink" href="#after-you-change-the-administrator-credentials" title="Permanent link">#</a></h3>
+<p>The operator holds the credentials in memory. Restart the operator so that it reads the Secret again:</p>
+<pre><code class="language-bash">kubectl rollout restart deployment/sentinel-controller-manager -n sentinel-system
+</code></pre>
+<p>Confirm that the operator authenticates:</p>
+<pre><code class="language-bash">POD=$(kubectl get pod -n sentinel-system -l control-plane=controller-manager \
+  -o jsonpath='{.items[0].metadata.name}')
+kubectl logs -n sentinel-system &quot;$POD&quot; -c manager | grep -i &quot;keycloak\|auth&quot; | tail -5
+</code></pre>
+<h2 id="spiffe-authentication">SPIFFE authentication<a class="headerlink" href="#spiffe-authentication" title="Permanent link">#</a></h2>
+<p>Use this mode when you have SPIRE. Sentinel creates no credential, holds no credential and renews no
+credential. There is therefore nothing that can leak.</p>
+<h3 id="how-the-mode-operates_1">How the mode operates<a class="headerlink" href="#how-the-mode-operates_1" title="Permanent link">#</a></h3>
+<p>SPIRE gives each workload a short-lived JWT document that contains the SPIFFE identity of the workload.
+The workload presents that document to Keycloak as a client assertion, as
+<a href="https://tools.ietf.org/html/rfc7523">RFC 7523</a> describes. Keycloak returns an access token.</p>
+<p>At installation time, a Helm job with the name <code>operator-client-bootstrap</code> runs one time. It uses
+administrator credentials to configure Keycloak in three steps:</p>
+<ol>
+<li>It creates a SPIFFE identity provider in Keycloak. The provider uses the discovery endpoint of SPIRE.</li>
+<li>It creates a Keycloak client for the operator. The client uses the <code>federated-jwt</code> authenticator, and
+   the subject is the SPIFFE identity of the operator.</li>
+<li>It gives the client the <code>manage-clients</code> role. This role is limited. It is not the administrator role.</li>
+</ol>
+<p>The operator then authenticates on each cycle:</p>
+<pre><code>Operator pod
+├─ spiffe-helper container ──► SPIRE
+│     writes the JWT document to /opt/jwt_svid.token, and renews it
+└─ manager container
+      reads the JWT document ──► exchanges it with Keycloak ──► access token
+</code></pre>
+<h3 id="the-audience-must-be-the-public-address">The audience must be the public address<a class="headerlink" href="#the-audience-must-be-the-public-address" title="Permanent link">#</a></h3>
+<p>This requirement is the most common cause of a failure.</p>
+<p>The <code>aud</code> claim of the JWT document must be exactly the issuer address of the Keycloak realm. That
+address is always <code>keycloak.publicUrl/realms/&lt;realm&gt;</code>. Sentinel calculates it from your Helm values.</p>
+<p>The address must be the <strong>external, public</strong> address. It must not be the internal address of the
+service. Keycloak has the public address in its issuer configuration, and the check is a comparison of
+two strings. The internal address reaches the same server and still fails the check.</p>
+<p>If SPIFFE authentication fails with an audience error or an issuer error, examine the
+<code>keycloak.publicUrl</code> value first.</p>
+<h2 id="which-mode-to-select">Which mode to select<a class="headerlink" href="#which-mode-to-select" title="Permanent link">#</a></h2>
+<p>Select <strong>SPIFFE authentication</strong> if you installed SPIRE with the <code>--with-spire</code> option. This mode
+removes each stored credential. It is the stronger mode and there is less to operate.</p>
+<p>Select <strong>client secrets</strong> if you do not run SPIRE, or if you evaluate Sentinel and want the smallest
+installation.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="workload-identity.html">Workload identity</a></li>
+<li><a href="authbridge.html">AuthBridge</a></li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="authbridge.html"><span>Previous</span>AuthBridge</a><a class="next" href="flows.html"><span>Next</span>Authentication flows</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/security/authentication-modes.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

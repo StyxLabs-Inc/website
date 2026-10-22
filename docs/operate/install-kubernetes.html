@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install on Kubernetes | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="A complete installation on a Kind cluster, with each option.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/operate/install-kubernetes.html">
+  <meta property="og:title" content="Install on Kubernetes — Sentinel Docs">
+  <meta property="og:description" content="A complete installation on a Kind cluster, with each option.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/operate/install-kubernetes.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details open><summary><a href="index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="install-kubernetes.html" class="active" aria-current="page">Install on Kubernetes</a></li><li><a href="install-openshift.html">Install on OpenShift</a></li><li><a href="install-helm.html">Install with Helm</a></li><li><a href="observability.html">Observability</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Install and operate</p>
+        <h1>Install on Kubernetes</h1>
+        <p class="docs-lede">A complete installation on a Kind cluster, with each option.</p>
+        <p>The <code>scripts/kind/setup-sentinel.sh</code> script creates a Kind cluster and installs Sentinel. It always
+installs the core components. Each other component has a <code>--with-*</code> option.</p>
+<p>For the short procedure, see <a href="../get-started/kubernetes.html">Quickstart on Kubernetes</a>.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kubectl</td>
+<td>1.32.1 or later</td>
+<td>The Kubernetes interface</td>
+</tr>
+<tr>
+<td><a href="https://helm.sh/docs/intro/install/">Helm</a></td>
+<td>3.18.0 or later, below 4</td>
+<td>The charts</td>
+</tr>
+<tr>
+<td>git</td>
+<td>2.48.0 or later</td>
+<td>Gets the repository</td>
+</tr>
+<tr>
+<td><a href="https://kind.sigs.k8s.io">Kind</a></td>
+<td>Any recent release</td>
+<td>The cluster</td>
+</tr>
+<tr>
+<td>A container runtime</td>
+<td>18 GiB of memory, 6 CPUs</td>
+<td>Podman, Docker Desktop or Rancher Desktop</td>
+</tr>
+<tr>
+<td><a href="https://ollama.com/download">Ollama</a></td>
+<td>0.11.0 or later</td>
+<td>A local model. It is optional.</td>
+</tr>
+<tr>
+<td>A GitHub token</td>
+<td>—</td>
+<td>For a private repository or a private registry only. It needs the <code>repo</code> and <code>read:packages</code> permissions.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="on-a-new-mac">On a new Mac<a class="headerlink" href="#on-a-new-mac" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+brew install git kind kubectl helm@3 ollama
+brew install podman           # or: brew install --cask docker
+</code></pre>
+<pre><code class="language-bash">podman machine init --rootful --memory 18432 --cpus 6
+podman machine start
+</code></pre>
+<p>The <code>--rootful</code> option is necessary. The rootless provider of Kind needs the systemd property
+<code>Delegate=yes</code>. A new Podman machine does not set that property, so the creation of the cluster fails.</p>
+<h3 id="to-change-the-size-of-a-podman-machine">To change the size of a Podman machine<a class="headerlink" href="#to-change-the-size-of-a-podman-machine" title="Permanent link">#</a></h3>
+<p>A change to the number of CPUs is not sufficient. The Kind node holds the previous limit. You must
+create the cluster again:</p>
+<pre><code class="language-bash">podman machine stop
+podman machine set --cpus 6
+podman machine start
+
+kind delete cluster --name sentinel
+scripts/kind/setup-sentinel.sh --with-istio --with-spire --with-ui --with-backend
+</code></pre>
+<h3 id="if-you-have-4-cpus-only">If you have 4 CPUs only<a class="headerlink" href="#if-you-have-4-cpus-only" title="Permanent link">#</a></h3>
+<p>Do one of these actions:</p>
+<ul>
+<li>Omit the components that you do not need. Do not use <code>--with-mlflow</code>, <code>--with-kuadrant</code> or
+  <code>--with-kiali</code>.</li>
+<li>Deploy each agent with <strong>Deploy from image</strong> and not with <strong>Build from source</strong>.</li>
+<li>Reduce the number of replicas of the components that you do not need, before you start a build.</li>
+</ul>
+<h2 id="install-the-platform">Install the platform<a class="headerlink" href="#install-the-platform" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">git clone https://github.com/StyxLabs-Inc/sentinel.git
+cd sentinel
+git checkout v0.7.0
+</code></pre>
+<p>For each component:</p>
+<pre><code class="language-bash">scripts/kind/setup-sentinel.sh --with-all
+</code></pre>
+<p>For selected components:</p>
+<pre><code class="language-bash"># The console and the backend
+scripts/kind/setup-sentinel.sh --with-ui
+
+# The ambient mesh and the console
+scripts/kind/setup-sentinel.sh --with-istio --with-ui
+
+# The mesh, SPIFFE identity, and builds from source
+scripts/kind/setup-sentinel.sh --with-istio --with-spire --with-builds
+</code></pre>
+<h3 id="the-core-components">The core components<a class="headerlink" href="#the-core-components" title="Permanent link">#</a></h3>
+<p>The script always installs cert-manager, the Gateway API resources, the Istio gateway controller,
+Keycloak, the operator and the webhook.</p>
+<div class="admonition warning">
+<p class="admonition-title">The two Istio layers are different</p>
+<p>The <strong>Istio gateway controller</strong> is a core component. The script always installs it. It serves each
+address on <code>*.localtest.me:8080</code>, which includes the console, Keycloak and the agents. You cannot omit
+it.</p>
+<p><code>--with-istio</code> installs a <strong>different</strong> layer, which is the ambient mesh. That layer adds mTLS and
+waypoints, and it is optional. You do not need it for the AuthBridge weather demonstration, because that
+demonstration uses its own sidecar and not the mesh.</p>
+</div>
+<h3 id="the-optional-components">The optional components<a class="headerlink" href="#the-optional-components" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What it adds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--with-istio</code></td>
+<td>The Istio ambient mesh: mTLS and waypoints</td>
+</tr>
+<tr>
+<td><code>--with-spire</code></td>
+<td>SPIRE and the SPIFFE identity provider</td>
+</tr>
+<tr>
+<td><code>--with-ui</code></td>
+<td>The console. It enables the backend also.</td>
+</tr>
+<tr>
+<td><code>--with-mcp-gateway</code></td>
+<td>The MCP Gateway</td>
+</tr>
+<tr>
+<td><code>--with-builds</code></td>
+<td>Tekton and Shipwright, for a build from source</td>
+</tr>
+<tr>
+<td><code>--with-otel</code></td>
+<td>The OpenTelemetry collector</td>
+</tr>
+<tr>
+<td><code>--with-mlflow</code></td>
+<td>MLflow. It enables the collector and the ambient mesh also.</td>
+</tr>
+<tr>
+<td><code>--with-kiali</code></td>
+<td>Kiali and Prometheus. It enables the ambient mesh also.</td>
+</tr>
+<tr>
+<td><code>--with-skills</code></td>
+<td>The skills feature and a skill store in the cluster</td>
+</tr>
+<tr>
+<td><code>--with-examples</code></td>
+<td>The weather agent and the weather tool</td>
+</tr>
+<tr>
+<td><code>--with-all</code></td>
+<td>Each option above</td>
+</tr>
+</tbody>
+</table></div>
+<p>For each option and each other flag, see <a href="../reference/install-options.html">Install options</a>.</p>
+<h2 id="secrets">Secrets<a class="headerlink" href="#secrets" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">cp charts/sentinel/.secrets_template.yaml charts/sentinel/.secrets.yaml
+# Add your values to .secrets.yaml
+scripts/kind/setup-sentinel.sh --with-all --secrets-file charts/sentinel/.secrets.yaml
+</code></pre>
+<p>If you omit the <code>--secrets-file</code> option, the script uses <code>charts/sentinel/.secrets.yaml</code> when that file
+exists.</p>
+<p>To change a value later, for example a new <code>githubToken</code> value, delete the Secret in each namespace that
+received it, and then run the installer again:</p>
+<pre><code class="language-bash">kubectl get secret --all-namespaces
+kubectl -n team1 delete secret github-token-secret
+scripts/kind/setup-sentinel.sh
+</code></pre>
+<h2 id="faster-and-more-reliable-image-downloads">Faster and more reliable image downloads<a class="headerlink" href="#faster-and-more-reliable-image-downloads" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">scripts/kind/setup-sentinel.sh --with-all --preload-images
+</code></pre>
+<p>The script downloads the images to your computer and then copies them into the Kind node. This method
+avoids the rate limits of Docker Hub. The list of images is in
+<a href="https://github.com/StyxLabs-Inc/sentinel/blob/main/scripts/kind/preload-images.txt"><code>scripts/kind/preload-images.txt</code></a>,
+with one image on each line. The list contains <code>docker.io</code> images only, because <code>ghcr.io</code> and <code>quay.io</code>
+have no rate limit.</p>
+<h2 id="use-a-cluster-that-exists">Use a cluster that exists<a class="headerlink" href="#use-a-cluster-that-exists" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">scripts/kind/setup-sentinel.sh --skip-cluster --with-all
+</code></pre>
+<p>For a cluster that Kind did not create, see <a href="install-helm.html">Install with Helm</a>.</p>
+<h2 id="confirm-the-installation">Confirm the installation<a class="headerlink" href="#confirm-the-installation" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">kubectl get deployments --all-namespaces
+</code></pre>
+<p>With the <code>--with-spire</code> option:</p>
+<pre><code class="language-bash">kubectl get daemonsets -n zero-trust-workload-identity-manager
+curl http://spire-oidc.localtest.me:8080/keys
+open http://spire-tornjak-ui.localtest.me:8080/
+</code></pre>
+<p>For Keycloak:</p>
+<pre><code class="language-bash">open http://keycloak.localtest.me:8080/
+</code></pre>
+<p>For each address and each credential:</p>
+<pre><code class="language-bash">./.github/scripts/local-setup/show-services.sh
+</code></pre>
+<h2 id="remove-the-installation">Remove the installation<a class="headerlink" href="#remove-the-installation" title="Permanent link">#</a></h2>
+<pre><code class="language-bash"># Remove Sentinel. Keep the cluster.
+scripts/kind/cleanup-sentinel.sh
+
+# Remove Sentinel and delete the cluster.
+scripts/kind/cleanup-sentinel.sh --destroy-cluster
+</code></pre>
+<h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../security/authentication-modes.html">Authentication modes</a> to select client secrets or SPIFFE.</li>
+<li><a href="observability.html">Observability</a></li>
+<li><a href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="index.html"><span>Previous</span>Install and operate</a><a class="next" href="install-openshift.html"><span>Next</span>Install on OpenShift</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/operate/install-kubernetes.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

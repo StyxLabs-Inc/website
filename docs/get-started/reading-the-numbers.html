@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Read the numbers | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="What Cortex shows for each session, what each number means, and how to act on it.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/get-started/reading-the-numbers.html">
+  <meta property="og:title" content="Read the numbers — Sentinel Docs">
+  <meta property="og:description" content="What Cortex shows for each session, what each number means, and how to act on it.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/get-started/reading-the-numbers.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details open><summary><a href="index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="laptop.html">Quickstart — laptop</a></li><li><a href="reading-the-numbers.html" class="active" aria-current="page">Read the numbers</a></li><li><a href="kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="configure-a-model.html">Configure a model</a></li><li><a href="first-agent.html">Deploy your first agent</a></li><li><a href="first-tool.html">Connect your first tool</a></li><li><a href="cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Get started</p>
+        <h1>Read the numbers</h1>
+        <p class="docs-lede">What Cortex shows for each session, what each number means, and how to act on it.</p>
+        <p>You installed Cortex and started <code>agentop observe</code>. Now you see traffic. This page explains what the
+numbers mean and what to do with them.</p>
+<p>Cortex shows you what your coding agent sent and what it cost. It shows the model calls, the tool
+calls and the token counts for each session, on your own computer, as they happen. Your agent does
+not report this. Your model provider reports a monthly total, not one session while you work. Cortex
+is the view between the two.</p>
+<div class="admonition note">
+<p class="admonition-title">The data stays on your computer</p>
+<p>Cortex captures this traffic on your computer and keeps it there. It does not collect the data and it
+does not send the data to Sentinel or to any other service. The data is for you to read and to inspect.
+When you stop the service, the data goes with it. See <a href="laptop.html#manage-the-service">Manage the service</a>.</p>
+</div>
+<!-- VERIFY: verified against v0.8.1 — the capture is in-memory and local, and no telemetry is sent
+     by default. Re-confirm the "data goes with it" sentence when persistence (#901, sqlite) lands,
+     since an on-disk store outlives the service. Central reporting is a separate, opt-in feature
+     (#898), not part of the laptop tool. -->
+
+<!-- VERIFY: the token, cost and pruning figures below are verified against v0.8.1 (#950, #952).
+     The latency section describes v0.8.1: mean ± 1σ caps from LatMeanMs / LatStdDevMs
+     (cmd/agentop/tui/usage_whiskers.go). Time to first token, p50, p95 and a maximum are #951;
+     p99 and the maximum are #1026. Both are flagged in the section. -->
+<!-- VERIFY: column headings are v0.8.1's — the context column is CONTEXT(1M), and the money
+     columns return at 97. cortex#1246 shortens the heading to CTX(1M) and moves the threshold to
+     93, but it is in no release yet. -->
+<!-- VERIFY v0.9.0: once the release carrying cortex#1246 is out, change CONTEXT(1M) to CTX(1M) in
+     the mock, the column list and "Read the context gauge", change "a terminal of 97 columns or
+     more" to 93 here, "narrower than 97 columns" and "In the `CONTEXT` column" in
+     operate/troubleshooting.md, and repaste the mock's gauges at the narrower 7-column width. -->
+
+<h2 id="what-the-numbers-tell-you">What the numbers tell you<a class="headerlink" href="#what-the-numbers-tell-you" title="Permanent link">#</a></h2>
+<p>The numbers support four decisions:</p>
+<ul>
+<li><strong>Find an expensive prompt.</strong> One session that costs much more than the others shows you where the
+  cost is.</li>
+<li><strong>See whether caching operates.</strong> A high cache-read count means the model reuses your prompt. A low
+  count means it does not, and you pay the full rate each turn.</li>
+<li><strong>Catch a session that does not end.</strong> A token count that grows without a result is an agent in a
+  loop. You stop it before it costs more.</li>
+<li><strong>Decide whether to prune tool definitions.</strong> The pruning figure shows the tokens that Cortex
+  removed, so you know if the feature is worth enabling. See <a href="../concepts/experiments/cost-control.html">Cost control</a>.</li>
+<li><strong>See the spend for a day, a week or a month.</strong> The spend band holds one figure for each of four
+  periods. See <a href="#read-the-spend-band">Read the spend band</a>.</li>
+<li><strong>See which rate tier holds the cost.</strong> The spend breakdown divides the spend by tier and by model.
+  A large cache-write figure and a small cache-read figure is a cache that does not hold.</li>
+</ul>
+<p>You can read this page before you install Cortex. It describes what Cortex shows you that you cannot
+otherwise see.</p>
+<h2 id="watch-a-session">Watch a session<a class="headerlink" href="#watch-a-session" title="Permanent link">#</a></h2>
+<p><code>agentop observe</code> opens a terminal interface. You land on the Sessions view. The other views open with
+a key, and they return to the view that you opened them from.</p>
+<ul>
+<li><strong>Sessions.</strong> A list of the sessions, with the most recent one first. Each row shows the identifier,
+  the title, the time of the last event, the event count, the token total, the cost, the saving and
+  the context gauge.</li>
+<li><strong>Events.</strong> The calls in one session. Each row shows the time, the direction, the protocol, the
+  model or the method, the status, the duration and the host. Press <code>Enter</code> on a session to open it.</li>
+<li><strong>Detail.</strong> The full content of one event, as formatted JSON. Press <code>Enter</code> on an event to open it.</li>
+<li><strong>Spend breakdown.</strong> Where the money went, by rate tier, and who spent it. Press <code>$</code>.</li>
+<li><strong>Usage charts.</strong> A metric over a time window, as a chart. Press <code>u</code>.</li>
+</ul>
+<h3 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>↑</code> <code>↓</code> or <code>k</code> <code>j</code></td>
+<td>Move between rows</td>
+</tr>
+<tr>
+<td><code>Enter</code></td>
+<td>Open the selected row</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Return to the previous view</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Filter the events</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>Open the spend breakdown</td>
+</tr>
+<tr>
+<td><code>u</code></td>
+<td>Open the usage charts</td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td>Open the column picker, in the Events view. Inside the picker, <code>s</code> sorts by the column under the cursor</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Pause and resume the stream</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>Write the event to a file in <code>~/.cortex/agentop-events/</code></td>
+</tr>
+<tr>
+<td><code>g</code> <code>G</code></td>
+<td>Move to the top or the bottom</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Open the key help</td>
+</tr>
+<tr>
+<td><code>q</code> or <code>Ctrl+C</code></td>
+<td>Quit</td>
+</tr>
+</tbody>
+</table></div>
+<p>The key help (<code>?</code>) is a map of the views. It shows each key and the view that the key acts on.</p>
+<p>The <code>/</code> key filters the events by a <strong>text match</strong>. For example, <code>messages</code> shows only the events
+that contain that text. The match covers many fields of an event, not the method alone — the host,
+the method, the plugin name, the reason, the path, and the message content all count.</p>
+<p>Two searches are special:</p>
+<ul>
+<li><code>deny</code> shows only the events that a plugin denied.</li>
+<li><code>plugin:&lt;name&gt;</code> shows only the events that the named plugin acted on. For example, <code>plugin:jwt-validation</code>.</li>
+</ul>
+<p>It is a text match, not a query language. You cannot filter on a condition such as a duration.</p>
+<h2 id="read-the-tokens">Read the tokens<a class="headerlink" href="#read-the-tokens" title="Permanent link">#</a></h2>
+<p>A model call has a cost in tokens. Cortex prices the tokens in four categories, because each category
+has a different rate.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>What it is</th>
+<th>Why it is separate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Input</strong></td>
+<td>The prompt tokens that the model read for the first time</td>
+<td>You pay the full rate for these.</td>
+</tr>
+<tr>
+<td><strong>Cache write</strong></td>
+<td>The prompt tokens that the model wrote to its cache</td>
+<td>More than the input rate. This is the one-time cost to store the prompt.</td>
+</tr>
+<tr>
+<td><strong>Cache read</strong></td>
+<td>The prompt tokens that the model read from its cache</td>
+<td>Much less than the input rate. This is caching that operates.</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>The tokens that the model generated</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Cortex also captures a <strong>reasoning</strong> count. These are the output tokens that the model used to reason,
+on a model that reports them. They are a part of the output count, not a fifth priced category.</p>
+<h3 id="why-cache-read-and-cache-write-are-two-numbers">Why cache read and cache write are two numbers<a class="headerlink" href="#why-cache-read-and-cache-write-are-two-numbers" title="Permanent link">#</a></h3>
+<p>A model can cache a part of your prompt. The next call that sends the same part reads it from the
+cache. This is useful for a coding agent, because the agent sends the same system prompt and the same
+files on each turn.</p>
+<p>The two cache numbers have different prices, so Cortex keeps them apart:</p>
+<ul>
+<li><strong>A cache write costs more than an input token.</strong> You pay a premium once, to store the prompt.</li>
+<li><strong>A cache read costs a fraction of an input token.</strong> You save on each later turn that reuses the
+  prompt.</li>
+</ul>
+<p>The split tells you whether caching earns its cost:</p>
+<ul>
+<li>A large <strong>cache-read</strong> count means the cache operates. You pay the low rate for most of the prompt.</li>
+<li>A <strong>cache-write</strong> count that repeats, with little cache-read, means the cache does not hold. You pay
+  the premium again and again and get no saving. This happens when the prompt changes on each turn.</li>
+</ul>
+<h2 id="read-the-cost">Read the cost<a class="headerlink" href="#read-the-cost" title="Permanent link">#</a></h2>
+<p>Cortex applies a price to each token category and adds the results. The figure is the cost of the
+session.</p>
+<ul>
+<li><strong>The cost is an estimate, unless the provider returns an exact figure.</strong> Cortex computes the cost
+  from published rates for each model. When the provider returns an exact cost (for example, the
+  <code>x-litellm-response-cost</code> header from LiteLLM), Cortex uses that figure instead.</li>
+<li><strong>The rates come from a table for each model.</strong> A model that Cortex does not recognize has no rate.
+  Cortex then shows no cost for that call, rather than a misleading zero, even though the token counts
+  are still correct. A blank cost with correct tokens means the model is unpriced, not free.</li>
+</ul>
+<!-- VERIFY: verified against v0.8.1 — the authoritative header is x-litellm-response-cost
+     (core/cost/event), and the rates come from the bundled table in core/cost/pricing. -->
+
+<h2 id="read-the-sessions-table">Read the sessions table<a class="headerlink" href="#read-the-sessions-table" title="Permanent link">#</a></h2>
+<!-- VERIFY: the column set, the narrow-terminal drop of the money columns, the em-dash rule and the
+     SAVED~ marker are verified against v0.8.1 (cmd/agentop/tui). The table below is still an
+     illustration, not a capture from a live session. Tracked in sentinel/cortex#1113. -->
+
+<p>The Sessions view is the table that you land on. This is one capture of it:</p>
+<pre><code class="language-text">agentop · http://localhost:9094
+LAST 1H    TODAY   7 DAYS    MONTH
+  $4.04   $18.80  $216.44  $703.18
+────────────────────────────────────────────────────────────────────────────────────
+ SESSION       TITLE        UPDATED     EVENTS   TOKENS     COST    SAVED~  CONTEXT(1M)
+ ctx-abc-123…  …pend-spans  3s ago          42    48.2k    $0.12     $0.01  ▕███████▎ ▏
+ ctx-def-567…  weather-ag…  18m ago         15     1.2k   &lt;$0.01         —  ▕▏        ▏
+ ctx-ghi-901…               42m ago          7     2.9k        —         —  ▕███▊     ▏
+ default                    1h ago           8        —        —         —            —
+</code></pre>
+<p>Read the columns as follows.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SESSION</code></td>
+<td>The session identifier, truncated.</td>
+</tr>
+<tr>
+<td><code>TITLE</code></td>
+<td>The name of the session, from the transcript of Claude Code. It is empty for a session that nothing named.</td>
+</tr>
+<tr>
+<td><code>UPDATED</code></td>
+<td>The time since the last event.</td>
+</tr>
+<tr>
+<td><code>EVENTS</code></td>
+<td>The count of the calls in the session.</td>
+</tr>
+<tr>
+<td><code>TOKENS</code></td>
+<td>The token total for the session.</td>
+</tr>
+<tr>
+<td><code>COST</code></td>
+<td>The cost of the session.</td>
+</tr>
+<tr>
+<td><code>SAVED~</code></td>
+<td>The cost that a reduction plugin avoided.</td>
+</tr>
+<tr>
+<td><code>CONTEXT(1M)</code></td>
+<td>How full the context of the conversation was on its last turn.</td>
+</tr>
+</tbody>
+</table></div>
+<p>An em dash (<code>—</code>) means that Cortex has no figure. It does not mean zero. A session with tokens and no
+cost holds a model that the rate table does not name.</p>
+<p>The two money columns need a terminal of 97 columns or more. On a narrower terminal Cortex removes
+both columns. It does not show a rounded figure in their place.</p>
+<h3 id="read-the-context-gauge">Read the context gauge<a class="headerlink" href="#read-the-context-gauge" title="Permanent link">#</a></h3>
+<p><code>CONTEXT(1M)</code> is a gauge, not a figure. It shows how full the context of your conversation was on its
+last turn, against a window of one million tokens. The brackets are the scale, and Cortex draws them
+on each row. An almost empty session therefore reads as empty, and not as a blank cell.</p>
+<p>Claude Code sends three kinds of traffic under one session identifier: your conversation, the
+subagents that it starts, and its own short internal calls. The gauge follows your conversation only.
+It reads the last turn of that conversation, and it does not average a set of recent turns.</p>
+<h2 id="read-the-spend-band">Read the spend band<a class="headerlink" href="#read-the-spend-band" title="Permanent link">#</a></h2>
+<p>The four figures above the table are the spend band. Each cell covers one period, and the label names
+the period.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Cell</th>
+<th>Period</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LAST 1H</code></td>
+<td>A rolling hour.</td>
+</tr>
+<tr>
+<td><code>TODAY</code></td>
+<td>From local midnight to now.</td>
+</tr>
+<tr>
+<td><code>7 DAYS</code></td>
+<td>A rolling seven days.</td>
+</tr>
+<tr>
+<td><code>MONTH</code></td>
+<td>From the first day of the local month to now.</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>TODAY</code> and <code>MONTH</code> are boundaries, and not lengths. Each one is narrow at the start of its period,
+and it widens through the period. <code>7 DAYS</code> is a rolling window, so it is the one cell that no calendar
+edge aligns to. Compare <code>7 DAYS</code> against <code>MONTH</code> with that difference in mind.</p>
+<p>A cell that shows <code>—</code> is a period that your deployment cannot answer. Three of the four cells read
+from a cost ledger. A local install holds that ledger, and Kubernetes does not hold it by default.
+Cortex shows <code>—</code> in place of a figure that covers a shorter period than the label states.</p>
+<p>A cell also carries its own age when its data stops arriving. <code>TODAY 7m</code> is a figure from seven
+minutes ago. Each cell polls on its own schedule, so the age belongs to the cell and not to the band.</p>
+<div class="admonition note">
+<p class="admonition-title">The band and the table cover different periods</p>
+<p>The <code>COST</code> column of the sessions table can add up to less than <code>TODAY</code>. The session store is in
+memory, so the table reaches back only to the start of the current proxy process. <code>TODAY</code> reads from
+the cost ledger on disk, and it survives a restart of the service. A table that adds up to less than
+the band is therefore correct after a restart.</p>
+</div>
+<h3 id="read-the-spend-breakdown">Read the spend breakdown<a class="headerlink" href="#read-the-spend-breakdown" title="Permanent link">#</a></h3>
+<p>Press <code>$</code> to expand the band. The breakdown holds two columns:</p>
+<pre><code class="language-text">  WHERE IT WENT                    BY MODEL
+output      ██████ $2.70           claude-opus-5   $4.55   35 req   5.6M tokens
+cache-read  ███▌   $1.62
+input       ▍      $0.22
+cache-write —
+   [a] [model] · endpoint · agent   [w] 1h   esc closes
+</code></pre>
+<p>The left column is the four rate tiers. They are the same four token categories that
+<a href="#read-the-tokens">Read the tokens</a> describes, priced. The right column is who spent the money. Press
+<code>a</code> to change it between the model, the endpoint and the agent. Press <code>w</code> to change the period.</p>
+<p>Cortex models the tier figures from the rate table. It does not measure them. A gateway reports one
+figure for a call, and it never divides that figure by tier. Cortex apportions the tiers, so the column
+adds up to the total of the period. A tier that the rate table does not name reads <code>—</code>, and not
+<code>$0.00</code>, because <code>$0.00</code> claims that the tier is free.</p>
+<h2 id="what-a-marker-on-a-figure-means">What a marker on a figure means<a class="headerlink" href="#what-a-marker-on-a-figure-means" title="Permanent link">#</a></h2>
+<p>A figure carries a marker when Cortex cannot state it exactly. A figure with no marker is exact.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Marker</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>~</code></td>
+<td>The figure is an estimate, so it is a lower bound and not an exact total.</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>The figure is a floor. Cortex could not price some traffic, or the period reaches past what the ledger holds.</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>The figure is short by an amount that Cortex cannot state.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <code>~</code> on <code>SAVED~</code> sits in the heading, and not on each value. Cortex estimates each saving, so a
+marker on each row distinguishes nothing.</p>
+<h2 id="how-precise-a-money-figure-is">How precise a money figure is<a class="headerlink" href="#how-precise-a-money-figure-is" title="Permanent link">#</a></h2>
+<p>Cortex shows money in one of two forms, and which form depends on the surface.</p>
+<ul>
+<li><strong>Cents.</strong> The four cells of the spend band, the <code>COST</code> and <code>SAVED~</code> columns of the sessions table,
+  the <code>COST</code> of the usage charts, and both columns of the spend breakdown. You read these figures down
+  a column, and you compare them against each other. Two more digits add noise.</li>
+<li><strong>Four decimals.</strong> The <code>COST</code> column of the events table. One request costs $0.000038, so cents
+  render a whole column as the same value.</li>
+</ul>
+<p>Cortex never prints a figure above zero as <code>$0.00</code>. A cents figure below one cent reads <code>&lt;$0.01</code>, and a
+four-decimal figure reads <code>&lt;$0.0001</code>. A figure of zero is a claim about the traffic, and never the
+result of rounding.</p>
+<h2 id="read-the-cost-of-a-longer-period">Read the cost of a longer period<a class="headerlink" href="#read-the-cost-of-a-longer-period" title="Permanent link">#</a></h2>
+<p><code>agentop cost</code> prints the spend for one period, without the terminal interface.</p>
+<pre><code class="language-bash">agentop cost                  # today, from local midnight
+agentop cost --window month   # this month, from the first day
+agentop cost --window 7d      # the last seven days
+agentop cost --window 1h      # a rolling hour
+agentop cost --json           # the totals as JSON, for a script
+</code></pre>
+<p>The command prints the period that the proxy answered, and not the period that you asked for. A
+deployment with no cost ledger answers with the longest period that it holds. A figure of six hours
+under the label of a month understates the month, so Cortex names the period it served.</p>
+<h2 id="read-the-usage-charts">Read the usage charts<a class="headerlink" href="#read-the-usage-charts" title="Permanent link">#</a></h2>
+<p>Press <code>u</code> to open the usage charts. The charts show one metric over one time window. Four keys change
+what you see.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m</code></td>
+<td>Change the metric: tokens, requests, errors, latency or cost.</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>Change the window: 10 minutes, 1 hour or 6 hours.</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>Change the breakdown: none, status, method or plugin.</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>Change between this session and all of the sessions.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The latency metric has no breakdown. Cortex records latency for a call, and not for a label.</p>
+<p><code>agentop</code> writes your choice of metric, window and breakdown to <code>~/.cortex/agentop-config.yaml</code>. The charts
+open with the same choice the next time. <code>agentop</code> also writes the column selection and the filter of the
+events table to that file.</p>
+<h2 id="read-the-latency">Read the latency<a class="headerlink" href="#read-the-latency" title="Permanent link">#</a></h2>
+<p>Cortex records the response time of each response that carries one: the time from the request to the
+last part of the reply. It depends on the length of the reply, so a long answer is a slow one. This
+is every non-tunnel response, not model calls alone. Fast non-model requests pull the mean down and
+widen the spread.</p>
+<p>The usage charts group these responses into buckets over the window you choose. For each bucket the
+chart draws the <strong>mean</strong> as a crossbar (<code>┼</code>), with caps (<code>┬</code> and <code>┴</code>) at one standard deviation
+either side of it, taken over the individual calls in that bucket. A bucket with no measured call
+draws no mark, and its value reads <code>0</code>; the legend reads <code>0 = no measured responses</code>. A window with
+no measured call says <code>no latency samples in this window</code>.</p>
+<p>Read the mean for the average call, and the spread between the caps for how consistent the calls
+were: wide caps mean the bucket mixed fast and slow calls. A crossbar with no caps is one call, or
+calls too alike to separate at the chart's scale. The lower cap stops at zero, because a response
+time cannot be negative. A lower cap on the bottom row means that the mean minus one standard
+deviation falls in the bottom tenth of the chart. It does not mean that a call answered instantly.</p>
+<div class="admonition warning">
+<p class="admonition-title">The upper cap is not the slowest call</p>
+<p>The caps are mean ± 1σ, a measure of spread, and not the fastest and the slowest call. The usage
+charts keep no maximum, so <strong>the slowest call in a window can sit above the top of the chart, and
+the chart does not show it.</strong> Do not read the upper cap as a worst case. To find the slowest call,
+open the session and sort the events by <code>DURATION</code>: press <code>c</code> to open the column picker, move to
+<code>DURATION</code>, and press <code>s</code> to sort by it, descending first. Opened from the Sessions view, the
+chart covers every session, so the slow call may belong to a session other than the one you are
+reading. Tracked in <a href="https://github.com/sentinel/cortex/issues/1026">cortex#1026</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Planned</p>
+<p>Three figures are not in this release: time to first token (the time until the first word of the
+reply appears), percentiles (p50, p95, p99) and a maximum. Cortex reports the mean response time
+with its ±1σ caps. Tracked in <a href="https://github.com/sentinel/cortex/issues/951">cortex#951</a> and
+<a href="https://github.com/sentinel/cortex/issues/1026">cortex#1026</a>.</p>
+</div>
+<h2 id="read-the-pruning-savings">Read the pruning savings<a class="headerlink" href="#read-the-pruning-savings" title="Permanent link">#</a></h2>
+<p>If you enable tool pruning, Cortex removes the tool definitions that the agent does not use, before
+the request goes to the model. The savings figure is the tokens and the cost that the pruning
+removed. See <a href="../concepts/experiments/cost-control.html">Cost control</a>.</p>
+<ul>
+<li><strong>A figure above zero</strong> is the saving for that session. You paid less because Cortex sent a smaller
+  request.</li>
+<li><strong>A figure of zero</strong> means that Cortex removed nothing. The usual cause is an agent with no tools.
+  An agent that sends no tool definitions has nothing to prune, so zero is the correct figure and not
+  a failure.</li>
+</ul>
+<p>This figure is the answer to one question: what does pruning do for me? You enable pruning, you read
+the figure, and you decide if the saving is worth the feature.</p>
+<h2 id="a-worked-example">A worked example<a class="headerlink" href="#a-worked-example" title="Permanent link">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These are representative figures for the data that Cortex captures. They show the shape of a real
+session. Replace them with a session that you capture before you rely on the exact values.</p>
+</div>
+<!-- VERIFY: the field set matches v0.8.1, except the mean response time, which no session field
+     carries: it is the usage pane's LATENCY footer, request-weighted, at most the last 6 h, and
+     scoped to this session when the pane is opened from the session's events. The values are an
+     illustration, not a capture. -->
+
+<p>One session of a coding agent, with tool pruning enabled:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td><code>claude-sonnet-4</code></td>
+</tr>
+<tr>
+<td>Events</td>
+<td>34</td>
+</tr>
+<tr>
+<td>Input tokens</td>
+<td>12,400</td>
+</tr>
+<tr>
+<td>Cache read</td>
+<td>486,000</td>
+</tr>
+<tr>
+<td>Cache write</td>
+<td>61,200</td>
+</tr>
+<tr>
+<td>Output tokens</td>
+<td>8,900</td>
+</tr>
+<tr>
+<td>Reasoning tokens</td>
+<td>3,100</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>2.14 USD</td>
+</tr>
+<tr>
+<td>Mean response time</td>
+<td>11 s (the <code>LATENCY</code> figure under the usage charts, opened from this session)</td>
+</tr>
+<tr>
+<td>Tokens pruned</td>
+<td>41,000</td>
+</tr>
+<tr>
+<td>Cost saved by pruning</td>
+<td>0.12 USD</td>
+</tr>
+</tbody>
+</table></div>
+<p>How to read it:</p>
+<ul>
+<li><strong>Caching operates.</strong> The cache-read count (486,000) is much larger than the input count (12,400).
+  The agent sends the same context on each turn, and the model reads almost all of it from the cache.
+  Without the cache, the input cost is many times higher.</li>
+<li><strong>The cache-write count is a one-time cost.</strong> The 61,200 cache-write tokens are the first turn that
+  stored the context. Later turns read it, and do not write it again.</li>
+<li><strong>The mean hides the slow calls.</strong> On average a call answers in 11 s, but a mean says nothing
+  about the slowest one. To find it, open the session and sort its events by <code>DURATION</code>: press <code>c</code>
+  for the column picker, move to <code>DURATION</code>, and press <code>s</code>. The sort covers the newest 2000 events;
+  the footer offers <code>o</code> to load the older ones. The usage chart cannot show the slowest call: its
+  caps are ±1σ, and it keeps no maximum
+  (<a href="https://github.com/sentinel/cortex/issues/1026">cortex#1026</a>).</li>
+<li><strong>Pruning earns a small amount here.</strong> It saved 0.12 USD, because it removed 41,000 tokens of unused
+  tool definitions across the session. On an agent with many tools, this figure is larger.</li>
+</ul>
+<h2 id="why-leave-cortex-running">Why leave Cortex running<a class="headerlink" href="#why-leave-cortex-running" title="Permanent link">#</a></h2>
+<p>One session is useful. A week of sessions is more useful. The value is in the change over time:</p>
+<ul>
+<li>A prompt that grows more expensive each day.</li>
+<li>A cache-read count that falls, because a change to the agent broke the cache.</li>
+<li>A session that costs ten times the others.</li>
+</ul>
+<p>You see these only if Cortex runs while you work. It runs as a background service and adds no step to
+your day. See <a href="laptop.html#manage-the-service">Manage the service</a>.</p>
+<h2 id="give-feedback">Give feedback<a class="headerlink" href="#give-feedback" title="Permanent link">#</a></h2>
+<p>Did the numbers tell you what you needed, or not? Was a figure confusing? Tell us. Open the <strong>Laptop
+feedback</strong> form on <a href="https://github.com/sentinel/cortex/issues/new/choose">sentinel/cortex</a>, or write a
+message in <a href="https://ibm.biz/sentinel-slack">Slack</a>. Feedback on the local tool is what makes the next
+release clearer.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="laptop.html">Quickstart on a laptop</a> installs Cortex and starts <code>agentop observe</code>.</li>
+<li><a href="../concepts/experiments/cost-control.html">Cost control</a> reduces the token cost.</li>
+<li><a href="../concepts/experiments/context-compaction.html">Context compaction</a> makes large tool output smaller.</li>
+<li><a href="../operate/troubleshooting.html">Troubleshooting</a> covers the case of no events or wrong numbers.</li>
+<li><a href="../concepts/core/cortex.html">Cortex</a> explains the program that captures this data.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="laptop.html"><span>Previous</span>Quickstart on a laptop</a><a class="next" href="kubernetes.html"><span>Next</span>Quickstart on Kubernetes</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/get-started/reading-the-numbers.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
