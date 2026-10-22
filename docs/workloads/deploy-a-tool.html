@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deploy a tool | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Package an MCP tool, deploy it, and connect an agent to it.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/workloads/deploy-a-tool.html">
+  <meta property="og:title" content="Deploy a tool — Sentinel Docs">
+  <meta property="og:description" content="Package an MCP tool, deploy it, and connect an agent to it.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/workloads/deploy-a-tool.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details open><summary><a href="index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="bring-your-own-agent.html">Bring your own agent</a></li><li><a href="deploy-an-agent.html">Deploy an agent</a></li><li><a href="deploy-a-tool.html" class="active" aria-current="page">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Agents and tools</p>
+        <h1>Deploy a tool</h1>
+        <p class="docs-lede">Package an MCP tool, deploy it, and connect an agent to it.</p>
+        <p>An MCP tool gives an agent access to an external service, an interface or a set of data. The procedure
+is the procedure for an agent. The differences are the ports, the registry options, and the method that
+an agent uses to find the tool.</p>
+<h2 id="what-a-tool-must-be">What a tool must be<a class="headerlink" href="#what-a-tool-must-be" title="Permanent link">#</a></h2>
+<p>A tool is a container that uses the <a href="https://modelcontextprotocol.io">MCP protocol</a> over HTTP:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mcp</code></td>
+<td><code>POST</code></td>
+<td>Receives MCP messages</td>
+</tr>
+</tbody>
+</table></div>
+<p>The default service port is <code>9090</code>. For examples in several languages, see
+<a href="https://github.com/sentinel/examples/tree/main/mcp">examples/mcp</a>.</p>
+<h2 id="deploy-from-a-container-image">Deploy from a container image<a class="headerlink" href="#deploy-from-a-container-image" title="Permanent link">#</a></h2>
+<h3 id="with-the-console">With the console<a class="headerlink" href="#with-the-console" title="Permanent link">#</a></h3>
+<p>Select <strong>Tools</strong>, then <strong>Import new tool</strong>, then <strong>Deploy from existing image</strong>. Enter the image
+address, add the environment variables that the tool needs, and select <strong>Deploy</strong>.</p>
+<h3 id="with-the-cli">With the CLI<a class="headerlink" href="#with-the-cli" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">sentinel tools import from-image \
+  --name weather-mcp \
+  --containerImage ghcr.io/acme/weather-mcp:v1.0.0
+
+sentinel tools wait weather-mcp
+</code></pre>
+<p>To set the ports, use the <code>--ports</code> option. The format is <code>name:port:targetPort[:protocol]</code>. The default
+is <code>http:9090:9090:TCP</code>. A number alone means <code>http:&lt;port&gt;:&lt;port&gt;:TCP</code>.</p>
+<pre><code class="language-bash">sentinel tools import from-image --name weather-mcp \
+  --containerImage ghcr.io/acme/weather-mcp:v1.0.0 \
+  --ports grpc:9000:9001:TCP,8080
+</code></pre>
+<p>Each other option is the option for an agent. See
+<a href="deploy-an-agent.html#deploy-from-a-container-image">Deploy an agent</a>.</p>
+<h2 id="build-from-source">Build from source<a class="headerlink" href="#build-from-source" title="Permanent link">#</a></h2>
+<p>The requirements are the requirements for an agent: the <code>--with-builds</code> option, a GitHub repository, and
+a subdirectory that contains a <code>Dockerfile</code>.</p>
+<p>For a tool you can also select the destination of the image:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registry URL</td>
+<td>Where to send the image. Use <code>registry.cr-system.svc.cluster.local:5000</code> for the registry in the cluster, or an address such as <code>quay.io/myorg</code>.</td>
+</tr>
+<tr>
+<td>Registry Secret</td>
+<td>The Kubernetes Secret that holds the registry credentials. It is necessary for an external registry.</td>
+</tr>
+<tr>
+<td>Image tag</td>
+<td>The default is <code>v0.0.1</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sentinel selects the build strategy from the registry, in the same way that it does for an agent.</p>
+<div class="admonition note">
+<p class="admonition-title">A build needs more time than the default limit</p>
+<p>The <code>sentinel tools wait</code> command has a default limit of 60 seconds. A build from source needs more
+time. Give a longer limit:</p>
+<pre><code class="language-bash">sentinel tools wait weather-mcp --timeout 10m
+</code></pre>
+<p>If the build fails, the command reports <code>Build Failed</code> and exits at once. It does not wait for the time
+limit.</p>
+</div>
+<h2 id="connect-an-agent">Connect an agent<a class="headerlink" href="#connect-an-agent" title="Permanent link">#</a></h2>
+<p>Set <code>MCP_URL</code> on the agent to the address of the tool in the cluster:</p>
+<pre><code>MCP_URL=http://weather-tool:8080/mcp
+</code></pre>
+<p>For more than one tool, use <code>MCP_URLS</code> with a list that commas separate. For many tools and many
+agents, use the <a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a>.</p>
+<p>To change an agent that already runs:</p>
+<pre><code class="language-bash">kubectl set env deployment/weather-service -n team1 \
+  MCP_URL=&quot;http://weather-tool:8080/mcp&quot;
+</code></pre>
+<p>The example agents in <a href="https://github.com/sentinel/examples">sentinel/examples</a> have an <code>.env.openai</code>
+file and an <code>.env.ollama</code> file. The default values in those files assume that the tool is in the same
+namespace as the agent.</p>
+<h2 id="examine-a-tool">Examine a tool<a class="headerlink" href="#examine-a-tool" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">sentinel tools list
+sentinel tools list --all-namespaces
+sentinel tools get weather-mcp
+sentinel tools get weather-mcp --json
+</code></pre>
+<p>In the console, the <strong>MCP Gateway</strong> page can start the MCP Inspector for a registered tool. The Inspector
+is the fastest method to read the list of functions that a tool gives.</p>
+<h2 id="delete-a-tool">Delete a tool<a class="headerlink" href="#delete-a-tool" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">sentinel tools delete weather-mcp
+</code></pre>
+<p>An agent that has the address of that tool then fails each tool call. Change the <code>MCP_URL</code> value of each
+such agent first.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a> gives one address for all tools.</li>
+<li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a> describes the two protocols.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="deploy-an-agent.html"><span>Previous</span>Deploy an agent</a><a class="next" href="../security/index.html"><span>Next</span>Security</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/workloads/deploy-a-tool.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

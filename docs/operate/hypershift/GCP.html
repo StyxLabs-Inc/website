@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GCP HyperShift Setup &amp; Operation | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="GCP HyperShift Setup &amp; Operation — Sentinel documentation.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/operate/hypershift/GCP.html">
+  <meta property="og:title" content="GCP HyperShift Setup &amp; Operation — Sentinel Docs">
+  <meta property="og:description" content="GCP HyperShift Setup &amp; Operation — Sentinel documentation.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/operate/hypershift/GCP.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../../concepts/core/architecture.html">Architecture</a></li><li><a href="../../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../../concepts/core/cortex.html">Cortex</a></li><li><a href="../../concepts/core/identity.html">Identity and trust</a></li><li><a href="../../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../../concepts/experiments/skills.html">Skills</a></li><li><a href="../../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details open><summary><a href="../index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../install-openshift.html">Install on OpenShift</a></li><li><a href="../install-helm.html">Install with Helm</a></li><li><a href="../observability.html">Observability</a></li><li><a href="../troubleshooting.html">Troubleshooting</a></li><li><details open><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="GCP.html" class="active" aria-current="page">GCP HyperShift Setup &amp; Operation</a></li><li><a href="ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Install and operate</p>
+        <h1>GCP HyperShift Setup &amp; Operation</h1>
+        
+        <p>Complete guide for setting up and managing Sentinel HyperShift clusters on Google Cloud Platform.</p>
+<blockquote>
+<p><strong>WARNING: UNVERIFIED DRAFT.</strong> GCP HyperShift is tech preview upstream, requires a GKE
+Autopilot management cluster and Workload Identity (not service-account JSON keys).
+Steps, IAM roles, quotas, costs and links below were written before verification and
+must not be followed as-is. See "GCP Verification" in
+<code>docs/_internal/superpowers/specs/2026-10-11-multicloud-hypershift-design.md</code>.</p>
+<p><strong>Status</strong>: Not implemented (Phase 3 blocked)<br />
+<strong>Timeline</strong>: See <a href="https://github.com/StyxLabs-Inc/sentinel/blob/main/docs/_internal/superpowers/specs/2026-10-11-multicloud-hypershift-design.md">Design Spec</a></p>
+</blockquote>
+<hr />
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<h3 id="tools-required">Tools Required<a class="headerlink" href="#tools-required" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gcloud CLI</td>
+<td>Latest</td>
+<td>GCP resource management</td>
+</tr>
+<tr>
+<td>kubectl</td>
+<td>1.28+</td>
+<td>Kubernetes cluster interaction</td>
+</tr>
+<tr>
+<td>jq</td>
+<td>Latest</td>
+<td>JSON processing</td>
+</tr>
+<tr>
+<td>Bash</td>
+<td>3.2+</td>
+<td>Script execution</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.11+</td>
+<td>E2E tests</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="macos-installation">macOS Installation<a class="headerlink" href="#macos-installation" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># gcloud CLI
+curl https://sdk.cloud.google.com | bash
+exec -l $SHELL  # Restart shell
+
+# Other tools
+brew install kubectl jq python@3.11
+</code></pre>
+<h3 id="linux-ubuntudebian">Linux (Ubuntu/Debian)<a class="headerlink" href="#linux-ubuntudebian" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># gcloud CLI
+echo &quot;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&quot; | \
+  sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
+  sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+sudo apt-get update
+sudo apt-get install -y google-cloud-sdk kubectl jq python3.11
+</code></pre>
+<h3 id="gcp-project-requirements">GCP Project Requirements<a class="headerlink" href="#gcp-project-requirements" title="Permanent link">#</a></h3>
+<ol>
+<li><strong>GCP Project</strong> with billing enabled</li>
+<li><strong>Compute quota</strong> (default usually sufficient):
+   - Compute Engine VMs: 10+
+   - vCPUs: 50+
+   - Persistent Disks: 50+
+   - In-use IP addresses: 10+
+   - Load balancers: 10+</li>
+<li><strong>Cloud DNS zone</strong> (for cluster API endpoints)</li>
+<li><strong>Service account</strong> (for HyperShift)</li>
+</ol>
+<hr />
+<h2 id="one-time-setup-gcp-admin">One-Time Setup (GCP Admin)<a class="headerlink" href="#one-time-setup-gcp-admin" title="Permanent link">#</a></h2>
+<p>These steps run <strong>once</strong> to prepare your GCP project. You need <strong>admin access</strong> only for this phase.</p>
+<h3 id="step-1-authenticate-with-gcloud">Step 1: Authenticate with gcloud<a class="headerlink" href="#step-1-authenticate-with-gcloud" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Login to GCP
+gcloud auth login
+
+# Set your project
+export GCP_PROJECT_ID=&quot;my-project-id&quot;
+gcloud config set project $GCP_PROJECT_ID
+
+# Verify
+gcloud auth list
+gcloud config get-value project
+</code></pre>
+<h3 id="step-2-enable-required-apis">Step 2: Enable Required APIs<a class="headerlink" href="#step-2-enable-required-apis" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Enable necessary APIs
+gcloud services enable \
+  compute.googleapis.com \
+  cloudresourcemanager.googleapis.com \
+  iam.googleapis.com \
+  dns.googleapis.com \
+  container.googleapis.com \
+  containerregistry.googleapis.com
+</code></pre>
+<h3 id="step-3-create-cloud-dns-zone">Step 3: Create Cloud DNS Zone<a class="headerlink" href="#step-3-create-cloud-dns-zone" title="Permanent link">#</a></h3>
+<p>HyperShift needs a delegated DNS zone for cluster APIs:</p>
+<pre><code class="language-bash"># Create Cloud DNS zone
+gcloud dns managed-zones create sentinel-hcp \
+  --dns-name=sentinel-dev.example.com \
+  --description=&quot;HyperShift clusters&quot;
+
+# Get nameservers
+gcloud dns managed-zones describe sentinel-hcp --format='value(nameServers)'
+
+# Output: [ns-123.googledomains.com., ns-456.googledomains.com., ...]
+
+# Delegate from your domain registrar:
+# Update your domain's nameservers to point to the above
+</code></pre>
+<p><strong>Verify delegation</strong> (may take a few minutes):</p>
+<pre><code class="language-bash">dig ns sentinel-dev.example.com
+# Should show Google nameservers
+</code></pre>
+<h3 id="step-4-create-service-account">Step 4: Create Service Account<a class="headerlink" href="#step-4-create-service-account" title="Permanent link">#</a></h3>
+<p>HyperShift needs a service account with permissions to create resources:</p>
+<pre><code class="language-bash"># Create service account
+gcloud iam service-accounts create sentinel-hcp \
+  --display-name=&quot;Sentinel HyperShift Service Account&quot;
+
+# Get service account email
+export SERVICE_ACCOUNT_EMAIL=&quot;sentinel-hcp@${GCP_PROJECT_ID}.iam.gserviceaccount.com&quot;
+
+# Grant required roles
+gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
+  --member=serviceAccount:$SERVICE_ACCOUNT_EMAIL \
+  --role=roles/compute.admin
+
+gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
+  --member=serviceAccount:$SERVICE_ACCOUNT_EMAIL \
+  --role=roles/dns.admin
+
+gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
+  --member=serviceAccount:$SERVICE_ACCOUNT_EMAIL \
+  --role=roles/iam.securityAdmin
+
+gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
+  --member=serviceAccount:$SERVICE_ACCOUNT_EMAIL \
+  --role=roles/resourcemanager.projectIamAdmin
+</code></pre>
+<h3 id="step-5-create-service-account-key">Step 5: Create Service Account Key<a class="headerlink" href="#step-5-create-service-account-key" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Create key (JSON format)
+gcloud iam service-accounts keys create \
+  ~/gcp-sentinel-hcp-key.json \
+  --iam-account=$SERVICE_ACCOUNT_EMAIL
+
+# Keep this file secure (git-ignored)
+ls -la ~/gcp-sentinel-hcp-key.json
+
+# Base64 encode it (for GitHub Actions)
+cat ~/gcp-sentinel-hcp-key.json | base64 -w0
+</code></pre>
+<h3 id="step-6-login-to-management-cluster">Step 6: Login to Management Cluster<a class="headerlink" href="#step-6-login-to-management-cluster" title="Permanent link">#</a></h3>
+<p>You need cluster-admin access to the existing HyperShift management cluster:</p>
+<pre><code class="language-bash"># Get management cluster kubeconfig (from whoever set it up)
+export KUBECONFIG=~/.kube/hypershift_mgmt
+
+# Verify access
+kubectl cluster-info
+kubectl get ns | grep hypershift
+</code></pre>
+<h3 id="step-7-create-scoped-credentials">Step 7: Create Scoped Credentials<a class="headerlink" href="#step-7-create-scoped-credentials" title="Permanent link">#</a></h3>
+<p>This creates GCP IAM bindings for HyperShift:</p>
+<pre><code class="language-bash"># Run the credential setup script
+./.github/scripts/hypershift/cloud/gcp/setup-credentials.sh
+
+# This:
+# 1. Creates service account bindings
+# 2. Creates GCP IAM roles for hosted control planes
+# 3. Creates OpenShift service account
+# 4. Outputs: .env.sentinel-hypershift-gcp
+</code></pre>
+<p><strong>Output</strong>: <code>.env.sentinel-hypershift-gcp</code> (git-ignored)</p>
+<pre><code class="language-bash"># Contents:
+export CLOUD_PLATFORM=gcp
+export GCP_PROJECT_ID=my-project-id
+export GCP_REGION=us-central1
+export GCP_SERVICE_ACCOUNT_JSON=$(cat ~/gcp-sentinel-hcp-key.json | base64 -w0)
+export HYPERSHIFT_MGMT_KUBECONFIG=~/.kube/hypershift_mgmt
+export PULL_SECRET=$(cat ~/.docker/config.json)
+export BASE_DOMAIN=sentinel-dev.example.com
+export MANAGED_BY_TAG=sentinel-hypershift-custom
+export GCP_HCP_ROLE_NAME=sentinel-hypershift-custom-hcp-role
+</code></pre>
+<h3 id="step-8-verify-setup">Step 8: Verify Setup<a class="headerlink" href="#step-8-verify-setup" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Load the new GCP credentials
+source .env.sentinel-hypershift-gcp
+
+# Run preflight check
+./.github/scripts/hypershift/cloud/gcp/preflight-check.sh
+
+# Output should show:
+# ✓ GCP credentials valid
+# ✓ Management cluster accessible
+# ✓ Cloud DNS zone exists
+# ✓ Quotas sufficient
+# ✓ Pull secret present
+</code></pre>
+<p>✅ <strong>One-time setup complete!</strong> You now have GCP credentials for daily development.</p>
+<hr />
+<h2 id="daily-usage-scoped-credentials">Daily Usage (Scoped Credentials)<a class="headerlink" href="#daily-usage-scoped-credentials" title="Permanent link">#</a></h2>
+<p>After one-time setup, use these credentials for all cluster operations.</p>
+<h3 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># 1. Load your GCP credentials
+source .env.sentinel-hypershift-gcp
+
+# 2. Create a cluster
+./.github/scripts/hypershift/create-cluster.sh
+
+# Wait 15-20 minutes...
+# ✓ Cluster created on GCP
+# ✓ Kubeconfig saved to ~/.clusters/hcp/&lt;cluster-name&gt;/
+
+# 3. Use the cluster
+export KUBECONFIG=~/.clusters/hcp/sentinel-hypershift-custom-gcp-&lt;suffix&gt;/auth/kubeconfig
+kubectl get nodes
+
+# 4. Run tests
+uv run pytest sentinel/tests/e2e/ -v
+
+# 5. Cleanup
+./.github/scripts/hypershift/destroy-cluster.sh &lt;suffix&gt;
+</code></pre>
+<h3 id="cluster-naming">Cluster Naming<a class="headerlink" href="#cluster-naming" title="Permanent link">#</a></h3>
+<p>Clusters are named: <code>sentinel-hypershift-custom-gcp-${SUFFIX}</code></p>
+<p><strong>Suffix options</strong>:</p>
+<pre><code class="language-bash"># Default: Your username (automatically sanitized)
+./.github/scripts/hypershift/create-cluster.sh
+# → sentinel-hypershift-custom-gcp-ladas
+
+# Custom suffix
+./.github/scripts/hypershift/create-cluster.sh pr529
+# → sentinel-hypershift-custom-gcp-pr529
+
+# Random suffix
+CLUSTER_SUFFIX=&quot;&quot; ./.github/scripts/hypershift/create-cluster.sh
+# → sentinel-hypershift-custom-gcp-abc123
+</code></pre>
+<h3 id="accessing-the-cluster">Accessing the Cluster<a class="headerlink" href="#accessing-the-cluster" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># List available kubeconfigs
+ls ~/.clusters/hcp/
+
+# Set kubeconfig for your cluster
+export KUBECONFIG=~/.clusters/hcp/sentinel-hypershift-custom-gcp-pr529/auth/kubeconfig
+
+# Verify access
+kubectl cluster-info
+kubectl get nodes
+kubectl get pods -A
+</code></pre>
+<h3 id="destroying-clusters">Destroying Clusters<a class="headerlink" href="#destroying-clusters" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Destroy specific cluster
+./.github/scripts/hypershift/destroy-cluster.sh pr529
+
+# Or by full name
+./.github/scripts/hypershift/destroy-cluster.sh sentinel-hypershift-custom-gcp-pr529
+</code></pre>
+<p><strong>Important</strong>: Always destroy test clusters to avoid GCP costs!</p>
+<hr />
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h2>
+<h3 id="cluster-parameters">Cluster Parameters<a class="headerlink" href="#cluster-parameters" title="Permanent link">#</a></h3>
+<p>Control cluster characteristics via environment variables:</p>
+<pre><code class="language-bash"># Number of worker nodes (default: 2)
+export REPLICAS=3
+./.github/scripts/hypershift/create-cluster.sh
+
+# Machine type (default: n1-standard-4)
+export MACHINE_TYPE=n1-standard-8
+./.github/scripts/hypershift/create-cluster.sh
+
+# OpenShift version (default: 4.20.11)
+export OCP_VERSION=4.19.12
+./.github/scripts/hypershift/create-cluster.sh
+
+# Autoscaling (default: min=2, max=5)
+export AUTOSCALE_MIN=1
+export AUTOSCALE_MAX=10
+./.github/scripts/hypershift/create-cluster.sh
+
+# Disable autoscaling
+export AUTOSCALE_MIN=&quot;&quot;
+export AUTOSCALE_MAX=&quot;&quot;
+./.github/scripts/hypershift/create-cluster.sh
+</code></pre>
+<h3 id="gcp-region">GCP Region<a class="headerlink" href="#gcp-region" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Create cluster in different region
+export GCP_REGION=europe-west1
+./.github/scripts/hypershift/create-cluster.sh
+</code></pre>
+<p>Supported regions: Any GCP region in your project</p>
+<hr />
+<h2 id="cicd-integration">CI/CD Integration<a class="headerlink" href="#cicd-integration" title="Permanent link">#</a></h2>
+<h3 id="github-actions-matrix">GitHub Actions Matrix<a class="headerlink" href="#github-actions-matrix" title="Permanent link">#</a></h3>
+<p>Both AWS and GCP run simultaneously:</p>
+<pre><code class="language-yaml">strategy:
+  matrix:
+    cloud: [aws, gcp]
+  max-parallel: 2
+</code></pre>
+<p>Each cloud gets its own secrets and creates clusters independently.</p>
+<h3 id="secrets-configuration">Secrets Configuration<a class="headerlink" href="#secrets-configuration" title="Permanent link">#</a></h3>
+<ol>
+<li>Go to <strong>Repository Settings → Secrets and variables → Actions</strong></li>
+<li>
+<p>Add these secrets (same names as <code>.env</code> file):
+   - <code>GCP_PROJECT_ID</code>
+   - <code>GCP_REGION</code>
+   - <code>GCP_SERVICE_ACCOUNT_JSON</code> (base64)
+   - <code>HYPERSHIFT_MGMT_KUBECONFIG</code> (base64)
+   - <code>PULL_SECRET</code> (JSON)
+   - <code>BASE_DOMAIN</code>
+   - <code>MANAGED_BY_TAG</code>
+   - <code>GCP_HCP_ROLE_NAME</code></p>
+</li>
+<li>
+<p>Create <strong>Environments</strong> for <code>e2e-aws</code> and <code>e2e-gcp</code> with separate secret sets</p>
+</li>
+</ol>
+<h3 id="trigger-e2e-tests">Trigger E2E Tests<a class="headerlink" href="#trigger-e2e-tests" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Automatic: Push to main or open PR
+# Manual: GitHub Actions → e2e-hypershift → Run workflow
+
+# Or via gh CLI
+gh workflow run e2e-hypershift.yaml -f cluster_name=pr529
+</code></pre>
+<hr />
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
+<h3 id="cluster-creation-fails">Cluster Creation Fails<a class="headerlink" href="#cluster-creation-fails" title="Permanent link">#</a></h3>
+<p><strong>Error</strong>: "ERROR: Quota exceeded"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Check your quotas
+gcloud compute project-info describe --project=$GCP_PROJECT_ID | grep QUOTA
+
+# View quota details
+gcloud compute project-info describe --project=$GCP_PROJECT_ID \
+  --format=&quot;value(commonInstanceMetadata.items.compute-max-cpu-instances)&quot; \
+  --format=&quot;value(quota.*)&quot;
+
+# Request quota increase in GCP Console
+# IAM &amp; Admin → Quotas → select resource → Edit Quotas → Request increase
+</code></pre>
+<p><strong>Error</strong>: "ERROR: Cannot connect to management cluster"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Verify kubeconfig is set
+echo $KUBECONFIG
+
+# Verify it points to valid file
+ls -la $KUBECONFIG
+
+# Verify you can connect
+kubectl cluster-info
+</code></pre>
+<h3 id="cluster-wont-delete">Cluster Won't Delete<a class="headerlink" href="#cluster-wont-delete" title="Permanent link">#</a></h3>
+<p><strong>Error</strong>: "ERROR: Timeout waiting for cluster deletion"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Check if control plane namespace is stuck
+kubectl get ns clusters-sentinel-hypershift-custom-gcp-&lt;suffix&gt;
+
+# Force delete if stuck
+kubectl delete ns clusters-sentinel-hypershift-custom-gcp-&lt;suffix&gt; --grace-period=0 --force
+
+# Check for orphaned GCP resources
+./.github/scripts/hypershift/cloud/gcp/find-orphaned-resources.sh
+
+# Manually delete via GCP Console if necessary
+gcloud compute instances list --filter='labels.kubernetes_io_cluster_sentinel-hypershift-custom-gcp_*=owned'
+</code></pre>
+<h3 id="access-denied-errors">Access Denied Errors<a class="headerlink" href="#access-denied-errors" title="Permanent link">#</a></h3>
+<p><strong>Error</strong>: "Permission denied: 'compute.instances.create'"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Verify service account has permissions
+gcloud projects get-iam-policy $GCP_PROJECT_ID \
+  --flatten=&quot;bindings[].members&quot; \
+  --format='table(bindings.role)' \
+  --filter=&quot;bindings.members:sentinel-hcp@*&quot;
+
+# Should show: roles/compute.admin, roles/dns.admin, roles/iam.securityAdmin
+
+# If missing, re-run setup-credentials.sh
+</code></pre>
+<h3 id="dns-issues">DNS Issues<a class="headerlink" href="#dns-issues" title="Permanent link">#</a></h3>
+<p><strong>Error</strong>: "Could not resolve <cluster>.sentinel-dev.example.com"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Verify BASE_DOMAIN is correct
+echo $BASE_DOMAIN
+
+# Verify Cloud DNS zone exists
+gcloud dns managed-zones list | grep sentinel
+
+# Check created DNS records
+gcloud dns record-sets list --zone=sentinel-hcp
+
+# Verify nameserver delegation (may take propagation time)
+dig ns sentinel-dev.example.com
+</code></pre>
+<hr />
+<h2 id="cost-management">Cost Management<a class="headerlink" href="#cost-management" title="Permanent link">#</a></h2>
+<h3 id="monitoring-costs">Monitoring Costs<a class="headerlink" href="#monitoring-costs" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># GCP Console → Billing → Cost Management
+# Filter by label: sentinel.io/managed-by = sentinel-hypershift-custom
+
+# Or via gcloud CLI
+gcloud billing accounts list
+gcloud billing accounts describe &lt;account-id&gt; --format=json
+</code></pre>
+<h3 id="cost-breakdown">Cost Breakdown<a class="headerlink" href="#cost-breakdown" title="Permanent link">#</a></h3>
+<p>Per cluster (typical):
+- <strong>Compute Engine</strong>: $25-45/month
+- <strong>Cloud Load Balancer</strong>: $15/month
+- <strong>VPC/Network</strong>: $5/month
+- <strong>Cloud DNS</strong>: &lt;$1/month
+- <strong>Total</strong>: ~$45-65/month</p>
+<h3 id="cost-optimization">Cost Optimization<a class="headerlink" href="#cost-optimization" title="Permanent link">#</a></h3>
+<ol>
+<li><strong>Destroy unused clusters</strong> (biggest cost driver)</li>
+<li><strong>Use smaller machines</strong> for non-critical tests (n1-standard-2 instead of n1-standard-4)</li>
+<li><strong>Reduce node count</strong> (1 node instead of 2 if possible)</li>
+<li><strong>Schedule tests</strong> to run only during business hours</li>
+<li><strong>Use sustained use discounts</strong> (longer-running clusters)</li>
+</ol>
+<hr />
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">#</a></h2>
+<h3 id="cluster-status">Cluster Status<a class="headerlink" href="#cluster-status" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># Check if cluster is ready
+kubectl get hostedcluster -n clusters
+
+# Check control plane pod status
+kubectl get pods -n clusters-&lt;cluster-name&gt;
+
+# View cluster events
+kubectl describe hostedcluster -n clusters &lt;cluster-name&gt;
+</code></pre>
+<h3 id="logs">Logs<a class="headerlink" href="#logs" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># HyperShift operator logs
+kubectl logs -n hypershift-system deployment/hypershift-operator -f
+
+# Control plane pod logs
+kubectl logs -n clusters-&lt;cluster-name&gt; &lt;pod-name&gt;
+
+# GCP resource creation logs
+gcloud logging read --limit=50 --format=json | jq '.[] | select(.resource.type==&quot;gce_instance&quot;)'
+</code></pre>
+<h3 id="gcp-resources">GCP Resources<a class="headerlink" href="#gcp-resources" title="Permanent link">#</a></h3>
+<pre><code class="language-bash"># View all Compute Engine instances with sentinel labels
+gcloud compute instances list \
+  --filter='labels.sentinel_io_managed_by=sentinel-hypershift-custom'
+
+# View all Cloud DNS records
+gcloud dns record-sets list --zone=sentinel-hcp
+
+# View all network resources
+gcloud compute networks list --filter='name~sentinel-hypershift'
+
+# View firewall rules
+gcloud compute firewall-rules list --filter='labels.sentinel_io_managed_by=sentinel-hypershift-custom'
+</code></pre>
+<hr />
+<h2 id="advanced-custom-vpc-configuration">Advanced: Custom VPC Configuration<a class="headerlink" href="#advanced-custom-vpc-configuration" title="Permanent link">#</a></h2>
+<p>By default, HyperShift creates a new VPC for each cluster. To use existing VPC:</p>
+<pre><code class="language-bash"># Edit GCP Terraform to use existing VPC
+# File: .github/scripts/hypershift/cloud/gcp/terraform/variables.tf
+
+# Set network and subnet
+export NETWORK=&quot;projects/&lt;project&gt;/global/networks/existing-vpc&quot;
+export SUBNET=&quot;projects/&lt;project&gt;/regions/&lt;region&gt;/subnetworks/existing-subnet&quot;
+
+./.github/scripts/hypershift/create-cluster.sh
+</code></pre>
+<hr />
+<h2 id="frequently-asked-questions">Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">#</a></h2>
+<p><strong>Q: How long does cluster creation take?</strong><br />
+A: 15-20 minutes typically. Monitor in CI logs or management cluster.</p>
+<p><strong>Q: Can I access the cluster while tests run?</strong><br />
+A: Yes, kubeconfig is created immediately. Tests run concurrently.</p>
+<p><strong>Q: What happens to cluster after E2E tests?</strong><br />
+A: It's automatically destroyed to save costs (unless you set skip_destroy=true).</p>
+<p><strong>Q: Can I use a different GCP region?</strong><br />
+A: Yes, set <code>GCP_REGION</code> before creation.</p>
+<p><strong>Q: How much does a test cluster cost?</strong><br />
+A: ~$2-3 per day (if running continuously). Always destroy when done.</p>
+<p><strong>Q: Can I modify a running cluster?</strong><br />
+A: Yes, you have full kubectl access. Changes persist during test run.</p>
+<p><strong>Q: What if service account key expires?</strong><br />
+A: Create a new key: <code>gcloud iam service-accounts keys create ...</code></p>
+<hr />
+<h2 id="related-documentation">Related Documentation<a class="headerlink" href="#related-documentation" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="ARCHITECTURE.html">ARCHITECTURE.md</a> - Multi-cloud overview</li>
+<li><a href="AWS.html">AWS.md</a> - Amazon Web Services setup</li>
+<li><a href="../troubleshooting.html">Troubleshooting</a> - Common issues for both clouds</li>
+<li><a href="https://github.com/StyxLabs-Inc/sentinel/blob/main/docs/_internal/maintainers/rotate-hypershift-ci-credentials.md">Rotating HyperShift CI credentials</a> - Secrets management details</li>
+</ul>
+<hr />
+<h2 id="support">Support<a class="headerlink" href="#support" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>HyperShift Docs</strong>: https://hypershift-docs.readthedocs.io/</li>
+<li><strong>GCP HyperShift</strong>: https://hypershift-docs.readthedocs.io/en/latest/how-to/gcp/</li>
+<li><strong>GCP Docs</strong>: https://cloud.google.com/docs</li>
+<li><strong>OpenShift Docs</strong>: https://docs.openshift.com/</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="AWS.html"><span>Previous</span>AWS HyperShift Setup &amp; Operation</a><a class="next" href="ARCHITECTURE.html"><span>Next</span>Multi-Cloud HyperShift Architecture</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/operate/hypershift/GCP.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cost control | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Remove unused tool definitions, and set a spending limit.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/experiments/cost-control.html">
+  <meta property="og:title" content="Cost control — Sentinel Docs">
+  <meta property="og:description" content="Remove unused tool definitions, and set a spending limit.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/experiments/cost-control.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../core/architecture.html">Architecture</a></li><li><a href="../core/agents-and-tools.html">Agents and tools</a></li><li><a href="../core/cortex.html">Cortex</a></li><li><a href="../core/identity.html">Identity and trust</a></li><li><a href="../core/control-plane.html">Control plane</a></li></ul></details></li><li><details open><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="mcp-gateway.html">MCP Gateway</a></li><li><a href="skills.html">Skills</a></li><li><a href="sandboxes.html">Sandboxes</a></li><li><a href="agent-context.html">Agent context</a></li><li><a href="intent-based-access.html">Intent-based access</a></li><li><a href="tool-validation.html">Tool call validation</a></li><li><a href="context-compaction.html">Context compaction</a></li><li><a href="cost-control.html" class="active" aria-current="page">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Cost control</h1>
+        <p class="docs-lede">Remove unused tool definitions, and set a spending limit.</p>
+        <p>Agents waste tokens in two ways that you can correct. They send the definition of each tool that they
+can call, on each turn. And they often have no spending limit.</p>
+<div class="admonition warning">
+<p class="admonition-title">Alpha</p>
+<p>The plugins on this page are experiments. The behaviour and the configuration will change.</p>
+</div>
+<p>Start with this page, not with <a href="intent-based-access.html">intent-based access</a> or
+<a href="tool-validation.html">tool call validation</a>. These plugins do not evaluate the decisions of the agent,
+so the risk is much lower.</p>
+<h2 id="step-1-measure-the-cost">Step 1: measure the cost<a class="headerlink" href="#step-1-measure-the-cost" title="Permanent link">#</a></h2>
+<p>You cannot reduce a cost that you did not measure. On your computer, one command is sufficient:</p>
+<pre><code class="language-bash">curl -fsSL https://raw.githubusercontent.com/sentinel/cortex/main/scripts/install.sh \
+  | sh -s -- --claude-code
+</code></pre>
+<p>Then run <code>agentop observe</code> in one terminal and your agent in a second terminal. Each model call, tool call and
+agent message appears as it happens. See <a href="../../get-started/laptop.html">Quickstart on a laptop</a>.</p>
+<p>In a cluster, the same data goes to your trace store. See
+<a href="../../operate/observability.html">Observability</a>.</p>
+<h2 id="step-2-remove-unused-tool-definitions">Step 2: remove unused tool definitions<a class="headerlink" href="#step-2-remove-unused-tool-definitions" title="Permanent link">#</a></h2>
+<p>An agent sends the definition of each tool that it can call, on each turn. It calls only a small number
+of them. On a typical coding agent, the definitions that the agent never uses are <strong>4 percent to 20
+percent of the prompt on each turn</strong>. You pay for them again on each turn, for the complete session.</p>
+<p>The <code>tool-prune</code> plugin removes them from the request before the request leaves the pod.</p>
+<p>This reduction is the least expensive one that is available. It does not change the logic of the agent, and it does not change the answers. The plugin removes
+only the definitions that the agent does not use.</p>
+<p>See the
+<a href="https://github.com/sentinel/cortex/blob/main/authbridge/docs/plugin-catalog.md#tool-prune">plugin catalogue</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The plugin makes a judgement about the tools that an agent needs. If an agent uses a tool rarely,
+confirm that the agent can still use that tool after you enable the plugin.</p>
+</div>
+<h2 id="step-3-set-a-spending-limit">Step 3: set a spending limit<a class="headerlink" href="#step-3-set-a-spending-limit" title="Permanent link">#</a></h2>
+<p>Two plugins set two different limits.</p>
+<h3 id="a-limit-for-one-session">A limit for one session<a class="headerlink" href="#a-limit-for-one-session" title="Permanent link">#</a></h3>
+<p>The <code>session-budget</code> plugin sets a limit on the tokens, the number of calls and the duration of one
+session. It keeps the counts in Redis. It runs on the outbound chain.</p>
+<p>Use this plugin to stop one task that does not end. An example is an agent that repeats a model call
+many times.</p>
+<h3 id="a-limit-for-one-day">A limit for one day<a class="headerlink" href="#a-limit-for-one-day" title="Permanent link">#</a></h3>
+<p>The <code>litellm-budget-track</code> plugin reads the <code>x-litellm-response-cost</code> header that LiteLLM returns, and
+applies a daily limit.</p>
+<p>The correct chain depends on your arrangement:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Your arrangement</th>
+<th>Chain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cortex is in front of the model endpoint</td>
+<td>Inbound</td>
+</tr>
+<tr>
+<td>Cortex runs an agent with <code>authbridge exec</code></td>
+<td>Outbound</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the configuration of both plugins, see the
+<a href="https://github.com/sentinel/cortex/blob/main/authbridge/docs/plugin-catalog.md">plugin catalogue</a>.</p>
+<h2 id="step-4-compact-large-tool-output">Step 4: compact large tool output<a class="headerlink" href="#step-4-compact-large-tool-output" title="Permanent link">#</a></h2>
+<p>If the cost comes from the size of the tool output, and not from the number of calls, the <code>tool-prune</code>
+plugin does not help. See <a href="context-compaction.html">Context compaction</a>.</p>
+<p>Do this step last. It changes what the model receives.</p>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="context-compaction.html">Context compaction</a></li>
+<li><a href="../../operate/observability.html">Observability</a> gives the traces and the metrics for each agent.</li>
+<li><a href="../core/cortex.html">Cortex</a> explains where these plugins run.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="context-compaction.html"><span>Previous</span>Context compaction</a><a class="next" href="../../workloads/index.html"><span>Next</span>Agents and tools</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/experiments/cost-control.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

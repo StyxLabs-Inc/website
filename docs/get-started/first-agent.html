@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deploy your first agent | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Deploy the sample weather agent and send a message to it.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/get-started/first-agent.html">
+  <meta property="og:title" content="Deploy your first agent — Sentinel Docs">
+  <meta property="og:description" content="Deploy the sample weather agent and send a message to it.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/get-started/first-agent.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details open><summary><a href="index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="laptop.html">Quickstart — laptop</a></li><li><a href="reading-the-numbers.html">Read the numbers</a></li><li><a href="kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="configure-a-model.html">Configure a model</a></li><li><a href="first-agent.html" class="active" aria-current="page">Deploy your first agent</a></li><li><a href="first-tool.html">Connect your first tool</a></li><li><a href="cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Get started</p>
+        <h1>Deploy your first agent</h1>
+        <p class="docs-lede">Deploy the sample weather agent and send a message to it.</p>
+        <p>This procedure deploys an agent from a container image, and then sends a message to the agent. Complete
+<a href="kubernetes.html">Quickstart on Kubernetes</a> and <a href="configure-a-model.html">Configure a model</a> first.</p>
+<p>If you installed with the <code>--with-examples</code> option, the weather agent and tool are present. Go to
+<a href="#step-2-send-a-message-to-the-agent">Step 2</a>.</p>
+<h2 id="step-1-deploy-the-agent">Step 1: deploy the agent<a class="headerlink" href="#step-1-deploy-the-agent" title="Permanent link">#</a></h2>
+<ol>
+<li>Open the console at <code>http://sentinel-ui.localtest.me:8080</code> and select <strong>Agents</strong>.</li>
+<li>Select <strong>Import new agent</strong>.</li>
+<li>Select <strong>Deploy from existing image</strong>. Enter this image address:</li>
+</ol>
+<p><code>ghcr.io/sentinel/examples/weather-service:latest</code></p>
+<ol start="4">
+<li>Set the environment variables. Select the <strong>ollama</strong> preset or the <strong>openai</strong> preset, or import a
+   <code>.env</code> file from GitHub. The sample agent also needs the address of its tool:</li>
+</ol>
+<p><code>MCP_URL=http://weather-tool:8080/mcp</code></p>
+<ol start="5">
+<li>To reach the agent from outside the cluster, select <strong>Enable external access to the agent
+   endpoint</strong>.</li>
+<li>Select <strong>Deploy</strong>.</li>
+</ol>
+<p>Sentinel creates a Deployment and a Service. It adds an <code>AgentRuntime</code> resource, which puts the
+workload in the platform. If you enabled external access, it also creates an <code>HTTPRoute</code>.</p>
+<h2 id="step-2-send-a-message-to-the-agent">Step 2: send a message to the agent<a class="headerlink" href="#step-2-send-a-message-to-the-agent" title="Permanent link">#</a></h2>
+<ol>
+<li>Select the agent in the <strong>Agents</strong> list.</li>
+<li>Select the <strong>Details</strong> tab.</li>
+<li>Select <strong>Chat</strong>.</li>
+<li>Ask a question that needs the tool. For example: <code>What is the weather in Dublin?</code></li>
+</ol>
+<p>If the agent answers, the agent and the tool communicate through the platform.</p>
+<h2 id="what-sentinel-did">What Sentinel did<a class="headerlink" href="#what-sentinel-did" title="Permanent link">#</a></h2>
+<p>The operator found the <code>AgentRuntime</code> resource and did four things:</p>
+<ol>
+<li>It added the label <code>sentinel.io/type: agent</code> to the workload.</li>
+<li>It injected the Cortex sidecars, which are the proxy, the identity helper and the client
+   registration.</li>
+<li>It registered the workload as an OAuth client in Keycloak.</li>
+<li>It created an <code>AgentCard</code> resource, read the card of the agent from
+   <code>/.well-known/agent-card.json</code>, and validated the signature of the card.</li>
+</ol>
+<p>Each request to the agent, and each request from the agent, now passes through Cortex. See
+<a href="../concepts/core/cortex.html">Cortex</a>.</p>
+<h2 id="to-build-the-agent-from-source-instead">To build the agent from source instead<a class="headerlink" href="#to-build-the-agent-from-source-instead" title="Permanent link">#</a></h2>
+<p>If your agent is in a Git repository and not in a registry, Sentinel can build it. You need the
+<code>--with-builds</code> option at installation time, and 6 available CPUs.</p>
+<p>The repository must be on GitHub and must be reachable with the token that you gave to the installer.
+The agent must be in a <strong>subdirectory</strong> that contains a <code>Dockerfile</code>. The agent must not be in the root
+directory of the repository.</p>
+<p>For the build options, the build strategies and the registries, see
+<a href="../workloads/deploy-an-agent.html">Deploy an agent</a>.</p>
+<h2 id="if-the-procedure-fails">If the procedure fails<a class="headerlink" href="#if-the-procedure-fails" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>The usual cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Init:ErrImagePull</code> or <code>Init:ImagePullBackOff</code></td>
+<td>Your GitHub token is expired. It needs the <code>repo</code>, <code>write:packages</code> and <code>read:packages</code> permissions.</td>
+</tr>
+<tr>
+<td>The chat returns the status 503, and the log of the agent shows a reset connection</td>
+<td>The model is not reachable. Confirm that <code>ollama serve</code> is active.</td>
+</tr>
+<tr>
+<td>The agent stays in the <code>Pending</code> state</td>
+<td>The node has insufficient CPU. See <a href="kubernetes.html#before-you-start">Before you start</a>.</td>
+</tr>
+<tr>
+<td>The build pod stays in <code>Pending</code> with <code>Insufficient cpu</code></td>
+<td>The same cause. Deploy from an image, or give the runtime 6 CPUs.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For more information, see <a href="../operate/troubleshooting.html">Troubleshooting</a>.</p>
+<h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="first-tool.html">Connect your first tool</a>.</li>
+<li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a> gives the requirements for your own code.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="configure-a-model.html"><span>Previous</span>Configure a model</a><a class="next" href="first-tool.html"><span>Next</span>Connect your first tool</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/get-started/first-agent.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

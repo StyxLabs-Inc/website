@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Identity in the event path | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Who submitted a request, which agent answered it, and what each check proves.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/eventing/identity.html">
+  <meta property="og:title" content="Identity in the event path — Sentinel Docs">
+  <meta property="og:description" content="Who submitted a request, which agent answered it, and what each check proves.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/eventing/identity.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details open><summary><a href="index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="github-oauth-app.html">GitHub OAuth App</a></li><li><a href="identity.html" class="active" aria-current="page">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Eventing</p>
+        <h1>Identity in the event path</h1>
+        <p class="docs-lede">Who submitted a request, which agent answered it, and what each check proves.</p>
+        <div class="admonition warning">
+<p class="admonition-title">Alpha</p>
+<p>Every control on this page is <strong>off by default</strong>. With none of them configured — which is how
+the shipped manifests start — <code>POST /v0/agents</code> accepts anonymous requests, nothing is signed,
+and nothing is verified. See <a href="#turning-the-controls-on">Turning the controls on</a> for the
+variables that enable each one.</p>
+</div>
+<p>On the platform, a direct call to an agent passes through <a href="../security/authbridge.html">AuthBridge</a>,
+which authenticates it and limits what it can reach. EventBridge's own HTTP API does not, and
+neither does an event on the broker: once a message is on the broker, anything that can write to
+the topic can add to it. This page covers the two controls that narrow that gap, and states
+plainly what each one does not cover.</p>
+<h2 id="two-questions-two-mechanisms">Two questions, two mechanisms<a class="headerlink" href="#two-questions-two-mechanisms" title="Permanent link">#</a></h2>
+<p>The two questions look similar and need different answers:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Which person asked for this?</th>
+<th>Which agent produced this?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Verified by</td>
+<td>GitHub, at the front door; a successful lookup is cached per token</td>
+<td>A signature on the event itself</td>
+</tr>
+<tr>
+<td>Mechanism</td>
+<td>OAuth device flow, then a lookup of the login</td>
+<td>Ed25519 detached JWS with a key id</td>
+</tr>
+<tr>
+<td>Trust root</td>
+<td>GitHub</td>
+<td>A list of approved public keys</td>
+</tr>
+<tr>
+<td>Checked at</td>
+<td>EventBridge</td>
+<td>EventRunner for requests, EventBridge for responses</td>
+</tr>
+</tbody>
+</table></div>
+<p>A user signs in once and gets a token. An agent holds a private key and signs the final event of
+each run. Those are different problems: one is about a human authorizing work, the other is about
+a workload proving it is the one that did the work.</p>
+<h2 id="which-person-asked-for-this">Which person asked for this<a class="headerlink" href="#which-person-asked-for-this" title="Permanent link">#</a></h2>
+<p>The caller signs in with GitHub (see <a href="github-oauth-app.html">GitHub OAuth App</a>) and sends the
+resulting token on every request. EventBridge then:</p>
+<ol>
+<li>Looks up the token in a cache keyed by a hash of the token, never the token itself.</li>
+<li>On a miss, calls <code>GET https://api.github.com/user</code> to get the login.</li>
+<li>Checks the login against <code>EB_ALLOWED_USERS</code>.</li>
+<li>Records the login on the request event as <code>ce_submitter</code>, with <code>ce_submitteriss: github</code>. The
+   issuer is <strong>absent</strong> when the name came from a static <code>EB_AUTH_TOKENS</code> entry, which is how a
+   reader tells a GitHub identity from a name an operator typed into an env var.</li>
+</ol>
+<p>The attribute is spelled <code>submitteriss</code>, without a separator: CloudEvents v1.0 restricts
+attribute names to lower-case <code>[a-z0-9]</code>, so <code>submitter_iss</code> is rejected or silently dropped by
+a spec-compliant consumer.</p>
+<p>With sign-in on, the outcomes a caller sees — every <code>401</code> carries a <code>WWW-Authenticate</code> challenge:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No credential</td>
+<td><code>401</code></td>
+</tr>
+<tr>
+<td>Unknown token, or a revoked one once its cache entry expires</td>
+<td><code>401</code></td>
+</tr>
+<tr>
+<td>GitHub unreachable, rate-limited, or returning 5xx</td>
+<td><code>401</code> — the check fails closed</td>
+</tr>
+<tr>
+<td>Valid GitHub user, not on the approved list</td>
+<td><code>403</code></td>
+</tr>
+<tr>
+<td>Approved user</td>
+<td><code>202</code>, and the identity travels on the event</td>
+</tr>
+<tr>
+<td>Static <code>EB_AUTH_TOKENS</code> holder</td>
+<td><code>202</code>, with no <code>ce_submitteriss</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>With neither sign-in nor static tokens configured, which is the default, every caller gets <code>202</code>
+anonymously and no <code>ce_submitter</code> is recorded. <code>EB_AUTH_TOKENS</code> on its own already ends anonymous
+starts, as long as one entry parses: a request with no credential then gets <code>401</code>. An entry without
+a colon, a name or a token is skipped silently, so a value in which no entry parses leaves starts
+anonymous.</p>
+<p>The <code>403</code> is the interesting one. The person is real and authenticated, and is still refused.</p>
+<p>Failures are not cached, so every retry during a GitHub outage calls GitHub again — while logins
+already in the cache keep working until their entry expires.</p>
+<p><strong>Static tokens are checked first.</strong> An <code>EB_AUTH_TOKENS</code> entry never consults
+<code>EB_ALLOWED_USERS</code> and records no issuer. It is the break-glass path for a GitHub outage, and it
+is also why removing a name from the approved list does not remove a static-token holder.</p>
+<p><strong>GitHub returns an opaque token, not a signed one.</strong> There is nothing in it to verify offline,
+so EventBridge has to ask GitHub who the token belongs to. That makes sign-in depend on GitHub
+being reachable, and it is why the cache exists: without it, every request would cost an API
+call.</p>
+<h2 id="which-agent-produced-this">Which agent produced this<a class="headerlink" href="#which-agent-produced-this" title="Permanent link">#</a></h2>
+<p>Each agent runner holds a private key and signs the final event of each run. EventBridge holds
+its own signing key, plus a file of approved public keys listed by key id:</p>
+<pre><code class="language-text">EventBridge    private: its own signing key    public: approved agent keys, by kid
+                                                       (including its own, under EB_SIGNING_KID)
+EventRunner    private: its own signing key    public: the EventBridge key
+
+requests    EventBridge signs  ─▶  EventRunner verifies before running anything
+responses   EventRunner signs  ─▶  EventBridge verifies terminal events before storing
+</code></pre>
+<p>That file <strong>is</strong> the approved-agent list. With enforcement on, an event signed under a kid that
+is not in the file is refused, and so is a terminal event with no signature.</p>
+<!-- VERIFY v0.9.0: drop "the flag does not stop it" once sentinel/examples#885 lands — it proposes
+     that a rejected event no longer reach on_group_event, on_member_event or insert_response as if
+     it were genuine. Recheck "stored as phase=error, shown as a failure in the transcript" below at
+     the same time. -->
+
+<p>Group events are signed by EventBridge, under <code>EB_SIGNING_KID</code>, so a group event under any other
+kid is flagged with enforcement on. <strong>At this revision the flag does not stop it</strong>, and a refused
+member response can end a batch by a second path — see
+<a href="#what-these-controls-do-not-prove">What these controls do not prove</a>.</p>
+<p><strong>Both keysets are flat.</strong> A kid makes a signature attributable, not restricted: any approved
+runner, or EventBridge's own key, can sign a terminal response for any correlation id. On the
+request side, <code>ER_VERIFY_KEYSET_PATH</code> must hold EventBridge's key alone — a runner key in that file
+would let that runner sign requests with any <code>ce_submitter</code>.</p>
+<p>Two refusals are worth seeing. Both need their control turned on first:</p>
+<ul>
+<li><strong>An unsigned request</strong> injected straight onto the topic is refused before the agent starts,
+  when <code>ER_REQUIRE_SIGNATURE=true</code>. No agent process is created. The offset is committed with no
+  retry and no dead-letter queue, and no response event is emitted, so the caller sees no reply, and
+  EventRunner's only trace is a log line. EventBridge still shows the prompt (see below). Under
+  KEDA, consumer lag still wakes a runner pod from zero only to refuse the message.</li>
+<li><strong>A forged terminal response</strong> published by anything holding broker write access is stored as
+  <code>phase=error</code>, shown as a failure in the transcript, and raises a priority-5 notification —
+  with <code>EB_VERIFY_KEYSET_PATH</code> set <strong>and</strong> <code>EB_REQUIRE_RESPONSE_SIGNATURE=true</code>. Every
+  notification on this page needs ntfy enabled with a topic, which is off as shipped; for an event
+  that carries a group's <code>ce_groupid</code>, the priority-5 one also needs
+  <code>NTFY_GROUP_NOTIFY_ERRORS=true</code>. A forgery that leaves the attribute out is pushed without it, and
+  does not count the member as failed. Verification without the refusal flag is audit
+  mode: the event is stored unchanged. <strong>At this revision nothing records the failure</strong>, so there is
+  no reject rate to watch before you enforce.
+  <!-- VERIFY v0.9.0: drop "nothing records the failure" once sentinel/examples#886 lands. -->
+</li>
+</ul>
+<p>EventRunner does not run a refused request, but the transcript can still show it: EventBridge's
+requests mirror does not verify signatures, so a forged prompt can still be back-filled into the
+prompt store and appear as a user turn.</p>
+<p>Signing uses Ed25519 rather than a shared secret on purpose. With a shared secret, every party
+that can verify can also forge. Asymmetric keys mean a private key never leaves the runner that
+owns it, so a verifier cannot forge, and each signature names the key that made it. Because the
+keyset is flat, that is attribution rather than restriction: EventBridge's key, or any runner's,
+still verifies on any run's answer.</p>
+<p>Signing costs roughly 150–200 ms per event <strong>in this implementation</strong>, because Ed25519 is written
+in pure Python here: eventing's design allows no C extensions. A native implementation takes
+microseconds; the cost is the demo's, not the algorithm's. Verification costs about the same.</p>
+<p>That cost is why responses are signed on terminal events only, rather than on every streamed
+fragment — and it is the limit behind the next section.</p>
+<h2 id="what-these-controls-do-not-prove">What these controls do not prove<a class="headerlink" href="#what-these-controls-do-not-prove" title="Permanent link">#</a></h2>
+<p>Be precise about the claims, because a control that is oversold is worse than one that is
+absent.</p>
+<!-- VERIFY v0.9.0: several limits below are open bugs in the examples repo. Group completion with
+     enforcement on, and the overwrite: sentinel/examples#885 — but with enforcement off, which is
+     the default, the headline at "Anything that can write to the responses topic" stays true after
+     it lands. Audit mode: #886. The open PUT /transcript and the listable ids: #887. Refusal with
+     no keyset refusing nothing, and the missing EB_SIGNING_KID-in-keyset check, both under
+     "Turning the controls on": #888. -->
+
+<ul>
+<li><strong>Only starting work is authenticated.</strong> <code>POST /v0/agents</code> and <code>POST /v0/groups</code> check sign-in.
+  <code>POST /v0/agents/{id}/continue</code> and <code>/continue-html</code>, <code>PUT</code> and <code>GET /v0/agents/{id}/transcript</code>,
+  the group <code>close</code> and <code>cancel</code> endpoints, and every transcript read are open to anyone who can
+  reach EventBridge and name the conversation — and a continued turn carries no <code>ce_submitter</code>.
+  <code>PUT …/transcript</code> replaces the session history EventRunner resumes from on a cold pod, and no
+  signature covers it, so anyone who can name a conversation can rewrite the history the agent
+  continues with. <strong>The ids are not secret:</strong> <code>GET /v0/groups</code> lists the 100 most recent groups and
+  <code>GET /v0/groups/{id}/status</code> every member's correlation id, both without sign-in. Other ids come
+  from about 25 million values, and nothing limits the rate of guessing. Removing a user from
+  <code>EB_ALLOWED_USERS</code> therefore stops new work only.</li>
+<li><strong>Signing covers the final event of a run, not the stream.</strong> An event that carries no signature
+  and is not terminal is passed through even with enforcement on. A forged non-terminal
+  <code>phase=result</code> frame renders in the transcript and sends a push notification. A group member's
+  frames are not pushed while they carry the group's <code>ce_groupid</code>, but a forger can leave that
+  attribute out, and the frame is then pushed and shown on the group page. Once stored,
+  the verified answer is not protected either: a later unsigned frame with the same sequence number
+  replaces it in the transcript, and sequence numbers are readable without sign-in. So a terminal
+  signature does not reliably prove who finished a run.</li>
+<li><strong>Anything that can write to the responses topic can end a batch.</strong> At this revision EventBridge
+  still applies a flagged <code>group.completed</code>, and replays group events unverified on restart. A
+  refused member response also still counts that member as failed — the rewritten event keeps its
+  <code>final</code> and <code>groupid</code> attributes. Once every member is counted, the batch completes. The member's
+  real signed answer still reaches its transcript, but the batch count ignores it as a duplicate.</li>
+<li><strong>Audit mode records nothing.</strong> Verification without the refusal flag is meant to verify and log
+  while storing events unchanged. It does store them unchanged, but nothing is logged or counted, so
+  there is no reject rate to watch before you enforce.</li>
+<li><strong>A forged prompt is still back-filled.</strong> EventRunner does not run a refused request, but
+  EventBridge's requests mirror does not verify signatures, so an injected prompt appears as a user
+  turn in the transcript whether or not it was signed.</li>
+<li><strong>Tokens are not bound to the app.</strong> EventBridge accepts any GitHub token for an approved
+  login — a PAT, <code>gh auth token</code>, or a token held by another app. See
+  <a href="github-oauth-app.html#configure-eventbridge">GitHub OAuth App</a>.</li>
+<li><strong>There is no replay protection.</strong> A captured signed request runs again if someone publishes it
+  again; nothing deduplicates by event id. The only limit is <code>ER_MAX_REQUEST_AGE_S</code>, an hour by
+  default.</li>
+<li><strong>The user identity is EventBridge's assertion.</strong> <code>ce_submitter</code> is covered by the signature,
+  along with <code>ce_submitteriss</code> and <code>ce_groupid</code> — but a signature only helps where something
+  checks it: with request signing on <strong>and</strong> <code>ER_REQUIRE_SIGNATURE=true</code>, EventRunner refuses a
+  request whose <code>ce_submitter</code> was altered. Even then the signature proves only that EventBridge
+  asserted the name, not that the name is real. With signing off, which is the default, anything
+  that can write to the topic can set it.</li>
+<li><strong>Trust in EventBridge is load-bearing.</strong> EventRunner never contacts GitHub, and it does not act
+  on the identity at all: it checks only that EventBridge signed the request. Compromising
+  EventBridge therefore means being able to claim any user. This is the usual shape for a
+  policy enforcement point, and the alternative — handing every runner the user's GitHub token
+  — is worse, because it spreads a live credential across every workload.</li>
+<li><strong>Approval is an operator action.</strong> The approved-user list is an env var or a <code>config.toml</code>
+  entry; only the keyset is a file. Either way they say who an operator approved, not what a
+  platform attested.</li>
+<li><strong>The broker connection is unprotected.</strong> Kafka traffic in this path is plaintext, and the
+  broker does not check event identity. Transport authentication would say which connection
+  sent a message, not who produced its contents.</li>
+<li><strong>There is no rate limiting.</strong> Refusing an invalid event is cheap but not free, so a flood
+  still costs work. An unknown bearer token costs a GitHub call every time, because failures are
+  not cached.</li>
+</ul>
+<h2 id="turning-the-controls-on">Turning the controls on<a class="headerlink" href="#turning-the-controls-on" title="Permanent link">#</a></h2>
+<p>Each control is off until its variable is set.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Set</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User sign-in</td>
+<td><code>EB_GITHUB_CLIENT_ID</code> or <code>EB_ALLOWED_USERS</code>, or <code>client_id</code> / <code>allowed_users</code> under <code>[github]</code> in <code>eventbridge/config.toml</code></td>
+<td>Off — requests are accepted anonymously</td>
+</tr>
+<tr>
+<td>Static tokens</td>
+<td><code>EB_AUTH_TOKENS</code>, a comma-separated list of <code>name:token</code> pairs</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>Request signing</td>
+<td><code>EB_SIGNING_KEY_PATH</code></td>
+<td>Off — requests are unsigned</td>
+</tr>
+<tr>
+<td>Request refusal</td>
+<td><code>ER_REQUIRE_SIGNATURE=true</code>, and either <code>ER_VERIFY_KEY_PATH</code> naming EventBridge's public key, or <code>ER_VERIFY_KEYSET_PATH</code> holding only that key, filed under the kid <code>EB_SIGNING_KID</code> names</td>
+<td>Off — EventRunner runs unsigned requests</td>
+</tr>
+<tr>
+<td>Response signing</td>
+<td><code>ER_SIGNING_KEY_PATH</code> and <code>ER_SIGNING_KID</code> on each runner</td>
+<td>Off — responses are unsigned</td>
+</tr>
+<tr>
+<td>Response verification</td>
+<td><code>EB_VERIFY_KEYSET_PATH</code> holding each runner's key under its <code>ER_SIGNING_KID</code> and EventBridge's own under <code>EB_SIGNING_KID</code>, plus <code>EB_SIGNING_KID</code> and <code>EB_SIGNING_KEY_PATH</code></td>
+<td>Off — responses are stored unchecked</td>
+</tr>
+<tr>
+<td>Response refusal</td>
+<td><code>EB_REQUIRE_RESPONSE_SIGNATURE=true</code>, on top of response verification. Without <code>EB_VERIFY_KEYSET_PATH</code> it has no effect</td>
+<td>Off — response verification without this flag stores events unchanged and records nothing</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <code>[github]</code> table itself is not the switch: the shipped <code>eventbridge/config.toml</code> already has
+one, with <code>client_id = ""</code> and <code>allowed_users = []</code>, and sign-in is off. A non-empty value under it
+is what turns sign-in on.</p>
+<!-- VERIFY v0.9.0: the table's "records nothing" on the Response refusal row depends on
+     sentinel/examples#886, and "without EB_VERIFY_KEYSET_PATH it has no effect" on #888. -->
+
+<p><strong>The controls depend on each other, and the two sides fail in opposite directions. On each side,
+turn signing on before refusal.</strong> On the request side, refusal before the matching signer, key and
+kid are in place refuses every request: a refused request is never answered, and only EventRunner's
+log says why. On the response side it depends on the keyset. With one loaded, every genuine answer is
+refused and stored as <code>phase=error</code>, which shows as a failure in the transcript. With none, refusal
+refuses nothing: EventBridge verifies no event and stores every one unchanged, and the startup line
+says <code>[eventbridge] response verification OFF (set EB_VERIFY_KEYSET_PATH to enable)</code>. Genuine answers
+keep arriving, so the deployment looks healthy while forgeries are stored as answers.</p>
+<p>Two cases are easy to miss once refusal is on and a keyset is loaded:</p>
+<ul>
+<li><strong>The kid has to match.</strong> EventRunner looks up exactly the kid EventBridge signs with; the
+  single-key fallback applies only when a token names no kid. So when <code>EB_SIGNING_KID</code> is set, a
+  keyset holding EventBridge's key under any other name refuses every genuine request.</li>
+<li><strong>Response verification needs EventBridge's own signing key.</strong> EventBridge signs its group events
+  only when <code>EB_SIGNING_KEY_PATH</code> gives it a seed, so without one it flags every genuine group
+  event. The rewrite replaces the event's data, so the completion notification loses the real
+  counts and reports the batch as <code>0 finished</code>, <code>ended by: no ce_signature attribute</code>. Nothing at
+  startup checks that <code>EB_SIGNING_KID</code> is in the keyset.
+  <!-- VERIFY v0.9.0: drop the startup-check sentence once sentinel/examples#888 adds that check. -->
+</li>
+</ul>
+<p>On the response side, an unsigned streamed frame still passes. Enforcement rewrites a terminal or
+group event that does not verify, and any frame whose signature does not verify; a verified event is
+stored unchanged. At this revision a rewritten event can still take effect: a rewritten group event
+is applied, and a rewritten member answer counts that member as failed.</p>
+<!-- VERIFY v0.9.0: drop "a rewritten event can still take effect" once sentinel/examples#885
+     lands. -->
+
+<p>One case to know on the sign-in side: a client id with no approved-user list refuses every GitHub
+sign-in with <code>403</code>, while a request with no credential still gets <code>401</code> and a static-token holder
+still gets <code>202</code>. The list on its own behaves the same as both together only while it holds a name.
+EventBridge treats an empty <code>EB_ALLOWED_USERS</code> as unset, so keep <code>EB_GITHUB_CLIENT_ID</code> set, which
+makes an empty list fail closed. Without it, an empty list turns sign-in off: if <code>EB_AUTH_TOKENS</code> has
+an entry that parses, only its holders get in, and otherwise every request is accepted anonymously.</p>
+<p><a href="https://github.com/sentinel/examples/blob/d9677ddd1611afd05fe51fcdc0dee0cd27809e62/eventing/agentdocs/DESIGN_PHASE2.md">The Phase 2 design record</a>,
+a draft, has the reasoning behind the design. It predates several findings on this page and does not
+discuss some of these limits: where the two disagree, this page describes the code at the revision
+named in the overview.</p>
+<h2 id="where-this-is-going">Where this is going<a class="headerlink" href="#where-this-is-going" title="Permanent link">#</a></h2>
+<p>The signing mechanism looks up a key by kid, as the platform's does, so that part survives a change
+of trust root. The file format and the algorithm do not.</p>
+<!-- VERIFY v0.9.0: each row is design-only. SPIRE is the Phase 2 §4.3 upgrade path; the user
+     registry is DESIGN_PHASE3 §2.5; the OIDC slot is Phase 3 §2.4, verified in EventBridge and
+     marked not implemented there. Confirm against the epic #1460, and #2596 for the signed-events
+     MVP, before claiming any of it as released. -->
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Today</th>
+<th>Next</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Approved keys in a file</td>
+<td>Keys issued and rotated by SPIRE, rooted in <a href="../security/workload-identity.html">workload identity</a></td>
+</tr>
+<tr>
+<td>Sign-in checked in EventBridge</td>
+<td>An OIDC token verified at the front door</td>
+</tr>
+<tr>
+<td>An approved-user list</td>
+<td>A user registry</td>
+</tr>
+</tbody>
+</table></div>
+<p>For the keys row, the kid lookup does not change. The key file and the algorithm do: the keyset is a
+flat JSON map of kid to key rather than a JWKS, which it rejects, and the verifier accepts EdDSA
+only, while SPIRE issues EC or RSA keys rather than Ed25519.
+<a href="https://github.com/StyxLabs-Inc/sentinel/issues/2596">#2596</a> covers that as ES256 JWS.</p>
+<p>The sign-in row is a larger change than it looks, and it is not an AuthBridge change today: the
+Phase 3 design puts the next verifier in EventBridge rather than behind a sidecar. Moving it
+behind <a href="../security/authbridge.html">AuthBridge</a> would need a JWT issuer in front — AuthBridge
+validates <strong>JWTs</strong> against a JWKS, and a GitHub token is opaque — so the sign-in verification code
+changes more deeply than the keys row's does.</p>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="github-oauth-app.html"><span>Previous</span>GitHub OAuth App</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/eventing/identity.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

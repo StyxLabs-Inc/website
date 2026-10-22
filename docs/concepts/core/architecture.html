@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="The components of a Sentinel cluster, and the path of a request.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/core/architecture.html">
+  <meta property="og:title" content="Architecture — Sentinel Docs">
+  <meta property="og:description" content="The components of a Sentinel cluster, and the path of a request.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/core/architecture.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details open><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="architecture.html" class="active" aria-current="page">Architecture</a></li><li><a href="agents-and-tools.html">Agents and tools</a></li><li><a href="cortex.html">Cortex</a></li><li><a href="identity.html">Identity and trust</a></li><li><a href="control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../experiments/skills.html">Skills</a></li><li><a href="../experiments/sandboxes.html">Sandboxes</a></li><li><a href="../experiments/agent-context.html">Agent context</a></li><li><a href="../experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../experiments/tool-validation.html">Tool call validation</a></li><li><a href="../experiments/context-compaction.html">Context compaction</a></li><li><a href="../experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Architecture</h1>
+        <p class="docs-lede">The components of a Sentinel cluster, and the path of a request.</p>
+        <p>A Sentinel cluster has four layers. This page describes each layer, and then follows one request
+through all of them.</p>
+<p><img alt="The Sentinel components, and the namespace of each component" src="../../images/architecture.svg" /></p>
+<h2 id="layer-1-your-workloads">Layer 1: your workloads<a class="headerlink" href="#layer-1-your-workloads" title="Permanent link">#</a></h2>
+<p>An <strong>agent</strong> is a container that uses the A2A protocol. A <strong>tool</strong> is a container that uses the MCP
+protocol. See <a href="agents-and-tools.html">Agents and tools</a>.</p>
+<p>Both are standard Kubernetes workloads. A workload becomes part of the platform when you create an
+<code>AgentRuntime</code> resource that points to it.</p>
+<h2 id="layer-2-the-data-plane">Layer 2: the data plane<a class="headerlink" href="#layer-2-the-data-plane" title="Permanent link">#</a></h2>
+<p>Each workload in the platform receives a Cortex sidecar. The sidecar is an Envoy proxy and a Go
+processor. It controls the traffic in both directions.</p>
+<ul>
+<li>For traffic that arrives, the sidecar validates the token of the caller. An invalid token receives
+  the HTTP status 401. The request does not reach your agent.</li>
+<li>For traffic that leaves, the sidecar exchanges the token of the agent for a token that is valid
+  only for the target. It then applies the plugins that you enabled.</li>
+</ul>
+<p>The sidecar also keeps the identity documents of the workload current, and registers the workload
+with Keycloak. See <a href="cortex.html">Cortex</a>.</p>
+<h2 id="layer-3-the-control-plane">Layer 3: the control plane<a class="headerlink" href="#layer-3-the-control-plane" title="Permanent link">#</a></h2>
+<p>The <strong>operator</strong> watches the <code>AgentRuntime</code> and <code>AgentCard</code> resources. It labels the workloads,
+injects the sidecars, registers the OAuth clients, reads the agent cards and configures the traces.
+See <a href="control-plane.html">Control plane</a>.</p>
+<p>The <strong>backend and the web console</strong> give you a REST interface and a browser interface. You use them
+to deploy agents and tools, to send messages to an agent, and to read traces. The
+<a href="../../reference/cli.html">CLI</a> uses the same REST interface.</p>
+<h2 id="layer-4-the-infrastructure">Layer 4: the infrastructure<a class="headerlink" href="#layer-4-the-infrastructure" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Function</th>
+<th>When you get it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cert-manager</td>
+<td>Certificates for the webhooks and the gateways</td>
+<td>Always</td>
+</tr>
+<tr>
+<td>Gateway API and the Istio gateway controller</td>
+<td>Network entry for the console, Keycloak and the agents</td>
+<td>Always</td>
+</tr>
+<tr>
+<td>Keycloak</td>
+<td>Identity provider, OAuth2 tokens and token exchange</td>
+<td>Always</td>
+</tr>
+<tr>
+<td>SPIRE</td>
+<td>Gives an identity to each workload</td>
+<td><code>--with-spire</code></td>
+</tr>
+<tr>
+<td>Istio ambient mesh</td>
+<td>mTLS between the workloads</td>
+<td><code>--with-istio</code></td>
+</tr>
+<tr>
+<td>Shipwright and Tekton</td>
+<td>Builds agents and tools from source</td>
+<td><code>--with-builds</code></td>
+</tr>
+<tr>
+<td>OpenTelemetry collector</td>
+<td>Collects the traces</td>
+<td><code>--with-otel</code></td>
+</tr>
+<tr>
+<td>MLflow</td>
+<td>Stores the traces</td>
+<td><code>--with-mlflow</code></td>
+</tr>
+<tr>
+<td>Kiali and Prometheus</td>
+<td>Network diagram and metrics</td>
+<td><code>--with-kiali</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Istio gateway controller and the Istio ambient mesh are different components. The gateway
+controller is always installed. It serves all network entry on <code>*.localtest.me:8080</code>. The ambient
+mesh is optional. It adds mTLS between the workloads. The <code>--with-istio</code> option installs the ambient
+mesh only.</p>
+</div>
+<h2 id="the-path-of-one-request">The path of one request<a class="headerlink" href="#the-path-of-one-request" title="Permanent link">#</a></h2>
+<p>A user asks an agent to do work, and the agent calls a tool.</p>
+<ol>
+<li>The user signs in to the console. Keycloak issues an access token.</li>
+<li>The console sends an A2A message to the agent. The message contains the token.</li>
+<li>The sidecar of the agent validates the token. If the token is not valid, the request stops here.</li>
+<li>The agent decides to call a tool.</li>
+<li>The sidecar of the agent exchanges the token of the user for a token that is valid only for that
+   tool. It then applies the plugins that you enabled. A plugin can stop the call.</li>
+<li>The sidecar of the tool validates the new token, and confirms that the token names the tool.</li>
+<li>The tool does the work and replies. The reply returns through both sidecars.</li>
+</ol>
+<p>The identity of the user is present at each step. No step has more permissions than the user and the
+agent both have. For the diagrams of each step, see
+<a href="../../security/flows.html">Authentication flows</a>.</p>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="../index.html"><span>Previous</span>Concepts</a><a class="next" href="agents-and-tools.html"><span>Next</span>Agents and tools</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/core/architecture.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

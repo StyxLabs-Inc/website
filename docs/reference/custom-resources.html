@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom resources | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Each field of AgentRuntime and AgentCard.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/reference/custom-resources.html">
+  <meta property="og:title" content="Custom resources — Sentinel Docs">
+  <meta property="og:description" content="Each field of AgentRuntime and AgentCard.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/reference/custom-resources.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details open><summary><a href="index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="cli.html">CLI</a></li><li><a href="custom-resources.html" class="active" aria-current="page">Custom resources</a></li><li><a href="install-options.html">Install options</a></li><li><a href="glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Reference</p>
+        <h1>Custom resources</h1>
+        <p class="docs-lede">Each field of AgentRuntime and AgentCard.</p>
+        <p>Both resources use the API group <code>agent.sentinel.dev</code> and the version <code>v1alpha1</code>. For the function of each
+resource, see <a href="../concepts/core/control-plane.html">Control plane</a>.</p>
+<p>The <a href="https://github.com/sentinel/operator/blob/main/operator/docs/api-reference.md">operator API reference</a>
+is the source of this page. The project generates that document from the resource definitions.</p>
+<h2 id="agentruntime">AgentRuntime<a class="headerlink" href="#agentruntime" title="Permanent link">#</a></h2>
+<p>This resource adds a workload to the platform. The short names are <code>art</code> and <code>agentrt</code>.</p>
+<pre><code class="language-yaml">apiVersion: agent.sentinel.dev/v1alpha1
+kind: AgentRuntime
+metadata:
+  name: weather-agent
+  namespace: team1
+spec:
+  type: agent
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: weather-agent
+</code></pre>
+<h3 id="the-spec-fields">The spec fields<a class="headerlink" href="#the-spec-fields" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Necessary</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>string</td>
+<td>Yes</td>
+<td><code>agent</code> or <code>tool</code>.</td>
+</tr>
+<tr>
+<td><code>targetRef</code></td>
+<td><a href="#targetref">TargetRef</a></td>
+<td>Yes</td>
+<td>The workload that this resource configures.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="what-the-operator-adds-to-the-workload">What the operator adds to the workload<a class="headerlink" href="#what-the-operator-adds-to-the-workload" title="Permanent link">#</a></h3>
+<p>Labels on the workload:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sentinel.io/type</code></td>
+<td><code>agent</code> or <code>tool</code>, from the <code>spec.type</code> field.</td>
+</tr>
+<tr>
+<td><code>app.kubernetes.io/managed-by</code></td>
+<td><code>sentinel-operator</code>. The operator removes this label when you delete the <code>AgentRuntime</code> resource.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Annotations on the workload:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sentinel.io/skills</code></td>
+<td>A JSON array of skill names, for example <code>["weather-forecast"]</code>. The operator <strong>reads</strong> this annotation. It does not write it. The backend writes it, or you write it. The operator then writes the result to the <code>status.linkedSkills</code> field, when the <code>skillDiscovery</code> feature gate is on.</td>
+</tr>
+</tbody>
+</table></div>
+<p>On the pod template:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sentinel.io/type</code>, a label</td>
+<td><code>agent</code> or <code>tool</code>. It marks each pod of this workload.</td>
+</tr>
+<tr>
+<td><code>sentinel.io/config-hash</code>, an annotation</td>
+<td>A hash of the resolved configuration. A change starts a rolling update.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="configuration-layers">Configuration layers<a class="headerlink" href="#configuration-layers" title="Permanent link">#</a></h3>
+<p>The operator calculates the hash from two ConfigMaps. The more specific layer wins.</p>
+<ol>
+<li><strong>The namespace layer.</strong> A ConfigMap with the label <code>sentinel.io/defaults=true</code>, in the namespace of the
+   workload.</li>
+<li><strong>The cluster layer.</strong> The <code>sentinel-platform-config</code> ConfigMap, in the <code>sentinel-system</code> namespace.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Two items are outside the hash</p>
+<p>The <code>authBridgeMode</code> and <code>mtlsMode</code> fields of one resource are <strong>not</strong> in the hash. The webhook reads them
+when Kubernetes creates a pod.</p>
+<p>The feature gates in the <code>sentinel-feature-gates</code> ConfigMap apply to the whole cluster. A namespace cannot
+replace them, and an <code>AgentRuntime</code> resource cannot replace them. They control which Cortex components
+run, which are the proxy, the identity helper and the client registration. They also control whether skill
+discovery is active.</p>
+</div>
+<h2 id="agentcard">AgentCard<a class="headerlink" href="#agentcard" title="Permanent link">#</a></h2>
+<p>This resource reads and stores the data of an agent, for discovery. The short names are <code>agentcards</code> and
+<code>cards</code>.</p>
+<p>The operator creates this resource for each agent. It uses this pattern for the name:
+<code>{name}-{kind}-card</code>. A Deployment with the name <code>weather-agent</code> therefore receives a resource with the
+name <code>weather-agent-deployment-card</code>.</p>
+<pre><code class="language-yaml">apiVersion: agent.sentinel.dev/v1alpha1
+kind: AgentCard
+metadata:
+  name: weather-agent-deployment-card
+  namespace: team1
+spec:
+  syncPeriod: 30s
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: weather-agent
+  identityBinding:
+    trustDomain: localtest.me
+    strict: false
+</code></pre>
+<h3 id="the-spec-fields_1">The spec fields<a class="headerlink" href="#the-spec-fields_1" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Necessary</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetRef</code></td>
+<td><a href="#targetref">TargetRef</a></td>
+<td>Yes</td>
+<td>The workload of this agent.</td>
+</tr>
+<tr>
+<td><code>syncPeriod</code></td>
+<td>string</td>
+<td>No</td>
+<td>The interval between two reads of the card. The default is <code>30s</code>. Use the Go duration format.</td>
+</tr>
+<tr>
+<td><code>identityBinding</code></td>
+<td>object</td>
+<td>No</td>
+<td>See the next table.</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="identitybinding">identityBinding<a class="headerlink" href="#identitybinding" title="Permanent link">#</a></h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trustDomain</code></td>
+<td>string</td>
+<td>Replaces the <code>--spire-trust-domain</code> value of the operator, for this resource only. An empty value selects the value of the operator.</td>
+</tr>
+<tr>
+<td><code>strict</code></td>
+<td>boolean</td>
+<td><code>false</code>, the default, writes the result to the status only. <code>true</code> makes a failure start a network isolation.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The operator reads the SPIFFE identity from the SAN URI of the first certificate in the <code>x5c</code> chain of the
+signature.</p>
+<h3 id="the-status-fields">The status fields<a class="headerlink" href="#the-status-fields" title="Permanent link">#</a></h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>card</code></td>
+<td>object</td>
+<td>The stored agent card. See <a href="#the-card-data">The card data</a>.</td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td>array</td>
+<td>The standard Kubernetes conditions for the read operation.</td>
+</tr>
+<tr>
+<td><code>lastSyncTime</code></td>
+<td>timestamp</td>
+<td>The time of the last successful read.</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>string</td>
+<td>The protocol that the operator found, for example <code>a2a</code>.</td>
+</tr>
+<tr>
+<td><code>targetRef</code></td>
+<td>TargetRef</td>
+<td>The workload that the operator found.</td>
+</tr>
+<tr>
+<td><code>validSignature</code></td>
+<td>boolean</td>
+<td>Whether the signature of the card is valid.</td>
+</tr>
+<tr>
+<td><code>signatureVerificationDetails</code></td>
+<td>string</td>
+<td>A description of the last validation.</td>
+</tr>
+<tr>
+<td><code>signatureKeyId</code></td>
+<td>string</td>
+<td>The <code>kid</code> value from the header of the signature.</td>
+</tr>
+<tr>
+<td><code>signatureSpiffeId</code></td>
+<td>string</td>
+<td>The SPIFFE identity from the header of the signature. The operator writes this field only when the signature is valid.</td>
+</tr>
+<tr>
+<td><code>signatureIdentityMatch</code></td>
+<td>boolean</td>
+<td><code>true</code> when the signature is valid <strong>and</strong> the identity binding passed.</td>
+</tr>
+<tr>
+<td><code>cardId</code></td>
+<td>string</td>
+<td>A hash of the content of the card. Use it to detect a change.</td>
+</tr>
+<tr>
+<td><code>expectedSpiffeID</code></td>
+<td>string</td>
+<td>The identity that the operator used for the binding.</td>
+</tr>
+<tr>
+<td><code>bindingStatus</code></td>
+<td>object</td>
+<td>See the next table.</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="bindingstatus">bindingStatus<a class="headerlink" href="#bindingstatus" title="Permanent link">#</a></h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bound</code></td>
+<td>boolean</td>
+<td>Whether the identity is in the permitted list.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td>string</td>
+<td><code>Bound</code>, <code>NotBound</code> or <code>AgentNotFound</code>.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>string</td>
+<td>A description.</td>
+</tr>
+<tr>
+<td><code>lastEvaluationTime</code></td>
+<td>timestamp</td>
+<td>The time of the last evaluation.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="the-card-data">The card data<a class="headerlink" href="#the-card-data" title="Permanent link">#</a></h3>
+<p>The <code>status.card</code> field has the structure of an <a href="https://a2a-protocol.org/latest/">A2A agent card</a>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>The name of the agent.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>What the agent does.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>The version of the agent.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>The address of the agent.</td>
+</tr>
+<tr>
+<td><code>documentationUrl</code></td>
+<td>string</td>
+<td>The address of the documents of the agent.</td>
+</tr>
+<tr>
+<td><code>iconUrl</code></td>
+<td>string</td>
+<td>The address of an icon.</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td>object</td>
+<td>The <code>organization</code> field and the <code>url</code> field.</td>
+</tr>
+<tr>
+<td><code>capabilities</code></td>
+<td>object</td>
+<td>The <code>streaming</code>, <code>pushNotifications</code> and <code>extensions</code> fields.</td>
+</tr>
+<tr>
+<td><code>defaultInputModes</code></td>
+<td>[]string</td>
+<td>The media types that the agent accepts.</td>
+</tr>
+<tr>
+<td><code>defaultOutputModes</code></td>
+<td>[]string</td>
+<td>The media types that the agent produces.</td>
+</tr>
+<tr>
+<td><code>skills</code></td>
+<td>[]object</td>
+<td>See <a href="#the-skills-in-a-card">The skills in a card</a>.</td>
+</tr>
+<tr>
+<td><code>supportsAuthenticatedExtendedCard</code></td>
+<td>boolean</td>
+<td>Whether a second card exists.</td>
+</tr>
+<tr>
+<td><code>signatures</code></td>
+<td>[]object</td>
+<td>The signatures, as section 8.4.2 of the A2A specification describes.</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="capabilitiesextensions">capabilities.extensions<a class="headerlink" href="#capabilitiesextensions" title="Permanent link">#</a></h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uri</code></td>
+<td>string</td>
+<td>The identifier of the extension.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>What the extension does.</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td>boolean</td>
+<td>Whether a client must support the extension.</td>
+</tr>
+<tr>
+<td><code>params</code></td>
+<td>object</td>
+<td>The configuration of the extension.</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="the-skills-in-a-card">The skills in a card<a class="headerlink" href="#the-skills-in-a-card" title="Permanent link">#</a></h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>The identifier of the skill.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>The name of the skill.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>string</td>
+<td>What the skill does.</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>[]string</td>
+<td>Words that describe the type of the skill.</td>
+</tr>
+<tr>
+<td><code>examples</code></td>
+<td>[]string</td>
+<td>Example situations.</td>
+</tr>
+<tr>
+<td><code>inputModes</code>, <code>outputModes</code></td>
+<td>[]string</td>
+<td>The media types.</td>
+</tr>
+<tr>
+<td><code>parameters</code></td>
+<td>[]object</td>
+<td>The <code>name</code>, <code>type</code>, <code>description</code>, <code>required</code> and <code>default</code> fields.</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="signatures">signatures<a class="headerlink" href="#signatures" title="Permanent link">#</a></h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>protected</code></td>
+<td>string</td>
+<td>The protected header, in base64url. It contains the <code>alg</code>, <code>kid</code>, <code>typ</code> and <code>x5c</code> values.</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
+<td>string</td>
+<td>The signature, in base64url.</td>
+</tr>
+<tr>
+<td><code>header</code></td>
+<td>object</td>
+<td>Optional header values, for example <code>timestamp</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="targetref">TargetRef<a class="headerlink" href="#targetref" title="Permanent link">#</a></h2>
+<p>Both resources use this type.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Necessary</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>apiVersion</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>For example <code>apps/v1</code>.</td>
+</tr>
+<tr>
+<td><code>kind</code></td>
+<td>string</td>
+<td>Yes</td>
+<td><code>Deployment</code>, <code>StatefulSet</code> or <code>Sandbox</code>.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The name of the workload.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../concepts/core/control-plane.html">Control plane</a> explains the function of these resources.</li>
+<li><a href="../workloads/deploy-an-agent.html#with-a-custom-resource">Deploy an agent</a> shows how to use them directly.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="cli.html"><span>Previous</span>CLI reference</a><a class="next" href="install-options.html"><span>Next</span>Install options</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/reference/custom-resources.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

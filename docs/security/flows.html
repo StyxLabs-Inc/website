@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authentication flows | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="A diagram for each stage of authentication and delegation.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/security/flows.html">
+  <meta property="og:title" content="Authentication flows — Sentinel Docs">
+  <meta property="og:description" content="A diagram for each stage of authentication and delegation.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/security/flows.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details open><summary><a href="index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="workload-identity.html">Workload identity</a></li><li><a href="authbridge.html">AuthBridge</a></li><li><a href="authentication-modes.html">Authentication modes</a></li><li><a href="flows.html" class="active" aria-current="page">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Security</p>
+        <h1>Authentication flows</h1>
+        <p class="docs-lede">A diagram for each stage of authentication and delegation.</p>
+        <p>This page contains the six flows of authentication and delegation. The first flow starts when a user
+signs in. The last flow ends when a tool calls an external service for that user.</p>
+<p>The source of each diagram is in
+<a href="https://github.com/StyxLabs-Inc/sentinel/tree/main/docs/diagrams"><code>docs/diagrams/</code></a> as a Mermaid file. A PNG
+file and an SVG file are also present, for a presentation.</p>
+<h2 id="1-the-user-signs-in">1. The user signs in<a class="headerlink" href="#1-the-user-signs-in" title="Permanent link">#</a></h2>
+<p>The user signs in to the console. Keycloak uses the OIDC authorization code flow and issues an access
+token.</p>
+<p><img alt="The user authentication flow" src="../diagrams/images/png/01-user-authentication-flow.png" /></p>
+<pre><code>POST /realms/sentinel/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&amp;client_id=sentinel-ui
+&amp;code=&lt;auth_code&gt;
+&amp;redirect_uri=http://sentinel-ui.localtest.me:8080/callback
+</code></pre>
+<pre><code class="language-json">{
+  &quot;access_token&quot;: &quot;eyJ0eXAiOiJKV1Q...&quot;,
+  &quot;token_type&quot;: &quot;Bearer&quot;,
+  &quot;expires_in&quot;: 600,
+  &quot;scope&quot;: &quot;openid profile email&quot;,
+  &quot;id_token&quot;: &quot;eyJ0eXAiOiJKV1Q...&quot;
+}
+</code></pre>
+<p>The token of the user contains the roles of the user:</p>
+<pre><code class="language-json">{
+  &quot;sub&quot;: &quot;user-123&quot;,
+  &quot;preferred_username&quot;: &quot;slack-full-access-user&quot;,
+  &quot;aud&quot;: &quot;sentinel-ui&quot;,
+  &quot;roles&quot;: [&quot;slack-full-access&quot;, &quot;slack-partial-access&quot;],
+  &quot;exp&quot;: 1735689600
+}
+</code></pre>
+<h2 id="2-the-operator-registers-the-workload">2. The operator registers the workload<a class="headerlink" href="#2-the-operator-registers-the-workload" title="Permanent link">#</a></h2>
+<p>A workload cannot get a token until it exists as a Keycloak client. The operator does this registration.
+See <a href="authbridge.html#client-registration">AuthBridge</a>. There is no step for you.</p>
+<p><img alt="The client registration flow" src="../diagrams/images/png/03-rossoctl-client-registreation-final.png" /></p>
+<h2 id="3-the-agent-exchanges-the-token">3. The agent exchanges the token<a class="headerlink" href="#3-the-agent-exchanges-the-token" title="Permanent link">#</a></h2>
+<p>The agent must call a tool as the user. The sidecar exchanges the token of the user for a token that is
+valid only for that tool. The sidecar authenticates this request with the SPIFFE identity of the agent.</p>
+<p><img alt="The token exchange flow" src="../diagrams/images/png/04-agent-token-exchange-flow.png" /></p>
+<pre><code>POST /realms/sentinel/protocol/openid-connect/token
+Authorization: Bearer &lt;JWT-SVID-of-the-agent&gt;
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=urn:ietf:params:oauth:grant-type:token-exchange
+&amp;subject_token=&lt;user-token&gt;
+&amp;subject_token_type=urn:ietf:params:oauth:token-type:access_token
+&amp;audience=slack-tool
+&amp;client_id=spiffe://localtest.me/ns/team/sa/slack-researcher
+</code></pre>
+<pre><code class="language-json">{
+  &quot;access_token&quot;: &quot;eyJ0eXAiOiJKV1Q...&quot;,
+  &quot;token_type&quot;: &quot;Bearer&quot;,
+  &quot;expires_in&quot;: 300,
+  &quot;scope&quot;: &quot;slack-partial-access&quot;
+}
+</code></pre>
+<p>The new token names the user as the subject and the agent as the actor:</p>
+<pre><code class="language-json">{
+  &quot;sub&quot;: &quot;user-123&quot;,
+  &quot;act&quot;: { &quot;sub&quot;: &quot;spiffe://localtest.me/ns/team/sa/slack-researcher&quot; },
+  &quot;aud&quot;: &quot;slack-tool&quot;,
+  &quot;scope&quot;: &quot;slack-full-access&quot;,
+  &quot;exp&quot;: 1735686900
+}
+</code></pre>
+<p>Note the lifetime. The new token is valid for 300 seconds. The token of the user is valid for 600
+seconds. A token for delegation therefore has a shorter life than its source.</p>
+<h2 id="4-the-agent-calls-the-tool">4. The agent calls the tool<a class="headerlink" href="#4-the-agent-calls-the-tool" title="Permanent link">#</a></h2>
+<p>The agent sends the new token to the tool. The sidecar of the tool validates the token and confirms that
+the audience names the tool.</p>
+<p><img alt="The tool access flow" src="../diagrams/images/png/05-tool-access-delegated-token-flow.png" /></p>
+<p>A tool can also examine the permissions of the user. This method is useful when one tool has operations
+at different permission levels:</p>
+<pre><code class="language-python">def validate_request(request):
+    token = request.headers.get(&quot;Authorization&quot;, &quot;&quot;).replace(&quot;Bearer &quot;, &quot;&quot;)
+    resp = requests.get(
+        &quot;http://keycloak.keycloak.svc.cluster.local:8080&quot;
+        &quot;/realms/sentinel/protocol/openid-connect/userinfo&quot;,
+        headers={&quot;Authorization&quot;: f&quot;Bearer {token}&quot;},
+    )
+    if resp.status_code != 200:
+        raise AuthenticationError(&quot;Invalid token&quot;)
+
+    scopes = resp.json().get(&quot;scope&quot;, &quot;&quot;).split()
+    if &quot;slack-full-access&quot; in scopes:
+        return PermissionLevel.FULL
+    if &quot;slack-partial-access&quot; in scopes:
+        return PermissionLevel.PARTIAL
+    raise AuthorizationError(&quot;Insufficient permissions&quot;)
+</code></pre>
+<h2 id="5-the-request-passes-through-the-mcp-gateway">5. The request passes through the MCP Gateway<a class="headerlink" href="#5-the-request-passes-through-the-mcp-gateway" title="Permanent link">#</a></h2>
+<p>When an agent reaches a tool through the MCP Gateway, the gateway is on the path.</p>
+<p><img alt="The MCP Gateway authentication flow" src="../diagrams/images/png/06-mcp-gateway-authentication-flow.png" /></p>
+<pre><code>POST /mcp
+Host: mcp-gateway.localtest.me:8080
+Authorization: Bearer &lt;token&gt;
+Content-Type: application/json
+
+{ &quot;method&quot;: &quot;tools/list&quot;, &quot;params&quot;: {} }
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Most authentication in the gateway is <strong>not implemented</strong>. Keep the enforcement in each sidecar active.
+Do not use the gateway as your security boundary. See
+<a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a>.</p>
+</div>
+<h2 id="6-the-tool-calls-an-external-service">6. The tool calls an external service<a class="headerlink" href="#6-the-tool-calls-an-external-service" title="Permanent link">#</a></h2>
+<p>A tool that calls an external service needs a credential for that service. The agent must not hold that
+credential. The tool presents the token for delegation to a secret store, and the store returns the
+credential.</p>
+<p><img alt="The external service flow" src="../diagrams/images/png/07-tool-with-external-api-flow.png" /></p>
+<p>The permissions of the agent end at the tool. The external credential does not enter the agent.</p>
+<h2 id="the-standards">The standards<a class="headerlink" href="#the-standards" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Standard</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://tools.ietf.org/html/rfc8693">RFC 8693</a></td>
+<td>OAuth2 token exchange. This standard is the mechanism for delegation.</td>
+</tr>
+<tr>
+<td><a href="https://tools.ietf.org/html/rfc7523">RFC 7523</a></td>
+<td>JWT client assertions. SPIFFE authentication to Keycloak uses this standard.</td>
+</tr>
+<tr>
+<td><a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a></td>
+<td>JSON Web Tokens.</td>
+</tr>
+<tr>
+<td><a href="https://spiffe.io/docs/latest/spiffe-about/spiffe-concepts/">SPIFFE</a></td>
+<td>Workload identity.</td>
+</tr>
+<tr>
+<td><a href="https://openid.net/specs/openid-connect-core-1_0.html">OpenID Connect Core</a></td>
+<td>User authentication.</td>
+</tr>
+</tbody>
+</table></div>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="authentication-modes.html"><span>Previous</span>Authentication modes</a><a class="next" href="../operate/index.html"><span>Next</span>Install and operate</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/security/flows.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

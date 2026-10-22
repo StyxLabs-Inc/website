@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agents and tools | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="What Sentinel accepts as an agent and as a tool.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/core/agents-and-tools.html">
+  <meta property="og:title" content="Agents and tools — Sentinel Docs">
+  <meta property="og:description" content="What Sentinel accepts as an agent and as a tool.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/core/agents-and-tools.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details open><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="architecture.html">Architecture</a></li><li><a href="agents-and-tools.html" class="active" aria-current="page">Agents and tools</a></li><li><a href="cortex.html">Cortex</a></li><li><a href="identity.html">Identity and trust</a></li><li><a href="control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../experiments/skills.html">Skills</a></li><li><a href="../experiments/sandboxes.html">Sandboxes</a></li><li><a href="../experiments/agent-context.html">Agent context</a></li><li><a href="../experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../experiments/tool-validation.html">Tool call validation</a></li><li><a href="../experiments/context-compaction.html">Context compaction</a></li><li><a href="../experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Agents and tools</h1>
+        <p class="docs-lede">What Sentinel accepts as an agent and as a tool.</p>
+        <p>Sentinel runs two types of workload. For each type, Sentinel requires only a network interface. It
+does not require a specific programming language or a specific agent framework.</p>
+<h2 id="an-agent">An agent<a class="headerlink" href="#an-agent" title="Permanent link">#</a></h2>
+<p>An agent is a container that uses the A2A protocol. The container must serve three HTTP endpoints.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/.well-known/agent-card.json</code></td>
+<td><code>GET</code></td>
+<td>Returns the agent card</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td><code>POST</code></td>
+<td>Receives a message or a task</td>
+</tr>
+<tr>
+<td><code>/tasks/{id}</code></td>
+<td><code>GET</code></td>
+<td>Returns the status of a task</td>
+</tr>
+</tbody>
+</table></div>
+<p>These three endpoints are the complete requirement. Streaming is optional. If your agent supports
+streaming, declare it in the agent card.</p>
+<p>Sentinel is neutral about frameworks because the requirement is a network interface, not a library.
+Agents that use LangGraph, CrewAI, AG2, Llama Stack or BeeAI all run on Sentinel. Agent programs such
+as Claude Code also run on Sentinel. To adapt your own agent, read
+<a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a>.</p>
+<h2 id="the-agent-card">The agent card<a class="headerlink" href="#the-agent-card" title="Permanent link">#</a></h2>
+<p>The agent card is a JSON document. It gives the name, the version, the address, the capabilities and
+the skills of the agent. Sentinel reads the card and stores it in an <code>AgentCard</code> resource. Sentinel
+reads the card again at a fixed interval, so the record stays correct.</p>
+<p>You can sign the agent card. Sentinel then validates the signature against the trust bundle of SPIRE.
+Sentinel can also read the identity of the signer from the certificate chain. This confirms that the
+card comes from the workload that the card describes. If the card fails this check, the operator can
+isolate the workload with a network policy. See
+<a href="control-plane.html#identity-binding">identity binding</a>.</p>
+<h2 id="a-tool">A tool<a class="headerlink" href="#a-tool" title="Permanent link">#</a></h2>
+<p>A tool is a container that uses the MCP protocol. The container must serve one HTTP endpoint:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/mcp</code></td>
+<td><code>POST</code></td>
+<td>Receives MCP messages</td>
+</tr>
+</tbody>
+</table></div>
+<p>A tool makes functions, files and prompt templates available to an agent. The agent calls <code>tools/list</code>
+to find what the tool offers, and then calls the function that it needs.</p>
+<h2 id="how-an-agent-finds-a-tool">How an agent finds a tool<a class="headerlink" href="#how-an-agent-finds-a-tool" title="Permanent link">#</a></h2>
+<p>An agent reads the address of a tool from an environment variable.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Use it when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MCP_URL</code></td>
+<td>The agent uses one tool, or the agent uses the MCP Gateway.</td>
+</tr>
+<tr>
+<td><code>MCP_URLS</code></td>
+<td>The agent uses more than one tool. Separate the addresses with commas.</td>
+</tr>
+</tbody>
+</table></div>
+<p>There are two possible arrangements.</p>
+<p><strong>Direct.</strong> Each agent holds the address of each tool. This arrangement is simple. It is correct for
+one or two tools. If you add a tool, you must change each agent that needs it.</p>
+<p><strong>Through the gateway.</strong> Each agent holds one address, and that address is the MCP Gateway. Each tool
+registers with the gateway one time. The gateway then gives all agents one list of tools. See
+<a href="../experiments/mcp-gateway.html">MCP Gateway</a>.</p>
+<h2 id="why-the-two-types-are-different">Why the two types are different<a class="headerlink" href="#why-the-two-types-are-different" title="Permanent link">#</a></h2>
+<p>Sentinel adds an agent and a tool to the platform in the same way. Both receive the same sidecar. But
+an agent and a tool are at opposite ends of a chain of delegation. A user delegates work to an agent.
+The agent delegates work to a tool.</p>
+<p>The security model protects this chain. The token that an agent gives to a tool is valid only for that
+tool, and it names the user. A tool can therefore identify the user, and can refuse the request if the
+user does not have the necessary permission. An agent never holds a credential that belongs to a tool.
+See <a href="identity.html">Identity and trust</a>.</p>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="architecture.html"><span>Previous</span>Architecture</a><a class="next" href="cortex.html"><span>Next</span>Cortex</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/core/agents-and-tools.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

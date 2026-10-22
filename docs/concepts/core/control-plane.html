@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Control plane | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="What the operator does, and the two custom resources that it manages.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/core/control-plane.html">
+  <meta property="og:title" content="Control plane — Sentinel Docs">
+  <meta property="og:description" content="What the operator does, and the two custom resources that it manages.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/core/control-plane.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details open><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="architecture.html">Architecture</a></li><li><a href="agents-and-tools.html">Agents and tools</a></li><li><a href="cortex.html">Cortex</a></li><li><a href="identity.html">Identity and trust</a></li><li><a href="control-plane.html" class="active" aria-current="page">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../experiments/skills.html">Skills</a></li><li><a href="../experiments/sandboxes.html">Sandboxes</a></li><li><a href="../experiments/agent-context.html">Agent context</a></li><li><a href="../experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../experiments/tool-validation.html">Tool call validation</a></li><li><a href="../experiments/context-compaction.html">Context compaction</a></li><li><a href="../experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Control plane</h1>
+        <p class="docs-lede">What the operator does, and the two custom resources that it manages.</p>
+        <p>The operator makes a standard Kubernetes workload into a platform workload. You deploy a normal
+Deployment. The operator adds the identity, the sidecars, the OAuth registration, the discovery and
+the traces.</p>
+<p>For each field of each resource, see <a href="../../reference/custom-resources.html">Custom resources</a>.</p>
+<h2 id="how-a-workload-joins-the-platform">How a workload joins the platform<a class="headerlink" href="#how-a-workload-joins-the-platform" title="Permanent link">#</a></h2>
+<p>You do not add labels to your Deployment. You create one resource that points to it:</p>
+<pre><code class="language-yaml">apiVersion: agent.sentinel.dev/v1alpha1
+kind: AgentRuntime
+metadata:
+  name: weather-agent
+spec:
+  type: agent            # or &quot;tool&quot;
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: weather-agent
+</code></pre>
+<p>The operator then does five things:</p>
+<ol>
+<li>It adds the label <code>sentinel.io/type: agent</code> or <code>sentinel.io/type: tool</code> to the workload.</li>
+<li>It adds a label to the pod template. A webhook then injects the Cortex sidecars when
+   Kubernetes next creates a pod.</li>
+<li>It registers the workload as an OAuth client in Keycloak. The client identifier is the SPIFFE
+   identity of the workload. The operator writes the credentials to a Secret in the namespace of the
+   workload.</li>
+<li>It writes a hash of the resolved configuration to the pod template. When the configuration changes,
+   the hash changes, and Kubernetes starts a rolling update.</li>
+<li>For an agent, it creates an <code>AgentCard</code> resource, and discovery starts.</li>
+</ol>
+<p>If you delete the <code>AgentRuntime</code> resource, the operator removes the label and the workload leaves the
+platform.</p>
+<p>The web console and the CLI create this resource for you.</p>
+<h2 id="discovery">Discovery<a class="headerlink" href="#discovery" title="Permanent link">#</a></h2>
+<p>An <code>AgentCard</code> resource records what an agent says about itself:</p>
+<pre><code class="language-yaml">apiVersion: agent.sentinel.dev/v1alpha1
+kind: AgentCard
+metadata:
+  name: weather-agent-deployment-card
+spec:
+  syncPeriod: 30s
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: weather-agent
+</code></pre>
+<p>The operator reads <code>/.well-known/agent-card.json</code> from the agent at each <code>syncPeriod</code> interval. It
+stores the result in the status of the resource. The status contains the name, the description, the
+version, the address, the capabilities and the skills.</p>
+<p>You can therefore query the data of an agent with <code>kubectl</code>. The record also stays correct after you
+deploy the agent again.</p>
+<p>The operator names a card that it creates automatically with this pattern: <code>{name}-{kind}-card</code>.</p>
+<h3 id="signature-validation">Signature validation<a class="headerlink" href="#signature-validation" title="Permanent link">#</a></h3>
+<p>An agent card can contain JWS signatures. The operator validates them against the X.509 trust bundle
+of SPIRE, and writes the result to the status:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>validSignature</code></td>
+<td>The signature is valid for the trust bundle.</td>
+</tr>
+<tr>
+<td><code>signatureSpiffeId</code></td>
+<td>The SPIFFE identity from the certificate chain of the signature.</td>
+</tr>
+<tr>
+<td><code>signatureIdentityMatch</code></td>
+<td>The signature is valid <strong>and</strong> the identity binding passed.</td>
+</tr>
+<tr>
+<td><code>cardId</code></td>
+<td>A hash of the content of the card. Use it to detect a change.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="identity-binding">Identity binding<a class="headerlink" href="#identity-binding" title="Permanent link">#</a></h3>
+<p>A valid signature proves that a holder of a valid certificate signed the card. Identity binding proves
+that the signer is the workload that the card describes. The operator compares the identity from the
+certificate with the expected identity of the workload.</p>
+<p>There are two modes:</p>
+<pre><code class="language-yaml">spec:
+  identityBinding:
+    trustDomain: localtest.me   # replaces the default of the operator
+    strict: false               # audit only
+</code></pre>
+<ul>
+<li><strong><code>strict: false</code> is the default.</strong> The operator writes the result to the status. It takes no other
+  action.</li>
+<li><strong><code>strict: true</code></strong> makes the operator create a network policy that isolates the workload when the
+  binding fails.</li>
+</ul>
+<p>Start with the audit mode. Change to the strict mode after you confirm that your agents sign their
+cards correctly.</p>
+<h2 id="configuration-layers">Configuration layers<a class="headerlink" href="#configuration-layers" title="Permanent link">#</a></h2>
+<p>The operator resolves the configuration from two ConfigMaps. The more specific layer wins.</p>
+<ol>
+<li><strong>Namespace defaults.</strong> A ConfigMap with the label <code>sentinel.io/defaults=true</code>, in the namespace of
+   the workload.</li>
+<li><strong>Cluster defaults.</strong> The <code>sentinel-platform-config</code> ConfigMap, in the <code>sentinel-system</code> namespace.</li>
+</ol>
+<p>Feature gates are separate. The <code>sentinel-feature-gates</code> ConfigMap applies to the whole cluster. A
+namespace cannot replace it, and an <code>AgentRuntime</code> resource cannot replace it. It controls which
+Cortex components run, and whether skill discovery is active. This design is deliberate: the
+owner of a namespace must not be able to disable the security components of the platform.</p>
+<h2 id="deployment-types">Deployment types<a class="headerlink" href="#deployment-types" title="Permanent link">#</a></h2>
+<p>A workload in the platform can be a <code>Deployment</code>, a <code>StatefulSet</code> or a <code>Sandbox</code>.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Deployment</code></td>
+<td>Agents and tools that keep no state. This type is the default.</td>
+</tr>
+<tr>
+<td><code>StatefulSet</code></td>
+<td>An agent that needs durable storage.</td>
+</tr>
+<tr>
+<td><code>Sandbox</code></td>
+<td>An agent that needs stronger isolation. See <a href="../experiments/sandboxes.html">Sandboxes</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="other-operator-functions">Other operator functions<a class="headerlink" href="#other-operator-functions" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>Traces.</strong> The operator finds an MLflow instance, creates an experiment for each agent, and
+  configures the workload to send traces there. See <a href="../../operate/observability.html">Observability</a>.</li>
+<li><strong>Skill discovery.</strong> When the <code>skillDiscovery</code> feature gate is on, the operator reads the
+  <code>sentinel.io/skills</code> annotation and resolves the names into the status of the resource. See
+  <a href="../experiments/skills.html">Skills</a>.</li>
+<li><strong>Network policy.</strong> The operator isolates a workload that fails identity binding in the strict mode.</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="identity.html"><span>Previous</span>Identity and trust</a><a class="next" href="../experiments/mcp-gateway.html"><span>Next</span>MCP Gateway</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/core/control-plane.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

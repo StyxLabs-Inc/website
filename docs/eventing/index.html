@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eventing | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="How an event wakes an agent, and what the eventing path guarantees.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/eventing/index.html">
+  <meta property="og:title" content="Eventing — Sentinel Docs">
+  <meta property="og:description" content="How an event wakes an agent, and what the eventing path guarantees.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/eventing/index.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details open><summary><a href="index.html" class="active" aria-current="page">Eventing</a></summary><ul class="docs-nav-list"><li><a href="github-oauth-app.html">GitHub OAuth App</a></li><li><a href="identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Eventing</p>
+        <h1>Eventing</h1>
+        <p class="docs-lede">How an event wakes an agent, and what the eventing path guarantees.</p>
+        <p>Eventing lets an agent run from a message instead of a held-open HTTP connection. A request
+becomes a CloudEvent on a Kafka topic, an agent runner consumes it, and each step of the run
+comes back as a further event. The caller never waits on a socket, and the agent does not need
+to be running when the request arrives, if a runner picks it up within <code>ER_MAX_REQUEST_AGE_S</code>
+(an hour by default). EventRunner drops an older request without a reply.</p>
+<div class="admonition warning">
+<p class="admonition-title">Alpha</p>
+<p>This section covers the event path in
+<a href="https://github.com/sentinel/examples/tree/main/eventing"><code>examples/eventing</code></a>, which exists to
+pin down the wire contract for event-driven agents. These pages describe <code>eventing/</code> at
+<a href="https://github.com/sentinel/examples/tree/d9677ddd1611afd05fe51fcdc0dee0cd27809e62/eventing"><code>d9677ddd</code></a>.</p>
+<p><strong>Every identity control described here is off by default.</strong> As the shipped manifests start,
+requests are accepted anonymously, nothing is signed, and nothing is verified. See
+<a href="identity.html#turning-the-controls-on">Turning the controls on</a>.</p>
+<p><a href="https://github.com/sentinel/examples/blob/d9677ddd1611afd05fe51fcdc0dee0cd27809e62/eventing/agentdocs/DESIGN_PHASE2.md">The Phase 2 design record</a>,
+a draft, has the reasoning behind the design. It predates several findings on these pages and does
+not discuss some of these limits: where they disagree, these pages describe the code at that
+revision.</p>
+</div>
+<h2 id="the-path">The path<a class="headerlink" href="#the-path" title="Permanent link">#</a></h2>
+<pre><code class="language-text">HTTP ─▶ EventBridge ─▶ Kafka &quot;requests&quot; ─▶ EventRunner ─▶ Kafka &quot;responses&quot; ─▶ EventBridge ─▶ caller
+         (front door)                       (runs the agent)                    (transcript, push)
+</code></pre>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EventBridge</strong></td>
+<td>The HTTP front door. Mints a correlation id, publishes the request, serves the live transcript, and pushes notifications through <a href="https://ntfy.sh">ntfy</a> when <code>NTFY_*</code> is configured.</td>
+</tr>
+<tr>
+<td><strong>EventRunner</strong></td>
+<td>Consumes requests, runs the agent, and emits each step as a response event.</td>
+</tr>
+<tr>
+<td><strong>Kafka</strong></td>
+<td>The log, and the scale-to-zero wake signal. The Strimzi topic CRs keep 24 hours; a local broker uses its own default. EventBridge's SQLite store holds the transcript, and on the base manifests it is an <code>emptyDir</code>, so replacing the pod discards the agents' answers.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two properties fall out of that shape:</p>
+<ul>
+<li><strong>Turns are ordered per conversation and parallel across conversations.</strong> Work for one
+  correlation id is serialised — the correlation id is the Kafka partition key — while separate
+  conversations run concurrently.</li>
+<li><strong>Queue depth is the wake signal.</strong> KEDA reads consumer-group lag to bring a runner from zero
+  replicas to one, and lag returning to zero is what lets it scale back down. Scale-to-zero is
+  Kubernetes-only.</li>
+</ul>
+<h2 id="identity">Identity<a class="headerlink" href="#identity" title="Permanent link">#</a></h2>
+<p>Neither an event nor EventBridge's own HTTP API passes through the controls that cover direct HTTP
+calls, so this path needs its own. Two questions matter, and they have different answers:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Which person asked for this?</td>
+<td>Sign-in at the front door, then the identity travels on the event</td>
+</tr>
+<tr>
+<td>Which agent produced this?</td>
+<td>A signature over requests and terminal responses, checked against approved keys</td>
+</tr>
+</tbody>
+</table></div>
+<p><a href="identity.html">Identity in the event path</a> covers both, including what each one does <strong>not</strong>
+prove. <a href="github-oauth-app.html">GitHub OAuth App</a> is the one-time setup that user sign-in needs.</p>
+<h2 id="what-this-does-not-cover">What this does not cover<a class="headerlink" href="#what-this-does-not-cover" title="Permanent link">#</a></h2>
+<p>Both controls are off by default, and each proves less than it first appears to — notably, only
+<em>starting</em> work is authenticated, signing covers the final event of a run rather than the stream,
+and anything that can write to the responses topic can end a batch. The broker connection is
+plaintext and there is no rate limiting either.</p>
+<p><a href="identity.html#what-these-controls-do-not-prove">What these controls do not prove</a> has each limit with
+what it allows.</p>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="../resources.html"><span>Previous</span>Resources</a><a class="next" href="github-oauth-app.html"><span>Next</span>GitHub OAuth App</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/eventing/index.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

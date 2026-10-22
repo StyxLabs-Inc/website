@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent context | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Give an agent durable storage for files, memory and results.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/concepts/experiments/agent-context.html">
+  <meta property="og:title" content="Agent context — Sentinel Docs">
+  <meta property="og:description" content="Give an agent durable storage for files, memory and results.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/concepts/experiments/agent-context.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../../index.html" aria-label="StyxLabs home">
+        <img src="../../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../../index.html#platform">Platform</a>
+        <a href="../../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../../index.html">Introduction</a></li><li><details><summary><a href="../../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details open><summary><a href="../index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../core/architecture.html">Architecture</a></li><li><a href="../core/agents-and-tools.html">Agents and tools</a></li><li><a href="../core/cortex.html">Cortex</a></li><li><a href="../core/identity.html">Identity and trust</a></li><li><a href="../core/control-plane.html">Control plane</a></li></ul></details></li><li><details open><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="mcp-gateway.html">MCP Gateway</a></li><li><a href="skills.html">Skills</a></li><li><a href="sandboxes.html">Sandboxes</a></li><li><a href="agent-context.html" class="active" aria-current="page">Agent context</a></li><li><a href="intent-based-access.html">Intent-based access</a></li><li><a href="tool-validation.html">Tool call validation</a></li><li><a href="context-compaction.html">Context compaction</a></li><li><a href="cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../../security/workload-identity.html">Workload identity</a></li><li><a href="../../security/authbridge.html">AuthBridge</a></li><li><a href="../../security/authentication-modes.html">Authentication modes</a></li><li><a href="../../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../../operate/install-helm.html">Install with Helm</a></li><li><a href="../../operate/observability.html">Observability</a></li><li><a href="../../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../../reference/cli.html">CLI</a></li><li><a href="../../reference/custom-resources.html">Custom resources</a></li><li><a href="../../reference/install-options.html">Install options</a></li><li><a href="../../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../../resources.html">Resources</a></li><li><details><summary><a href="../../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Concepts</p>
+        <h1>Agent context</h1>
+        <p class="docs-lede">Give an agent durable storage for files, memory and results.</p>
+        <p>Agent context is durable storage that belongs to an agent. It holds the files that the agent works on,
+the observations that it keeps, the knowledge that it builds and the results that it produces.</p>
+<p>Agent context is not the context window of a model. It is storage that continues to exist after a run
+ends.</p>
+<div class="admonition info">
+<p class="admonition-title">Beta, and a separate installation</p>
+<p>Sentinel provides agent context through
+<a href="https://github.com/sentinel/context-service">Context Service</a>. Context Service is not part of the
+Sentinel installation. Install it first, and then configure Sentinel to use it.</p>
+</div>
+<h2 id="enable-the-integration">Enable the integration<a class="headerlink" href="#enable-the-integration" title="Permanent link">#</a></h2>
+<p>The integration is inactive while <code>CONTEXT_SERVICE_URL</code> is empty. A cluster administrator sets the
+address in the Helm chart:</p>
+<pre><code class="language-yaml"># context-service-values.yaml
+ui:
+  backend:
+    contextServiceUrl: http://context-service.serverless-harness.svc.cluster.local:8080
+</code></pre>
+<pre><code class="language-bash">helm upgrade sentinel ./charts/sentinel \
+  --namespace sentinel-system \
+  --reuse-values \
+  -f context-service-values.yaml
+</code></pre>
+<p>To disable the integration, set the value to an empty string.</p>
+<h2 id="the-four-context-types">The four context types<a class="headerlink" href="#the-four-context-types" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>workspace</code></td>
+<td>Files that the agent changes. This type is the default.</td>
+</tr>
+<tr>
+<td><code>memory</code></td>
+<td>Observations that the agent keeps.</td>
+</tr>
+<tr>
+<td><code>knowledge</code></td>
+<td>Understanding that the agent builds and uses again.</td>
+</tr>
+<tr>
+<td><code>artifacts</code></td>
+<td>Reports, media and other results.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The type is a label only. Each type is a Kubernetes PersistentVolumeClaim, and all four types operate
+in the same way today. The four names exist so that the interface stays stable when type-specific
+behaviour arrives. Do not expect <code>memory</code> to do more than <code>workspace</code> does.</p>
+</div>
+<h2 id="the-two-access-modes">The two access modes<a class="headerlink" href="#the-two-access-modes" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Kubernetes mode</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td><code>ReadWriteOnce</code></td>
+<td>Pods on one node at a time can write.</td>
+</tr>
+<tr>
+<td><code>--shared</code></td>
+<td><code>ReadWriteMany</code></td>
+<td>Pods on more than one node can write at the same time.</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>ReadWriteOnce</code> is not a security boundary. It does not limit the volume to one pod. Pods on the same
+node can all use the volume.</p>
+<p>Use <code>--shared</code> when agents on different nodes need the same files. Confirm first that your storage
+class supports <code>ReadWriteMany</code>.</p>
+<h2 id="create-a-context">Create a context<a class="headerlink" href="#create-a-context" title="Permanent link">#</a></h2>
+<p>List the storage that the cluster offers. This command uses the Sentinel interface, so you do not need
+direct access to Kubernetes:</p>
+<pre><code class="language-bash">sentinel context storage-classes
+</code></pre>
+<p>Create a context:</p>
+<pre><code class="language-bash">sentinel context create research \
+  --shared \
+  --size 1Gi \
+  --storage-class ibm-scale-csi
+
+sentinel context list
+sentinel context get research
+</code></pre>
+<p>If you omit <code>--storage-class</code>, the command uses the default storage class of the cluster.</p>
+<p>The other types use the same options:</p>
+<pre><code class="language-bash">sentinel context create research-memory    --type memory    --size 5Gi
+sentinel context create research-knowledge --type knowledge --shared --size 10Gi
+sentinel context create research-results   --type artifacts --shared --size 20Gi
+</code></pre>
+<h2 id="give-a-context-to-an-agent">Give a context to an agent<a class="headerlink" href="#give-a-context-to-an-agent" title="Permanent link">#</a></h2>
+<p>Name the context and the path when you import the agent:</p>
+<pre><code class="language-bash">sentinel agents import \
+  --deployment-type statefulset \
+  --context research:/workspace \
+  from-image --name research-agent --containerImage IMAGE
+</code></pre>
+<p>A sandboxed agent uses the same option:</p>
+<pre><code class="language-bash">sentinel agents import \
+  --deployment-type sandbox \
+  --context research:/workspace \
+  from-image --name research-sandbox --containerImage IMAGE
+</code></pre>
+<p>You can attach any type at any path. For example, use <code>--context research-memory:/memory</code>. Sentinel
+accepts the attachment after Context Service returns a claim.</p>
+<h2 id="delete-a-context">Delete a context<a class="headerlink" href="#delete-a-context" title="Permanent link">#</a></h2>
+<p>A context has its own life cycle. When you delete an agent, its context continues to exist:</p>
+<pre><code class="language-bash">sentinel agents delete research-agent
+sentinel context delete research
+</code></pre>
+<p>Delete the agents before you delete the context.</p>
+<div class="admonition warning">
+<p class="admonition-title">Deletion has no dependency check</p>
+<p>The <code>sentinel context list</code> command reports whether the storage is ready. It does not report which
+agents use the storage. If you delete a context that an agent uses, Sentinel does not reject the
+request and does not give a warning.</p>
+<p>Kubernetes does not remove a volume while a pod uses it. The claim stays in the <code>Terminating</code> state
+instead. That behaviour is a protection, not a dependency check. For the design of usage reporting and
+safe deletion, follow
+<a href="https://github.com/sentinel/context-service/issues/2">context-service#2</a>.</p>
+</div>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="sandboxes.html"><span>Previous</span>Sandboxes</a><a class="next" href="intent-based-access.html"><span>Next</span>Intent-based access</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/concepts/experiments/agent-context.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../js/main.js"></script>
+</body>
+</html>

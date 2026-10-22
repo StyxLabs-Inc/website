@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HITL authorization demo | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Run the human-in-the-loop OAuth2 flow, where an agent obtains user-scoped permissions at runtime through the token broker.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/hitl/hitl-auth-demo.html">
+  <meta property="og:title" content="HITL authorization demo — Sentinel Docs">
+  <meta property="og:description" content="Run the human-in-the-loop OAuth2 flow, where an agent obtains user-scoped permissions at runtime through the token broker.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/hitl/hitl-auth-demo.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details open><summary><a href="hitl-auth-demo.html" class="active" aria-current="page">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">HITL authorization</p>
+        <h1>HITL authorization demo</h1>
+        <p class="docs-lede">Run the human-in-the-loop OAuth2 flow, where an agent obtains user-scoped permissions at runtime through the token broker.</p>
+        <p>Most agent requests carry the permissions the user already granted at login. Human-in-the-loop
+(HITL) authorization covers the other case: the agent needs access to a resource the user has
+not yet consented to, so it asks — mid-request — and waits.</p>
+<p>This page shows how to run that flow end to end on a Kind cluster.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<p>The agent makes one ordinary MCP call. Everything else happens inside that call:</p>
+<pre><code> agent  ──►  cortex sidecar  ──►  token broker  ──►  OAuth provider (GitHub)
+   │          (token-broker         │                      │
+   │           plugin)              │               user consents
+   │                                ▼                  in browser
+   │                         resource server
+   ▼                          (MCP server)
+ response
+</code></pre>
+<ol>
+<li>The agent calls the MCP server. It does not know a broker exists.</li>
+<li>The sidecar matches the target host against a <code>broker</code> route and asks the token broker for a
+   token.</li>
+<li>No token is cached, so the broker discovers the resource server's OAuth provider from
+   <code>GET /.well-known/oauth-protected-resource</code> (<a href="https://datatracker.ietf.org/doc/html/rfc9728">RFC 9728</a>).</li>
+<li>The broker publishes an <code>oauth_url_ready</code> event. The UI opens the provider's consent page.</li>
+<li>The user consents. The provider redirects to the broker's callback, which exchanges the code
+   for an access token and caches it per <code>(session, resource)</code>.</li>
+<li>The sidecar attaches the token and completes the original call. The agent gets its response.</li>
+</ol>
+<p>The agent is involved only at steps 1 and 6. Repeat calls are served from the cache with no
+further consent.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<h3 id="1-a-platform-install">1. A platform install<a class="headerlink" href="#1-a-platform-install" title="Permanent link">#</a></h3>
+<pre><code class="language-bash">scripts/kind/setup-sentinel.sh --with-ui --with-spire --with-agent-sandbox --with-builds --preload-images
+</code></pre>
+<p>Budget about 12–16 GB of memory and 4 vCPUs. <code>--with-all</code> is not needed for this demo.</p>
+<h3 id="2-a-github-oauth-app">2. A GitHub OAuth app<a class="headerlink" href="#2-a-github-oauth-app" title="Permanent link">#</a></h3>
+<p>Create one at <a href="https://github.com/settings/developers">github.com/settings/developers</a> →
+<strong>OAuth Apps</strong> → <strong>New OAuth App</strong>:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value for a Kind cluster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application name</td>
+<td>anything, for example <code>sentinel-hitl-dev</code></td>
+</tr>
+<tr>
+<td>Homepage URL</td>
+<td><code>http://sentinel-ui.localtest.me:8080</code></td>
+</tr>
+<tr>
+<td>Authorization callback URL</td>
+<td><code>http://token-broker.localtest.me:8080/oauth/callback</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The callback URL must equal <code>tokenBroker.oauth.callbackUrl</code> in the operator chart exactly, or
+GitHub rejects the redirect. Generate a client secret — GitHub shows it once.</p>
+<p>Store it in the release namespace. The chart never templates credentials, so they stay out of
+values and Helm release state:</p>
+<pre><code class="language-bash">kubectl create secret generic github-oauth-credentials -n sentinel-system \
+  --from-literal=client-id=&lt;CLIENT_ID&gt; \
+  --from-literal=client-secret=&lt;CLIENT_SECRET&gt;
+</code></pre>
+<h3 id="3-the-token-broker">3. The token broker<a class="headerlink" href="#3-the-token-broker" title="Permanent link">#</a></h3>
+<p>It ships inside the operator image and is off by default:</p>
+<pre><code class="language-bash">helm upgrade sentinel charts/sentinel -n sentinel-system --reuse-values \
+  --set operator-chart.tokenBroker.enabled=true
+</code></pre>
+<p>Expect <code>token-broker</code> to reach <code>1/1 Running</code> in <code>sentinel-system</code>. A pod stuck in
+<code>CreateContainerConfigError</code> means the secret above is missing.</p>
+<h3 id="4-an-oauth-protected-resource-server">4. An OAuth-protected resource server<a class="headerlink" href="#4-an-oauth-protected-resource-server" title="Permanent link">#</a></h3>
+<p>This is the step most easily missed. The broker cannot mint a token without a resource server
+to run discovery against, and the demo server is not part of this repository — it is a fork of
+GitHub's MCP server that adds the OAuth endpoints and Kubernetes manifests.</p>
+<pre><code class="language-bash"># In your checkout of the MCP server fork
+docker build -f k8s/kind-demo/Dockerfile.mcp-server -t localhost/kagenti/mcp-server:demo .
+kind load docker-image localhost/kagenti/mcp-server:demo --name sentinel
+
+kubectl create namespace sentinel-demo
+kubectl create secret generic github-oauth-credentials -n sentinel-demo \
+  --from-literal=client-id=&lt;CLIENT_ID&gt; --from-literal=client-secret=&lt;CLIENT_SECRET&gt;
+
+# The manifest predates the rename and still says namespace: kagenti-demo.
+sed 's/namespace: kagenti-demo/namespace: sentinel-demo/' k8s/kind-demo/02-mcp-server.yaml \
+  | kubectl apply -f -
+</code></pre>
+<p>Do <strong>not</strong> run that repository's <code>k8s/kind-demo/build-and-deploy.sh</code>. It also deploys its own
+token broker and backend into pre-rename namespaces, which collides with the broker the
+operator chart installs.</p>
+<p>Check discovery works:</p>
+<pre><code class="language-bash">kubectl exec -n sentinel-system deploy/app-demo-backend -- python3 -c &quot;
+import urllib.request
+print(urllib.request.urlopen(
+  'http://mcp-server-service.sentinel-demo.svc.cluster.local:8184/.well-known/oauth-protected-resource',
+  timeout=8).status)&quot;
+</code></pre>
+<h2 id="switch-the-outbound-chain-to-the-token-broker">Switch the outbound chain to the token broker<a class="headerlink" href="#switch-the-outbound-chain-to-the-token-broker" title="Permanent link">#</a></h2>
+<p><code>token-exchange</code> and <code>token-broker</code> both claim the <code>Authorization</code> header, so they are mutually
+exclusive on the outbound chain. Swapping them means editing <code>authBridge.pipeline</code>, upgrading
+the release without letting Helm undo the change, and restarting every injected workload. Use
+the script rather than doing it by hand:</p>
+<pre><code class="language-bash">scripts/migrate-to-token-broker.sh          # switch to token-broker
+scripts/migrate-to-token-broker.sh --revert # switch back
+</code></pre>
+<p>It checks the prerequisites, reads the pipeline the release is actually running, and exits
+without changes if the target plugin is already active. It never writes to the chart.</p>
+<p>Confirm the result:</p>
+<pre><code class="language-bash">kubectl get cm authbridge-runtime-config -n team1 -o yaml | grep -A6 'name: token-broker'
+</code></pre>
+<h3 id="why-the-chart-value-and-not-pluginpreset">Why the chart value, and not <code>pluginPreset</code><a class="headerlink" href="#why-the-chart-value-and-not-pluginpreset" title="Permanent link">#</a></h3>
+<p><code>AgentRuntime.spec.pluginPreset</code> with <code>plugins: ["token-exchange:off", "token-broker:enforce"]</code>
+looks like the natural way to do this, and admission accepts it — but the sidecar then
+crash-loops:</p>
+<pre><code>initial pipeline build: outbound: configure &quot;token-broker&quot;: token-broker config: broker_url is required
+</code></pre>
+<p>The operator seeds each plugin's config from a base pipeline that only covers <code>jwt-validation</code>
+and <code>token-exchange</code>, so <code>token-broker</code> renders with no config at all. Editing the per-agent
+<code>authbridge-config-&lt;name&gt;</code> ConfigMap does not help either: the admission webhook regenerates it
+on every pod creation.</p>
+<p>So <code>authBridge.pipeline</code> is the durable path today.</p>
+<h3 id="route-rules">Route rules<a class="headerlink" href="#route-rules" title="Permanent link">#</a></h3>
+<p>The plugin brokers only for hosts matching a <code>broker</code> route; everything else passes through
+untouched. The script writes an inline rule for the MCP server. You can also mount rules from a
+ConfigMap named <code>authproxy-routes</code> (key <code>routes.yaml</code>, mounted at <code>/etc/authproxy/routes.yaml</code>):</p>
+<pre><code class="language-yaml">- host: &quot;mcp-server-service.sentinel-demo.svc.cluster.local&quot;
+  action: &quot;broker&quot;
+</code></pre>
+<p>File routes are evaluated before inline rules, the first match wins, and the port is stripped
+before matching.</p>
+<h3 id="point-an-agent-at-the-resource-server">Point an agent at the resource server<a class="headerlink" href="#point-an-agent-at-the-resource-server" title="Permanent link">#</a></h3>
+<p>The agent's <code>MCP_URL</code> lives on the Sandbox, not the AgentRuntime:</p>
+<pre><code class="language-bash">kubectl get sandbox &lt;agent&gt; -n team1 -o json \
+  | jq '.spec.podTemplate.spec.containers[0].env[] | select(.name==&quot;MCP_URL&quot;)'
+</code></pre>
+<p>Set it to the in-cluster address:</p>
+<pre><code>http://mcp-server-service.sentinel-demo.svc.cluster.local:8184/mcp
+</code></pre>
+<p>Use <code>http</code>, not <code>https</code>. Cortex passes TLS through untouched, so the plugin cannot insert a
+token into an encrypted stream — pointing an agent at a hosted HTTPS MCP endpoint skips the
+broker entirely.</p>
+<h2 id="run-the-demo">Run the demo<a class="headerlink" href="#run-the-demo" title="Permanent link">#</a></h2>
+<p>Deploy the example app and grant a user access:</p>
+<pre><code class="language-bash">cd sentinel/examples/app-demo
+DOCKER_BUILD_FLAGS=--load make all   # --load is required with podman
+make grant-agent-access
+</code></pre>
+<p>Give a user the operator role. Note the flag is <code>--uusername</code>; current Keycloak rejects the
+<code>--uname</code> shown in some older instructions:</p>
+<pre><code class="language-bash">KC_ADMIN_USER=$(kubectl get secret keycloak-initial-admin -n keycloak -o jsonpath='{.data.username}' | base64 -d)
+KC_ADMIN_PASS=$(kubectl get secret keycloak-initial-admin -n keycloak -o jsonpath='{.data.password}' | base64 -d)
+kubectl exec -n keycloak keycloak-0 -- /opt/keycloak/bin/kcadm.sh add-roles \
+  -r sentinel --uusername alice --rolename sentinel-operator \
+  --no-config --server http://localhost:8080 --realm master \
+  --user &quot;$KC_ADMIN_USER&quot; --password &quot;$KC_ADMIN_PASS&quot;
+</code></pre>
+<p>Log out and back in so the role lands in a fresh token, then open
+<code>http://app-demo.localtest.me:8080</code> in a private window, sign in, pick a namespace, and send a
+task to an agent.</p>
+<h3 id="exercising-the-broker-without-the-ui">Exercising the broker without the UI<a class="headerlink" href="#exercising-the-broker-without-the-ui" title="Permanent link">#</a></h3>
+<p>Useful for isolating the broker. JWT signature validation is off unless
+<code>tokenBroker.jwt.jwksUrl</code> is set, so an unsigned token works for development:</p>
+<pre><code class="language-bash">kubectl port-forward -n sentinel-system deploy/token-broker 8190:8190 &amp;
+
+SK=$(uuidgen | tr '[:upper:]' '[:lower:]')
+JWT=$(echo -n '{&quot;alg&quot;:&quot;none&quot;,&quot;typ&quot;:&quot;JWT&quot;}' | base64 | tr -d '=' | tr '/+' '_-').$(echo -n &quot;{\&quot;sub\&quot;:\&quot;alice\&quot;,\&quot;session_uid\&quot;:\&quot;$SK\&quot;}&quot; | base64 | tr -d '=' | tr '/+' '_-').
+
+# 1. create a session (expect 201)
+curl -s -X POST http://127.0.0.1:8190/sessions \
+  -H &quot;Authorization: Bearer $JWT&quot; -H 'Content-Type: application/json' \
+  -d '{&quot;backend_session_redirect_url&quot;:&quot;http://app-demo.localtest.me:8080/oauth-complete&quot;}' \
+  -w 'HTTP %{http_code}\n'
+
+# 2. long-poll for the OAuth event, in another terminal
+curl -s -X POST http://127.0.0.1:8190/sessions/broker-events -H &quot;Authorization: Bearer $JWT&quot;
+
+# 3. request a token; this blocks while the poll above yields oauth_url_ready
+curl -s -X POST http://127.0.0.1:8190/sessions/token \
+  -H &quot;Authorization: Bearer $JWT&quot; \
+  -H &quot;X-Server-Url: http://mcp-server-service.sentinel-demo.svc.cluster.local:8184&quot;
+</code></pre>
+<p>Open the <code>auth_url</code> from the event in a browser, consent, and step 3 returns a token.</p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No consent window appears</td>
+<td>The UI opens consent with <code>window.open</code>, which browsers block outside a click handler. Allow pop-ups for <code>app-demo.localtest.me</code> and look for a blocked-pop-up icon in the address bar.</td>
+</tr>
+<tr>
+<td>Consent is skipped entirely, yet a token arrives</td>
+<td>Expected when you have already authorized the OAuth app and hold a live <code>github.com</code> session. Confirm at <a href="https://github.com/settings/applications">github.com/settings/applications</a>; revoke the app to force the prompt.</td>
+</tr>
+<tr>
+<td><code>504</code> on <code>/sessions/broker-events</code> after about five minutes</td>
+<td>By design. The broker's request timeout is <code>tokenBroker.tokenWaitTimeout</code> plus ten seconds, so a 504 means nobody completed consent in time, not that the broker is broken.</td>
+</tr>
+<tr>
+<td>Sidecar crash-loops on <code>broker_url is required</code></td>
+<td><code>pluginPreset</code> was used instead of <code>authBridge.pipeline</code>. See <a href="#why-the-chart-value-and-not-pluginpreset">above</a>.</td>
+</tr>
+<tr>
+<td><code>502 oauth_upstream</code>, with <code>no such host</code> in the broker log</td>
+<td>The resource server is not deployed, or the route names the wrong namespace.</td>
+</tr>
+<tr>
+<td><code>MCP connection failed</code> in the agent's reply</td>
+<td><code>MCP_URL</code> is wrong. It must be the in-cluster <code>http://</code> address of the resource server.</td>
+</tr>
+<tr>
+<td>Token broker pod in <code>CreateContainerConfigError</code></td>
+<td>The <code>github-oauth-credentials</code> secret is missing from the broker's namespace.</td>
+</tr>
+<tr>
+<td>GitHub rejects the redirect</td>
+<td>The OAuth app's callback URL differs from <code>tokenBroker.oauth.callbackUrl</code>.</td>
+</tr>
+<tr>
+<td>Agents missing from the app</td>
+<td>The user lacks <code>sentinel-operator</code>, or did not sign out and back in after the grant.</td>
+</tr>
+<tr>
+<td>The token cannot read issues or pull requests</td>
+<td><code>tokenBroker.resourceConfig</code> pins the scopes it requests and overrides what the resource server advertises. Widen it to include <code>repo</code> if the agent needs repository data.</td>
+</tr>
+<tr>
+<td>The agent reports a <code>400</code> about a function schema</td>
+<td>Unrelated to authorization. The agent's MCP-to-LLM tool conversion emits a schema the provider rejects; the resource server's own schema is valid. Pin the agent's <code>crewai-tools</code> and <code>openai</code> versions.</td>
+</tr>
+<tr>
+<td><code>TOKEN_BROKER_URL</code> points at <code>sentinel-demo</code></td>
+<td>A stale default in the example app's ConfigMap. The broker runs in <code>sentinel-system</code>; an empty value silently disables the OAuth half rather than failing loudly.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../operate/troubleshooting.html">Troubleshooting</a> — platform-wide failures</li>
+<li><a href="../operate/observability.html">Observability</a> — traces and metrics</li>
+</ul>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="../reference/glossary.html"><span>Previous</span>Glossary</a><a class="next" href="../resources.html"><span>Next</span>Resources</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/hitl/hitl-auth-demo.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

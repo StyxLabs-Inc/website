@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resources | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Demonstrations, examples, community and support.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/resources.html">
+  <meta property="og:title" content="Resources — Sentinel Docs">
+  <meta property="og:description" content="Demonstrations, examples, community and support.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/resources.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../index.html" aria-label="StyxLabs home">
+        <img src="../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../index.html#platform">Platform</a>
+        <a href="index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="index.html">Introduction</a></li><li><details><summary><a href="get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="get-started/laptop.html">Quickstart — laptop</a></li><li><a href="get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="get-started/configure-a-model.html">Configure a model</a></li><li><a href="get-started/first-agent.html">Deploy your first agent</a></li><li><a href="get-started/first-tool.html">Connect your first tool</a></li><li><a href="get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="concepts/core/architecture.html">Architecture</a></li><li><a href="concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="concepts/core/cortex.html">Cortex</a></li><li><a href="concepts/core/identity.html">Identity and trust</a></li><li><a href="concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="concepts/experiments/skills.html">Skills</a></li><li><a href="concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="concepts/experiments/agent-context.html">Agent context</a></li><li><a href="concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="security/workload-identity.html">Workload identity</a></li><li><a href="security/authbridge.html">AuthBridge</a></li><li><a href="security/authentication-modes.html">Authentication modes</a></li><li><a href="security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="operate/install-openshift.html">Install on OpenShift</a></li><li><a href="operate/install-helm.html">Install with Helm</a></li><li><a href="operate/observability.html">Observability</a></li><li><a href="operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="reference/cli.html">CLI</a></li><li><a href="reference/custom-resources.html">Custom resources</a></li><li><a href="reference/install-options.html">Install options</a></li><li><a href="reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="resources.html" class="active" aria-current="page">Resources</a></li><li><details><summary><a href="eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Sentinel</p>
+        <h1>Resources</h1>
+        <p class="docs-lede">Demonstrations, examples, community and support.</p>
+        <h2 id="demonstrations">Demonstrations<a class="headerlink" href="#demonstrations" title="Permanent link">#</a></h2>
+<p>Each demonstration is a complete example that you can run.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Demonstration</th>
+<th>What it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/sentinel/cortex/tree/main/authbridge/demos/weather-agent">Weather agent</a></td>
+<td>An agent and a tool, deployed from the web console, with token exchange between them. Start with this one.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sentinel/cortex/tree/main/authbridge/demos/ibac">Intent-based access</a></td>
+<td>An agent reads a poisoned email and tries to send data to an external server. See <a href="concepts/experiments/intent-based-access.html">Intent-based access</a>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sentinel/cortex/blob/main/authbridge/demos/finance-sparc">Tool validation</a></td>
+<td>An agent invents a transaction identifier. See <a href="concepts/experiments/tool-validation.html">Tool call validation</a>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sentinel/cortex/tree/main/authbridge/demos/context-guru">Context compaction</a></td>
+<td>Tool output that is larger than the context window of the model. See <a href="concepts/experiments/context-compaction.html">Context compaction</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The weather agent demonstration needs a Kubernetes cluster. See
+<a href="get-started/kubernetes.html">Quickstart on Kubernetes</a>.</p>
+<h2 id="example-agents-and-tools">Example agents and tools<a class="headerlink" href="#example-agents-and-tools" title="Permanent link">#</a></h2>
+<p><a href="https://github.com/sentinel/examples">sentinel/examples</a> contains agents for several frameworks. The
+MCP tools are in <a href="https://github.com/sentinel/examples/tree/main/mcp">examples/mcp</a>.</p>
+<p>Each example agent has an <code>.env.openai</code> file and an <code>.env.ollama</code> file. The default values in these
+files assume that the tool is in the same namespace as the agent.</p>
+<h2 id="security-tests">Security tests<a class="headerlink" href="#security-tests" title="Permanent link">#</a></h2>
+<p><a href="https://github.com/sentinel/capture-the-flag">capture-the-flag</a> contains attack scenarios. Run them
+to confirm what the security model prevents.</p>
+<h2 id="repositories">Repositories<a class="headerlink" href="#repositories" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/StyxLabs-Inc/sentinel">sentinel</a></td>
+<td>Installer, web console, backend and these documents</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sentinel/operator">operator</a></td>
+<td>The Kubernetes operator and the custom resources</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sentinel/cortex">cortex</a></td>
+<td>The data plane, its plugins and its demonstrations</td>
+</tr>
+<tr>
+<td><a href="https://github.com/StyxLabs-Inc/sentinel-cli">sentinel-cli</a></td>
+<td>The command-line interface</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sentinel/examples">examples</a></td>
+<td>Example agents and tools</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <a href="https://github.com/sentinel">organization profile</a> lists every repository, and marks each one as
+core or experimental.</p>
+<h2 id="releases">Releases<a class="headerlink" href="#releases" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://github.com/StyxLabs-Inc/sentinel/releases">Releases and release notes</a></li>
+<li><a href="concepts/index.html">Concepts</a> gives the status of each feature in the current release.</li>
+</ul>
+<h2 id="read-and-watch">Read and watch<a class="headerlink" href="#read-and-watch" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://medium.com/sentinel-the-agentic-platform">Blog</a></li>
+<li><a href="https://www.youtube.com/@Sentinel">Videos</a></li>
+</ul>
+<h2 id="get-help">Get help<a class="headerlink" href="#get-help" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://ibm.biz/sentinel-slack">Slack</a></td>
+<td>Questions. This is the fastest channel.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/StyxLabs-Inc/sentinel/issues">Issues</a></td>
+<td>Defects and feature requests</td>
+</tr>
+<tr>
+<td><code>sentinel-maintainers@googlegroups.com</code></td>
+<td>Messages to the maintainer team</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="contribute">Contribute<a class="headerlink" href="#contribute" title="Permanent link">#</a></h2>
+<p>Read the <a href="https://github.com/StyxLabs-Inc/sentinel/blob/main/CONTRIBUTING.md">contributing guide</a>. The
+<a href="https://github.com/StyxLabs-Inc/sentinel/blob/main/MAINTAINERS.md">maintainers file</a> lists the
+maintainers.</p>
+<p>Corrections to these documents are welcome. Each page has an <strong>Edit this page</strong> link.</p>
+<p>Sentinel uses the <a href="https://github.com/StyxLabs-Inc/sentinel/blob/main/LICENSE">Apache 2.0 licence</a>.</p>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="hitl/hitl-auth-demo.html"><span>Previous</span>HITL authorization demo</a><a class="next" href="eventing/index.html"><span>Next</span>Eventing</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/resources.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

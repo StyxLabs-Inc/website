@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quickstart on a laptop | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Run Cortex as one program and see the traffic of your agent.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/get-started/laptop.html">
+  <meta property="og:title" content="Quickstart on a laptop — Sentinel Docs">
+  <meta property="og:description" content="Run Cortex as one program and see the traffic of your agent.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/get-started/laptop.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details open><summary><a href="index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="laptop.html" class="active" aria-current="page">Quickstart — laptop</a></li><li><a href="reading-the-numbers.html">Read the numbers</a></li><li><a href="kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="configure-a-model.html">Configure a model</a></li><li><a href="first-agent.html">Deploy your first agent</a></li><li><a href="first-tool.html">Connect your first tool</a></li><li><a href="cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details><summary><a href="../eventing/index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="../eventing/github-oauth-app.html">GitHub OAuth App</a></li><li><a href="../eventing/identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Get started</p>
+        <h1>Quickstart on a laptop</h1>
+        <p class="docs-lede">Run Cortex as one program and see the traffic of your agent.</p>
+        <p>Cortex is the data plane of Sentinel. It runs as one program on macOS or Linux. It is a proxy on the request path of your agent. It shows each model call, each tool call and each
+agent message as it happens. You do not need Kubernetes.</p>
+<p>The traffic stays on your computer. Cortex does not send it to Sentinel or to any other service.</p>
+<p>This procedure needs approximately 5 minutes.</p>
+<h2 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">#</a></h2>
+<p>You need:</p>
+<ul>
+<li>macOS or Linux, on amd64 or arm64.</li>
+<li>An agent. The installer configures <a href="https://claude.com/claude-code">Claude Code</a> for you. Any agent
+  operates. See <a href="#other-agents">Other agents</a>.</li>
+</ul>
+<h2 id="step-1-install-the-program">Step 1: install the program<a class="headerlink" href="#step-1-install-the-program" title="Permanent link">#</a></h2>
+<!-- This install command is duplicated in the Cortex repository README:
+     sentinel/cortex -> README.md ("Quick start").
+     Change both, or they drift - the --ref wording already did once. -->
+
+<pre><code class="language-bash">curl -fsSL https://raw.githubusercontent.com/sentinel/cortex/main/scripts/install.sh \
+  | sh -s -- --claude-code
+</code></pre>
+<p>The script asks for your permission before it changes the settings of Claude Code. It then runs
+Cortex as a background service. The service restarts after a failure and after you sign in again.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The address of the script is on the <code>main</code> branch, but the script then runs the copy from the most
+recent release, so the command does not run unreleased code. To pin or override that, use <code>--ref</code>:
+<code>--ref=vX.Y.Z</code> selects a release and <code>--ref=main</code> installs the unreleased tip. See
+<a href="https://github.com/sentinel/cortex/blob/main/CONTRIBUTING.md#installing-an-unreleased-build">Installing an unreleased build</a>.</p>
+</div>
+<p>If the install fails, read <a href="../operate/troubleshooting.html#on-a-laptop">Troubleshooting</a> first. It
+covers a certificate that your agent does not trust, a port that another program holds, and a service
+that does not start. If your condition is not there, go to <a href="#give-feedback">Give feedback</a> — a pasted
+error is exactly what the form asks for.</p>
+<h2 id="step-2-watch-the-traffic">Step 2: watch the traffic<a class="headerlink" href="#step-2-watch-the-traffic" title="Permanent link">#</a></h2>
+<p>Open two terminals. In the first terminal, run the viewer:</p>
+<pre><code class="language-bash">agentop observe
+</code></pre>
+<p>In the second terminal, run your agent:</p>
+<pre><code class="language-bash">claude
+</code></pre>
+<p>Use Claude Code in the normal way. There is no environment variable to set. The calls of the agent
+appear in <code>agentop</code>.</p>
+<p>In <code>agentop observe</code>, press <code>Enter</code> on a session to see its events. Press <code>Enter</code> on an event to see
+its full content. Press <code>/</code> to filter the events by a text match. Press <code>q</code> to quit. To learn what
+the filter matches, read <a href="reading-the-numbers.html#watch-a-session">Read the numbers</a>.</p>
+<p>Cortex reads this traffic. It does not change the traffic until you enable a plugin that changes
+it.</p>
+<h2 id="step-3-read-the-numbers">Step 3: read the numbers<a class="headerlink" href="#step-3-read-the-numbers" title="Permanent link">#</a></h2>
+<p>Each session shows a token count and a cost. To learn what each number means, and how to act on it,
+read <a href="reading-the-numbers.html">Read the numbers</a>.</p>
+<h2 id="manage-the-service">Manage the service<a class="headerlink" href="#manage-the-service" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">agentop service status
+agentop service stop
+agentop service start
+agentop service restart
+agentop service uninstall
+</code></pre>
+<p><code>agentop service</code> controls the supervisor of your operating system, which is <code>launchd</code> on macOS and
+<code>systemd</code> on Linux. A stop persists across a login, and a start undoes it. An uninstall removes the
+service and keeps your data: your configuration and your certificate authority stay in <code>~/.cortex</code>.
+To set the service up again after an uninstall, run <code>agentop service install</code>.</p>
+<p>To read what each command does to the supervisor, and to stop the service so that you can run your
+own Cortex process, read
+<a href="../operate/troubleshooting.html#you-must-stop-the-service-to-run-cortex-yourself">You must stop the service to run Cortex yourself</a>.</p>
+<h2 id="stop-and-remove">Stop and remove<a class="headerlink" href="#stop-and-remove" title="Permanent link">#</a></h2>
+<p>To stop the traffic for one session, quit <code>agentop observe</code> with <code>q</code> and stop your agent. Cortex
+continues to run as a background service.</p>
+<p>To stop the service, run <code>agentop service stop</code>. To remove it, run <code>agentop service uninstall</code>. Both
+are in <a href="#manage-the-service">Manage the service</a>. The service holds no traffic after a stop. It
+reads traffic again after you start it.</p>
+<h2 id="other-agents">Other agents<a class="headerlink" href="#other-agents" title="Permanent link">#</a></h2>
+<p>Any agent operates with Cortex. For the agents below, <code>agentop configure</code> sets the values for
+you. <code>claude-code</code> and <code>bob</code> read them from <code>~/.cortex/config.yaml</code>.</p>
+<!-- VERIFY v0.9.0: once the release carrying cortex#1243 is out, switch the OpenCode paragraph
+     below to `agentop configure opencode enable`, and say that enable/disable restart OpenCode's
+     service, which interrupts its open sessions (it asks first, cmd_opencode.go:101-108). -->
+
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Command</th>
+<th>What it changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td><code>agentop configure claude-code enable</code></td>
+<td>The proxy and CA variables, and <code>CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</code>, in the <code>env</code> block of <code>~/.claude/settings.json</code>.</td>
+</tr>
+<tr>
+<td>IBM Bob</td>
+<td><code>agentop configure bob enable</code></td>
+<td>The <code>http.proxy</code> key in Bob's <code>settings.json</code> (macOS). It prints a <code>sudo</code> command that trusts the CA in the System keychain, which you run yourself. Restart Bob afterwards.</td>
+</tr>
+<tr>
+<td>Bob Shell</td>
+<td><code>agentop configure bobshell enable</code></td>
+<td>A <code>bob</code> function in <code>~/.zshrc</code> or <code>~/.bashrc</code> that runs Bob Shell through <code>agentop exec</code>. This is separate from the IBM Bob row.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each one takes <code>disable</code> to undo the change and <code>status</code> to report what is set. Run
+<code>agentop configure &lt;agent&gt; --help</code> for the detail.</p>
+<p>Codex reads only its environment. Run it with <code>agentop exec -- codex</code>. Nothing persists after the
+command ends.</p>
+<p>OpenCode sends its traffic from one background service. The first <code>opencode</code> starts that service,
+and later ones reuse it. It keeps the environment that it started with. So
+<code>agentop exec -- opencode</code> routes OpenCode only if no OpenCode service runs yet. <code>opencode service
+status</code> tells you. The service then stays on Cortex after the command ends, until it restarts.</p>
+<p>For an agent that is not listed, run it with <code>agentop exec -- &lt;agent&gt;</code>. That sets the proxy and the
+CA variables, each with the right file. To see them, run <code>agentop exec --print</code>. To set them
+yourself:</p>
+<ul>
+<li><code>HTTP_PROXY</code>, <code>HTTPS_PROXY</code>, <code>http_proxy</code> and <code>https_proxy</code> set to <code>http://localhost:47600</code></li>
+<li><code>NODE_EXTRA_CA_CERTS</code> set to <code>$HOME/.cortex/ca/ca.crt</code></li>
+<li><code>SSL_CERT_FILE</code>, <code>REQUESTS_CA_BUNDLE</code>, <code>CURL_CA_BUNDLE</code> and <code>GIT_SSL_CAINFO</code> set to
+  <code>$HOME/.cortex/ca/bundle.crt</code></li>
+</ul>
+<p>The last four <strong>replace</strong> the trust store rather than adding to it, so they need the bundle — the
+bridge CA together with the platform roots. Pointed at <code>ca.crt</code>, a program trusts only the Cortex CA,
+and every host that Cortex does not bridge fails to verify.</p>
+<div class="admonition note">
+<p class="admonition-title">Go programs on macOS ignore `SSL_CERT_FILE`</p>
+<p>On macOS, a Go program such as <code>gh</code> or <code>go</code> reads only the keychain. Usually you do not need to do
+anything: Cortex does not decrypt GitHub, the Go module proxy or the package registries. If a Go
+program reports <code>x509: certificate signed by unknown authority</code>, trust the CA in your login keychain:</p>
+<pre><code class="language-bash">security add-trusted-cert -k ~/Library/Keychains/login.keychain-db -p ssl ~/.cortex/ca/ca.crt
+</code></pre>
+<p>git, curl and Python read their variables on macOS too.</p>
+</div>
+<p>To run agents against a cluster rather than this laptop, read
+<a href="cli.html">Install the cluster CLI</a>.</p>
+<h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">#</a></h2>
+<ul>
+<li>To understand the numbers that <code>agentop observe</code> shows, read <a href="reading-the-numbers.html">Read the numbers</a>.</li>
+<li>To reduce the token cost of your agent, read
+  <a href="../concepts/experiments/cost-control.html">Cost control</a>.</li>
+<li>To make large tool output smaller, read
+  <a href="../concepts/experiments/context-compaction.html">Context compaction</a>.</li>
+<li>To understand the program that you installed, read <a href="../concepts/core/cortex.html">Cortex</a>.</li>
+<li>To get deployment, discovery and the web console, read <a href="kubernetes.html">Quickstart on Kubernetes</a>.</li>
+</ul>
+<h2 id="give-feedback">Give feedback<a class="headerlink" href="#give-feedback" title="Permanent link">#</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Tell us when it breaks</p>
+<p>Cortex on a laptop is new. Report an install that failed, a figure that looked wrong, or a step that
+was not clear.</p>
+<p>Read <a href="../operate/troubleshooting.html#on-a-laptop">Troubleshooting</a> first. It covers the most frequent
+conditions, and it answers a set of figures that look wrong and are correct.</p>
+<ul>
+<li>Open the <strong>Laptop feedback</strong> form on
+  <a href="https://github.com/sentinel/cortex/issues/new/choose">sentinel/cortex</a></li>
+<li>Or write a message in <a href="https://ibm.biz/sentinel-slack">Slack</a></li>
+</ul>
+<p>A half-finished install, with the error in the report, is more useful than a complete report that you
+do not send.</p>
+</div>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="index.html"><span>Previous</span>Get started</a><a class="next" href="reading-the-numbers.html"><span>Next</span>Read the numbers</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/get-started/laptop.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>

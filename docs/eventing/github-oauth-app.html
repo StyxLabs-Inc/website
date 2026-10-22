@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub OAuth App | Sentinel Docs | StyxLabs</title>
+  <meta name="description" content="Register the OAuth App that lets a user sign in to the eventing demo.">
+  <link rel="canonical" href="https://styxlabs.xyz/docs/eventing/github-oauth-app.html">
+  <meta property="og:title" content="GitHub OAuth App — Sentinel Docs">
+  <meta property="og:description" content="Register the OAuth App that lets a user sign in to the eventing demo.">
+  <meta property="og:url" content="https://styxlabs.xyz/docs/eventing/github-oauth-app.html">
+  <meta property="og:site_name" content="StyxLabs">
+  <meta property="og:image" content="https://styxlabs.xyz/assets/og-image.png">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/png" href="../../assets/styxlabs-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/docs.css">
+</head>
+<body class="docs-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="top">
+    <div class="container nav docs-container">
+      <a class="brand" href="../../index.html" aria-label="StyxLabs home">
+        <img src="../../assets/styxlabs-mark.png" alt="" width="29" height="40">
+        <span class="wordmark"><strong>STYX</strong>Labs</span>
+        <span class="docs-badge">Sentinel Docs</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav-menu" aria-label="Primary">
+        <a href="../../index.html#platform">Platform</a>
+        <a href="../index.html" aria-current="page">Docs</a>
+        <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a>
+        <a class="btn btn-primary btn-sm" href="../../index.html#contact">Schedule a Demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs-container docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <details class="docs-sidebar-toggle" open>
+        <summary>Documentation menu</summary>
+        <nav><ul class="docs-nav-list"><li><a href="../index.html">Introduction</a></li><li><details><summary><a href="../get-started/index.html">Get started</a></summary><ul class="docs-nav-list"><li><a href="../get-started/laptop.html">Quickstart — laptop</a></li><li><a href="../get-started/reading-the-numbers.html">Read the numbers</a></li><li><a href="../get-started/kubernetes.html">Quickstart — Kubernetes</a></li><li><a href="../get-started/configure-a-model.html">Configure a model</a></li><li><a href="../get-started/first-agent.html">Deploy your first agent</a></li><li><a href="../get-started/first-tool.html">Connect your first tool</a></li><li><a href="../get-started/cli.html">Install the cluster CLI</a></li></ul></details></li><li><details><summary><a href="../concepts/index.html">Concepts</a></summary><ul class="docs-nav-list"><li><details><summary><span>Core</span></summary><ul class="docs-nav-list"><li><a href="../concepts/core/architecture.html">Architecture</a></li><li><a href="../concepts/core/agents-and-tools.html">Agents and tools</a></li><li><a href="../concepts/core/cortex.html">Cortex</a></li><li><a href="../concepts/core/identity.html">Identity and trust</a></li><li><a href="../concepts/core/control-plane.html">Control plane</a></li></ul></details></li><li><details><summary><span>Experiments</span></summary><ul class="docs-nav-list"><li><a href="../concepts/experiments/mcp-gateway.html">MCP Gateway</a></li><li><a href="../concepts/experiments/skills.html">Skills</a></li><li><a href="../concepts/experiments/sandboxes.html">Sandboxes</a></li><li><a href="../concepts/experiments/agent-context.html">Agent context</a></li><li><a href="../concepts/experiments/intent-based-access.html">Intent-based access</a></li><li><a href="../concepts/experiments/tool-validation.html">Tool call validation</a></li><li><a href="../concepts/experiments/context-compaction.html">Context compaction</a></li><li><a href="../concepts/experiments/cost-control.html">Cost control</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../workloads/index.html">Agents and tools</a></summary><ul class="docs-nav-list"><li><a href="../workloads/bring-your-own-agent.html">Bring your own agent</a></li><li><a href="../workloads/deploy-an-agent.html">Deploy an agent</a></li><li><a href="../workloads/deploy-a-tool.html">Deploy a tool</a></li></ul></details></li><li><details><summary><a href="../security/index.html">Security</a></summary><ul class="docs-nav-list"><li><a href="../security/workload-identity.html">Workload identity</a></li><li><a href="../security/authbridge.html">AuthBridge</a></li><li><a href="../security/authentication-modes.html">Authentication modes</a></li><li><a href="../security/flows.html">Authentication flows</a></li></ul></details></li><li><details><summary><a href="../operate/index.html">Install and operate</a></summary><ul class="docs-nav-list"><li><a href="../operate/install-kubernetes.html">Install on Kubernetes</a></li><li><a href="../operate/install-openshift.html">Install on OpenShift</a></li><li><a href="../operate/install-helm.html">Install with Helm</a></li><li><a href="../operate/observability.html">Observability</a></li><li><a href="../operate/troubleshooting.html">Troubleshooting</a></li><li><details><summary><span>HyperShift</span></summary><ul class="docs-nav-list"><li><a href="../operate/hypershift/AWS.html">AWS HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/GCP.html">GCP HyperShift Setup &amp; Operation</a></li><li><a href="../operate/hypershift/ARCHITECTURE.html">Multi-Cloud HyperShift Architecture</a></li></ul></details></li></ul></details></li><li><details><summary><a href="../reference/index.html">Reference</a></summary><ul class="docs-nav-list"><li><a href="../reference/cli.html">CLI</a></li><li><a href="../reference/custom-resources.html">Custom resources</a></li><li><a href="../reference/install-options.html">Install options</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></details></li><li><details><summary><a href="../hitl/hitl-auth-demo.html">HITL authorization</a></summary><ul class="docs-nav-list"></ul></details></li><li><a href="../resources.html">Resources</a></li><li><details open><summary><a href="index.html">Eventing</a></summary><ul class="docs-nav-list"><li><a href="github-oauth-app.html" class="active" aria-current="page">GitHub OAuth App</a></li><li><a href="identity.html">Identity in the event path</a></li></ul></details></li></ul></nav>
+      </details>
+    </aside>
+
+    <main id="main" class="docs-main">
+      <article class="docs-article">
+        <p class="eyebrow">Eventing</p>
+        <h1>GitHub OAuth App</h1>
+        <p class="docs-lede">Register the OAuth App that lets a user sign in to the eventing demo.</p>
+        <div class="admonition warning">
+<p class="admonition-title">Alpha</p>
+<p>Sign-in is off by default, and EventBridge then accepts every request anonymously. The variables on
+this page turn it on for the two routes that start work, <code>POST /v0/agents</code> and <code>POST /v0/groups</code>.
+Every other route stays open, including <code>/continue</code>, which also runs the agent; see
+<a href="identity.html#what-these-controls-do-not-prove">What these controls do not prove</a>.</p>
+</div>
+<p>The eventing path can identify the person who submits a request by signing them in with GitHub.
+This page registers the OAuth App that makes that possible. You do it once per environment.</p>
+<h2 id="why-an-app-is-needed">Why an app is needed<a class="headerlink" href="#why-an-app-is-needed" title="Permanent link">#</a></h2>
+<p>Sign-in uses the OAuth <strong>device flow</strong>, which requires a <code>client_id</code>. The user never types a
+password into the CLI. The CLI prints a short code, the user enters it on a GitHub page, and
+GitHub returns a token to the CLI.</p>
+<p>The <code>client_id</code> is <strong>public</strong>, so you can commit it. Device flow needs <strong>no client secret</strong> —
+do not generate one.</p>
+<h2 id="register-the-app">Register the app<a class="headerlink" href="#register-the-app" title="Permanent link">#</a></h2>
+<ol>
+<li>Open your <a href="https://github.com/settings/developers">GitHub developer settings</a>, select <strong>OAuth Apps</strong>, then
+   <strong>New OAuth App</strong> (<strong>Register a new application</strong> if you have none yet). For a shared
+   environment, use the organization page instead:
+   <code>https://github.com/organizations/&lt;org&gt;/settings/applications</code>.</li>
+<li>Complete the form:</li>
+</ol>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application name</td>
+<td><code>Sentinel Eventing Demo</code></td>
+</tr>
+<tr>
+<td>Homepage URL</td>
+<td><code>https://github.com/StyxLabs-Inc/sentinel</code></td>
+</tr>
+<tr>
+<td>Authorization callback URL</td>
+<td><code>https://github.com/StyxLabs-Inc/sentinel</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Device flow never redirects, but the form requires a callback URL.</p>
+<p>Tick <strong>Enable Device Flow</strong> on this same form. Without it, GitHub refuses the first step with
+   <code>device_flow_disabled</code>. At the revision <a href="index.html">the overview</a> names, the CLI does not show
+   that reason: it stops with a Python traceback ending in <code>HTTP Error 400: Bad Request</code>.
+   <!-- VERIFY v0.9.0: drop the traceback sentence once sentinel/examples#887 lands and _post_form
+        reads the error body. -->
+</p>
+<p>Untick <strong>Expire user access tokens</strong>, which GitHub ticks by default. With it ticked, access
+   tokens expire after 8 hours and nothing in this path refreshes them, so every user has to run
+   <code>login</code> again. Leave it ticked only if you would rather have the expiry and accept the
+   re-login.
+3. Select <strong>Register application</strong>.
+4. Copy the <strong>Client ID</strong>. It looks like <code>Ov23li...</code>.</p>
+<h2 id="configure-eventbridge">Configure EventBridge<a class="headerlink" href="#configure-eventbridge" title="Permanent link">#</a></h2>
+<pre><code class="language-bash">export EB_GITHUB_CLIENT_ID=Ov23li...
+export EB_ALLOWED_USERS=&quot;alice,bob,carol&quot;
+</code></pre>
+<p><code>EB_ALLOWED_USERS</code> is the approved list. A valid GitHub user who is absent from it receives
+<code>403</code> rather than <code>401</code>: authenticated, but not authorized.</p>
+<p>Setting either variable turns sign-in on. The two are not symmetric:</p>
+<ul>
+<li><strong>A client id with no list</strong> refuses every GitHub sign-in with <code>403</code>. A request with no
+  credential still gets <code>401</code>, and a static-token holder still gets <code>202</code>.</li>
+<li><strong>The list on its own</strong> behaves like both together only while it holds a name. EventBridge treats
+  an empty <code>EB_ALLOWED_USERS</code> as unset, so keep <code>EB_GITHUB_CLIENT_ID</code> set on EventBridge too: with
+  it, an empty list refuses every GitHub sign-in. Without it, an empty list turns sign-in off: if
+  <code>EB_AUTH_TOKENS</code> has an entry that parses, only its holders get in, and otherwise every request is
+  accepted anonymously again.</li>
+</ul>
+<p>A static <code>EB_AUTH_TOKENS</code> entry bypasses the list entirely — see the break-glass path in
+<a href="identity.html#which-person-asked-for-this">Identity in the event path</a>.</p>
+<p>On Kubernetes, EventBridge reads the whole <code>eventing-config</code> ConfigMap through <code>envFrom</code>; the
+shipped one just does not set these keys. Add them to it and restart the pod, or run
+<code>kubectl -n kev1 set env deploy/eventbridge EB_GITHUB_CLIENT_ID=… EB_ALLOWED_USERS=…</code> — <code>kev1</code> is
+the namespace the shipped overlays use. Both replace the pod; see the warning under
+<a href="#revoke-access">Revoke access</a>.</p>
+<p><strong>Keep each variable in one place.</strong> <code>kubectl set env</code> writes an <code>env:</code> entry, and an <code>env:</code> entry
+overrides the value that arrives through <code>envFrom</code>. If you set <code>EB_GITHUB_CLIENT_ID</code> or
+<code>EB_ALLOWED_USERS</code> that way and later change it in the ConfigMap, the ConfigMap's value is ignored
+and the old one still applies — nothing reports the shadowed value. Other keys set this way behave
+the same; note that the optional <code>eventbridge-ntfy</code> Secret is listed after the ConfigMap in
+<code>envFrom</code>, so its <code>NTFY_ENABLED</code> already overrides the ConfigMap's.</p>
+<p>Keep <code>EB_AUTH_TOKENS</code>, a comma-separated list of <code>name:token</code> pairs on one line, in a Secret. The name is what
+lands in <code>ce_submitter</code>. The Deployment's only shipped Secret source is <code>eventbridge-ntfy</code>, so add
+one, and name the key <code>EB_AUTH_TOKENS</code>, because the key becomes the variable name:</p>
+<pre><code class="language-bash">kubectl -n kev1 create secret generic eventbridge-auth --from-file=EB_AUTH_TOKENS=./auth-tokens
+kubectl -n kev1 set env deploy/eventbridge --from=secret/eventbridge-auth
+</code></pre>
+<p>Use <code>--from-file</code> rather than <code>--from-literal</code>, which would put the credential in <code>argv</code>. A trailing
+newline in the file is harmless, and so is a newline after a comma. A newline <em>in place of</em> a comma
+joins the two pairs on either side into one, and both of those holders get <code>401</code>. Delete the file
+once the Secret exists. The second command replaces the pod too.</p>
+<p><strong>EventBridge does not bind tokens to this app.</strong> <code>EB_GITHUB_CLIENT_ID</code> is only an on-switch
+there. EventBridge calls <code>GET /user</code> with whatever token arrives, so any GitHub token belonging
+to an approved login is accepted — a PAT, <code>gh auth token</code>, or a broadly scoped token held by
+another app. Binding the token to one app would require the client secret that device flow
+exists to avoid, so this is a limit to know rather than a setting to change.</p>
+<h2 id="scopes">Scopes<a class="headerlink" href="#scopes" title="Permanent link">#</a></h2>
+<p>The CLI requests <strong>no scopes</strong> — it hard-codes an empty scope, so there is nothing for you to
+set. <code>GET /user</code> returns the login with an unscoped token, so the path asks for the least access
+that works and still gets a verified identity.</p>
+<p>This is CLI behaviour, not something EventBridge enforces: per the limit above, it accepts a
+broadly scoped token just as readily.</p>
+<h2 id="sign-in">Sign in<a class="headerlink" href="#sign-in" title="Permanent link">#</a></h2>
+<p>There is no installed <code>login</code> command. The CLI imports <code>eventbridge.ghauth</code> from the checkout, so
+run it from your clone of <a href="https://github.com/sentinel/examples"><code>sentinel/examples</code></a>. The package
+declares <code>requires-python = "&gt;=3.14"</code>, so use a Python at that version or later; macOS's stock
+<code>/usr/bin/python3</code> is older. The <code>login</code> path itself needs no virtual environment, because <code>ghauth</code>
+imports only the standard library.</p>
+<pre><code class="language-bash">cd eventing &amp;&amp; python3 skills/eventbridge/eventbridge-cli.py login --client-id Ov23li...
+</code></pre>
+<pre><code class="language-text">$ python3 skills/eventbridge/eventbridge-cli.py login --client-id Ov23li...
+· endpoint http://127.0.0.1:8080 (from default)
+
+  Open https://github.com/login/device
+  Enter code: WDJB-MJHT
+
+  Waiting for you to authorise in the browser (Ctrl-C to abort)...
+✔ signed in as alice
+  token stored at /home/alice/.config/sentinel-eventing/token (mode 600)
+</code></pre>
+<p>The token is written to <code>$XDG_CONFIG_HOME/sentinel-eventing/token</code>, falling back to <code>~/.config</code>
+when <code>XDG_CONFIG_HOME</code> is unset, with mode <code>0600</code>. Every later request sends it as
+<code>Authorization: Bearer &lt;token&gt;</code>.</p>
+<p>A few things worth knowing:</p>
+<ul>
+<li><strong>Pass the client id.</strong> The CLI reads <code>--client-id</code> or <code>$EB_GITHUB_CLIENT_ID</code> from your own
+  shell. With neither it silently uses a built-in demo app, and EventBridge accepts that token
+  too, so nothing reveals the mistake — but your app's settings do not apply, the user must revoke
+  a different app, and all such users share its 50-per-hour code limit.</li>
+<li><strong>Where requests go.</strong> <code>login</code> and <code>whoami</code> talk only to GitHub, and <code>logout</code> to nothing. Every
+  other command sends to <code>--base-url</code>, else <code>$EVENTBRIDGE_URL</code>, else <code>http://127.0.0.1:8080</code>.</li>
+<li><code>$EVENTBRIDGE_TOKEN</code> overrides the stored token, and the CLI sends it to EventBridge on every
+  request — so pointing it at a broad PAT hands that token to EventBridge.</li>
+<li><code>logout</code> forgets the local token. It does <strong>not</strong> revoke it on GitHub.</li>
+</ul>
+<h2 id="limits">Limits<a class="headerlink" href="#limits" title="Permanent link">#</a></h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Limit</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Device code lifetime</td>
+<td>15 minutes</td>
+</tr>
+<tr>
+<td>Poll interval</td>
+<td>As returned by GitHub, plus 5 seconds after a <code>slow_down</code> response</td>
+</tr>
+<tr>
+<td><code>GET /user</code> rate limit</td>
+<td>5000 per hour per user</td>
+</tr>
+<tr>
+<td>Code submissions</td>
+<td>50 per hour per app</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 50-per-hour limit counts browser code submissions across <strong>all</strong> users of one app, which is
+worth knowing for a shared demo app at a workshop or conference.</p>
+<p>EventBridge caches the mapping from token to login, keyed by a hash of the token, so repeated
+requests with one token cost one API call per cache entry, per EventBridge process. Requests that
+arrive together before the first lookup returns each call GitHub, because nothing merges concurrent
+lookups. Failed lookups are not cached, so an unknown token costs a call every time.</p>
+<h2 id="revoke-access">Revoke access<a class="headerlink" href="#revoke-access" title="Permanent link">#</a></h2>
+<p>A user revokes at <a href="https://github.com/settings/applications">their GitHub applications page</a>.
+A revoked token keeps working until its cached entry expires: up to <code>EB_GITHUB_CACHE_TTL_S</code>,
+300 seconds by default. After that, <em>starting</em> work returns <code>401</code>.</p>
+<p>To remove someone, take their name out of <code>EB_ALLOWED_USERS</code> <strong>where you set it</strong> — the ConfigMap or
+the <code>env:</code> entry, not whichever you reach for first — and restart EventBridge. If that empties the
+list, sign-in stays on only when <code>EB_GITHUB_CLIENT_ID</code> is also set on EventBridge. Without it, an
+empty list turns sign-in off: if <code>EB_AUTH_TOKENS</code> has an entry that parses, only its holders get in,
+and otherwise every request is accepted anonymously again. To remove a static-token holder, take the
+entry out of <code>EB_AUTH_TOKENS</code> and restart; the approved-user list does not affect them. If that
+removes the last entry while sign-in is off, every request is accepted anonymously again. Either way
+the pod is replaced — see the warning below.</p>
+<p>Neither revocation nor removal closes everything. As
+<a href="identity.html#what-these-controls-do-not-prove">Identity in the event path</a> explains, only starting
+work is authenticated, so either user can still continue any conversation they can name — and the
+member ids of the 100 most recent groups are listable without signing in.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>On the base, kind and test manifests EventBridge's store is an <code>emptyDir</code> and the Deployment uses
+the <code>Recreate</code> strategy. <strong>Anything that replaces the pod discards the agents' answers:</strong>
+<code>kubectl rollout restart</code>, <code>kubectl set env</code>, or any other change to the pod template. EventBridge
+reads these variables only when its process starts, and each of those commands replaces the pod.
+The responses consumer has already committed its offsets, so the answers are not replayed. Prompts
+and groups <em>are</em> rebuilt from what Kafka still holds — 24 hours on the Strimzi topics — so an
+earlier conversation comes back with its questions and no answers, and <code>/continue</code> on it returns
+<code>404</code>. Only the demo overlay adds a PVC.</p>
+<p>Turn sign-in on, and change the approved-user list, before a session whose transcripts you want to
+keep.</p>
+</div>
+      </article>
+      <nav class="docs-pager" aria-label="Previous and next page"><a class="prev" href="index.html"><span>Previous</span>Eventing</a><a class="next" href="identity.html"><span>Next</span>Identity in the event path</a></nav>
+      <p class="docs-edit"><a href="https://github.com/StyxLabs-Inc/sentinel/edit/main/docs/eventing/github-oauth-app.md">Edit this page on GitHub</a></p>
+    </main>
+  </div>
+
+  <footer class="site-footer docs-footer">
+    <div class="container docs-container legal">
+      <p>© <span id="year">2026</span> StyxLabs Inc. Sentinel is open source under the Apache 2.0 license.</p>
+      <p><a href="../../index.html">styxlabs.xyz</a> · <a href="https://github.com/StyxLabs-Inc/sentinel">GitHub</a> · <a href="mailto:hello@styxlabs.xyz">hello@styxlabs.xyz</a></p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
